@@ -1,0 +1,83 @@
+$columns: 12;
+
+@mixin padding-spacing-list {
+  @for $i from 1 through $columns {
+    .pl-#{$i} { padding-left: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .pr-#{$i} { padding-right: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .pt-#{$i} { padding-top: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .pb-#{$i} { padding-bottom: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .pa-#{$i} { padding: #{$i * 4}px !important}
+  }
+}
+
+@mixin margin-spacing-list {
+  @for $i from 1 through $columns {
+    .ml-#{$i} { margin-left: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .mr-#{$i} { margin-right: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .mt-#{$i} { margin-top: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .mb-#{$i} { margin-bottom: #{$i * 4}px !important}
+  }
+  @for $i from 1 through $columns {
+    .ma-#{$i} { margin: #{$i * 4}px !important}
+  }
+}
+
+$displays: flex, block, grid, none;
+
+@mixin display-layout {
+  @each $i in $displays {
+    .d-#{$i} { display: $i !important }
+  }
+}
+
+.flex-column {flex-direction: column}
+.justify-space-between {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.text-center {text-align: center}
+
+.w-fit-content { width: fit-content}
+.m-0-auto {margin: 0 auto}
+.w-100 {
+  width: 100%;
+}
+$pos-layout: relative, absolute, sticky;
+@mixin position-layout {
+  @each $i in $pos-layout {
+    .pos-#{$i} { position: $i !important }
+  }
+}
+
+$overflows: hidden, auto, scroll;
+@mixin overflows {
+  @each $i in $overflows {
+    .overflow-#{$i} { overflow: $i !important }
+  }
+}
+
+@include overflows;
+@include position-layout;
+@include display-layout;
+@include margin-spacing-list;
+@include padding-spacing-list;

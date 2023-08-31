@@ -20,5 +20,11 @@ export class IButtonComponent {
   link: string
 
   @Input()
-  className?: 'outline'
+  disabled: boolean
+
+  @Input()
+  className?: 'outline' | 'i-btn' | 'get-help' | 'store-btn' | 'refresh-status'
+
+  @Input()
+  color?: 'primary' | 'accent' | 'warn'
 }

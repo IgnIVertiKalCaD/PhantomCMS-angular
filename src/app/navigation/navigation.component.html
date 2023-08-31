@@ -1,0 +1,30 @@
+<div class="d-flex justify-center">
+  <div class="container">
+    <app-dock/>
+
+    <section class="navigation-section">
+      <nav class="d-flex flex-column">
+        <a routerLink="/news" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <i [innerHTML]="IconMainPage"></i>
+          Главная
+        </a>
+        <a routerLink="/servers" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <i [innerHTML]="IconServerPage"></i>
+          Сервера
+        </a>
+        <a routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <i [innerHTML]="IconProfilePage"></i>
+          Профиль
+        </a>
+        <a routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <i [innerHTML]="IconStorePage"></i>
+          Магазин
+        </a>
+      </nav>
+
+      <main>
+        <router-outlet/>
+      </main>
+    </section>
+  </div>
+</div>

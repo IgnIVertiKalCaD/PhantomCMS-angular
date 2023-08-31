@@ -1,6 +1,80 @@
+@import "global-style-effects";
+
+$player-img: 50px;
+$exit-img: 22px;
+
 header {
+  position: sticky;
+  width: 100%;
+  margin-top: 20px;
+  top: 0;
+
   &.dock {
+    .left {
+      .delimiter {
+        width: 1.5px;
+        height: 16px;
+        background: #8F8F94;
+        margin: 0 15px
+      }
+
+      .description {
+        color: #8F8F94;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+
+    > .right {
+      color: #FFF;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px;
+
+      align-items: center;
+      display: flex;
+      flex-direction: row-reverse;
+
+      > section {
+        display: flex;
+        align-items: center;
+
+        width: 280px;
+        border-radius: 24px;
+        background: #1E1E25;
+
+        div {
+          display: flex;
+          align-items: center;
+
+          > img {
+            margin: 5px 10px 5px 5px;
+            border-radius: 20px;
+            max-width: $player-img;
+            max-height: $player-img;
+
+          }
+        }
+
+        > .exit {
+          box-shadow: none;
+          display: block;
+          width: $exit-img;
+          height: $exit-img;
+          margin-right: 14px;
+          background: transparent;
+
+          @include icon-hover-pressed-effect;
+        }
+      }
+
+    }
+
     div {
+      align-items: center;
       flex: 1 1 33.3%;
     }
   }

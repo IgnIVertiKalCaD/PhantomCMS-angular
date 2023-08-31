@@ -1,5 +1,10 @@
 .previewPage {
+  color: white;
+  display: flex;
+  flex-direction: column;
+
   .header {
+    flex: 1 1 auto;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -26,4 +31,63 @@
 
   }
 
+  footer {
+    padding: 32px 16px 16px 16px;
+    border-top: 2px solid #38383E;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .icon {
+      border-radius: 27px;
+      background: #1E1E25;
+      padding: 18px 24px;
+      line-height: 0;
+      display: block;
+    }
+
+    > div {
+      > div {
+        &.grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          grid-column-gap: 30px;
+          grid-row-gap: 0;
+        }
+      }
+
+      .contacts-buttons {
+        > a {
+          transition: opacity .3s ease;
+          opacity: 1;
+          padding: 0;
+          width: 32px;
+
+          &:hover {opacity: .5; &:active{opacity: .75}}
+        }
+      }
+      strong {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #8F8F94;
+      }
+
+      a {
+        opacity: .5;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        padding: 2.5px 0;
+      }
+
+    }
+  }
 }

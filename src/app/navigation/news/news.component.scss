@@ -1,0 +1,128 @@
+@import "global-style-effects";
+@include main-nav-corrector;
+
+.news-section {
+  color: white;
+  display: flex;
+  border-radius: 16px;
+  background: #151519;
+  flex-direction: column;
+
+  font-style: normal;
+  line-height: 24px;
+
+  .download-comments {
+    text-align: center;
+
+    > span {
+      color: #6563EE;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: none;
+      cursor: pointer;
+    }
+
+  }
+
+  .comments {
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .comment-child-section {
+      margin-left: 10px;
+
+      .title {
+        span {
+          margin-right: 10px;
+          font-size: 20px;
+          font-weight: 600;
+        }
+        b {
+          font-weight: 400;
+          font-size: 16px;
+          opacity: 0.5;
+        }
+      }
+      .text {
+        color: #FFF;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .img-container {
+    border-radius: 16px;
+
+    > img {
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      transition: all .3s ease;
+      object-fit: cover;
+      height: 250px !important;
+    }
+  }
+
+  .rating-div {
+    align-items: center;
+
+    > img {
+      @include icon-hover-pressed-effect;
+      padding: 7px;
+      width: auto !important;
+      height: auto !important;
+    }
+
+    .data {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 28px;
+      opacity: .5;
+    }
+
+    .rating {
+      padding: 5px;
+      border-radius: 8px;
+      display: flex;
+      background: #1E1E25;
+
+      > img {
+        @include icon-hover-pressed-effect(1);
+        padding: 5px;
+        width: auto !important;
+        height: auto !important;
+
+        &:last-child {
+          transform: rotate(180deg);
+        }
+      }
+
+      > b {
+        padding: 0 5px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}

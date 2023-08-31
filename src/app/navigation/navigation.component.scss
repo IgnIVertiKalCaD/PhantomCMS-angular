@@ -1,0 +1,63 @@
+section {
+  &.navigation-section {
+    margin-top: 25px;
+    display: flex;
+
+    > nav {
+      flex: 1 1 20%;
+
+      > a {
+        transition: .2s ease;
+        color: #8F8F94;
+        padding: 8px;
+        border: 1.5px solid transparent;
+        border-radius: 16px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+
+        > i {
+          height: 32px;
+          margin-right: 8px;
+        }
+
+        svg {
+          transition: .2s ease;
+          opacity: .5
+        }
+
+        &:hover {
+          border-color: #6563EE;
+          color: rgba(255, 255, 255, 0.75);
+
+          svg {
+            opacity: .75
+          }
+        }
+
+        &.active {
+          background: #1E1E25;
+          color: white;
+
+          svg {
+            opacity: 1
+          }
+
+          &:hover {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+
+    > main {
+      margin-left: 30px;
+      flex: 1 1 80%;
+    }
+
+    //capsule
+    .input-text .mat-mdc-form-field-infix {
+        display: flex;
+    }
+  }
+}

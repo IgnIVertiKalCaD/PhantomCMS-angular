@@ -1,0 +1,24 @@
+<section class="d-flex">
+  <main>
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Прокачай свой аккаунт!</mat-card-title>
+        <mat-card-subtitle class="mt-4">Расширьте возможности своего аккаунта с приобретением эксклюзивных
+          донат-привилегий. Будьте внимательны! Все группы продаются на один сервер, после покупки его сменить уже будет
+          нельзя. Длительность группы указана на кнопке после выбора группы и сервера!
+        </mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <app-donate-card class="root-donate-card"/>
+    <app-donate-card class="root-donate-card"/>
+    <app-donate-card class="root-donate-card"/>
+    <app-donate-card class="root-donate-card"/>
+  </main>
+
+  <nav class="right">
+    <app-input-selector [servers]="servers"/>
+    <app-input-selector [servers]="servers"/>
+    <i-button color="primary" className="store-btn" text="Купить"/>
+  </nav>
+</section>

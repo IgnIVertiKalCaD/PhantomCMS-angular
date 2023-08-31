@@ -1,0 +1,32 @@
+@import "global-style-effects";
+@include main-nav-corrector;
+
+section {
+  > main .card {
+    border-radius: 16px;
+    background: #151519;
+
+    .mat-mdc-card-title {
+      color: #FFF;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 24px;
+      font-style: normal;
+    }
+
+    .mat-mdc-card-subtitle {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      font-style: normal;
+      padding-bottom: 3em;
+    }
+  }
+
+  .root-donate-card {margin: 8px}
+
+  nav.catalog-right-nav {
+  }
+
+}

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DockComponent } from './dock.component';
+import { SecurityComponent } from './security.component';
 
-describe('DockComponent', () => {
-  let component: DockComponent;
-  let fixture: ComponentFixture<DockComponent>;
+describe('SecurityComponent', () => {
+  let component: SecurityComponent;
+  let fixture: ComponentFixture<SecurityComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DockComponent]
+      declarations: [SecurityComponent]
     });
-    fixture = TestBed.createComponent(DockComponent);
+    fixture = TestBed.createComponent(SecurityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

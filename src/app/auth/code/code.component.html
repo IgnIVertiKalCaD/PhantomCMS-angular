@@ -1,0 +1,13 @@
+<section class="d-flex flex-column mt-4">
+  <div class='title-email d-block'>
+    <span>На указанный Вами email&nbsp;</span>
+    <span class='reactive-text'>{{ email }}</span>
+    <span>&nbsp; было выслано письмо с пин-кодом для подтверждения владения почтой</span>
+  </div>
+  <ngx-otp-input autofocus class="otp mt-4" [config]="otpInputConfig" (fill)="handleFillEvent($event)"/>
+
+  <div class="d-flex mt-4 justify-space-between">
+    <a class="link-effect">Выслать код повторно</a>
+    <a class="link-effect">Выйти</a>
+  </div>
+</section>

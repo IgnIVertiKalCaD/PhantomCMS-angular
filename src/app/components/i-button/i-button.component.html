@@ -1,11 +1,12 @@
 <a mat-flat-button
    disableRipple
-
-   color="primary"
-   class="i-btn"
-
+   [color]="color"
+   [disabled]="disabled"
    [class]="className"
    [routerLink]="link"
 >
   {{ text }}
 </a>
+
+<style>
+</style>

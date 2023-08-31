@@ -1,14 +1,62 @@
-<section class="previewPage fill-height">
-  <div class="header d-flex fill-height">
+<div class="d-flex justify-center fill-height">
+  <div class="container">
+
+    <app-dock/>
+
+    <section class="previewPage fill-height">
+      <div class="header d-flex">
     <span>НЕГРЫ ПИДОРАСЫ <br/>
       а Нагиев просто бомба</span>
 
-    <p>Ихлизнез бомбастик, передай привет маме игни :/</p>
+        <p>Ихлизнез бомбастик, передай привет маме игни :/</p>
 
-    <div class="d-flex">
-      <i-button link="/one" text="Личный кабинет"/>
-      <i-button class="ml-4" className="outline" link="/one" text="Скачать лаунчер"/>
-    </div>
+        <div class="d-flex">
+          <i-button color="primary" link="/one" className="i-btn" text="Личный кабинет"/>
+          <i-button color="accent" class="ml-4" className="outline" link="/one" text="Скачать лаунчер"/>
+        </div>
 
+      </div>
+
+      <footer class='d-flex'>
+        <div class='d-flex flex-column'>
+          <app-logo class="mt-4"/>
+          <p class='pt-3 text-center'>© 2023 PhantomCMS</p>
+        </div>
+
+        <div>
+          <strong>Основное</strong>
+          <div class='grid'>
+            <a>Донат</a>
+            <a>Личный кабинет</a>
+            <a>Правила</a>
+            <a>Банлист</a>
+            <a>Скачать лаунчер</a>
+            <a>ИванПиздат</a>
+          </div>
+        </div>
+
+        <div>
+          <strong>Контактные данные</strong>
+          <div class="d-flex flex-column">
+            <a>Конфиденциальность</a>
+            <a>Обратная связь</a>
+            <div class="contacts-buttons">
+              <a mat-icon-button disableRipple class="mr-1">
+                <img ngSrc="assets/images/svg/youtube.svg" alt="logo" fill="white" class="pos-relative">
+              </a>
+              <a mat-icon-button disableRipple>
+                <img ngSrc="assets/images/svg/vk.svg" alt="logo" fill="white" class="pos-relative">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <strong>Остались вопросы?</strong>
+          <i-button color="primary" link="/one" className="get-help" text="Задать вопрос"/>
+        </div>
+
+      </footer>
+    </section>
   </div>
-</section>
+</div>

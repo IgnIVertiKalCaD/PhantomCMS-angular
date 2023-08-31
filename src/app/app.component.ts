@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AppService} from "./app.service";
-import {GetServersDto} from "./dto/get-servers.dto";
+// import {GetServersDto} from "./interface/get-servers.interface";
 
 @Component({
   selector: 'app-root',
@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
 
   title = 'PhantomCMS';
 
-  servers: GetServersDto[] = [];
+  // servers: GetServersDto[] = [];
   ngOnInit(): void {
-    this.appService.getdata().subscribe((res) => {this.servers = res})
-    console.log(this.servers)
+    // this.appService.getdata().subscribe((res) => {this.servers = res})
+    // console.log(this.servers)
   }
 }

@@ -1,9 +1,8 @@
 @use '@angular/material' as mat;
 @import '@angular/material/theming';
-@import "assets/mixin";
-
-:root {
-}
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "mixin";
+@import "variables";
 
 $dark-primary-text: rgba(black, 0.87);
 $dark-secondary-text: rgba(black, 0.54);
@@ -18,8 +17,8 @@ $light-focused: rgba(white, 0.12);
 
 $phantom-pallet: (
   50:  #6563EE,
-  100: #c5cae9,
-  200: #9fa8da,
+  100: rgba(0, 0, 0, 0),
+  200: #fff,
   300: #7986cb,
   400: #5c6bc0,
   500: #3f51b5,
@@ -61,18 +60,38 @@ $phantom-theme: mat.define-light-theme((
 @include mat.all-component-themes($phantom-theme);
 
 
-* {font-family: 'Inter', sans-serif !important;margin: 0;padding: 0}
-html, body { height: 100%; background: #0D0D11 } body { margin: 0;}
+* {font-family: 'Inter',  sans-serif !important; letter-spacing: 0; margin: 0;padding: 0}
+html, body {margin: 0; height: 100%; background: #0D0D11 }
+body { overflow-y: scroll; scrollbar-width: thin;}
 
-.d-flex {
-  display: flex !important;
-}
-.d-block {
-  display: block !important;
-}
 .fill-height {
   height: 100%;
 }
+.justify-center {
+  justify-content: center;
+}
+.container {
+  width: 1300px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
 
+a {text-decoration: none; cursor: pointer;}
 
+.mat-mdc-button-touch-target {width: 0 !important}
+.mat-mdc-button-persistent-ripple::before {display: none !important}
 
+::-webkit-scrollbar {
+  width: 4px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-border-radius: 1em;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

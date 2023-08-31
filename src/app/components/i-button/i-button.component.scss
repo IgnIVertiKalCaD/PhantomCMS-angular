@@ -1,31 +1,75 @@
 @mixin default-btn() {
-  border-radius: 16px;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
+  line-height: 28px;
   text-align: center;
 
+  border-radius: 16px;
   display: block;
-
-  height: 64px;
-
-  line-height: 28px;
-  padding: 18px 56px;
+  padding: 18px 68px;
 }
 
 a {
+  transition: all .3s ease;
+
   &.i-btn {
     @include default-btn;
+
+    height: auto;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.05);
+
+    &:hover {
+      opacity: .75;
+
+      &:active {
+        opacity: .5
+      }
+    }
   }
 
   &.outline {
     @include default-btn;
 
+    height: auto;
     color: rgba(255, 255, 255, 0.75);
-    background: transparent;
+    border: 1.5px solid rgba(56, 56, 62, 1);
 
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.75);
+
+      &:active {
+        color: white;
+        border-color: rgba(255, 255, 255, 1)
+      }
+    }
+  }
+
+  &.get-help {
+    @include default-btn;
+    border-radius: 12px;
+    height: auto;
+
+    padding: 6px 0;
+
+    &:hover {
+      opacity: .75;
+
+      &:active {
+        opacity: .5
+      }
+    }
+  }
+
+  &.store-btn {
+    @extend .i-btn;
+
+    padding: 16px 0;
+  }
+
+  &.refresh-status {
+    @extend .i-btn;
+    padding: 11px 0;
   }
 }
