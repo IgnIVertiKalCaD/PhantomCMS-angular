@@ -1,26 +1,25 @@
-import {NgModule} from '@angular/core';
-import {NewsComponent} from "./news/news.component";
-import {ServersComponent} from './servers/servers.component';
-import {CatalogComponent} from './catalog/catalog.component';
-import {ProfileComponent} from './profile/profile.component';
-import {MatCardModule} from "@angular/material/card";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatOptionModule} from "@angular/material/core";
-import {MatSelectModule} from "@angular/material/select";
-import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {NgModule} from "@angular/core";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CatalogModule} from "./catalog/catalog.module";
-import {DonateCardComponent} from "./catalog/components/donate-card/donate-card.component";
-import {DonateCardModule} from "./catalog/components/donate-card/donate-card.module";
-import {IButtonComponent} from "../components/i-button/i-button.component";
-import {InputSelectorComponent} from "../components/input-selector/input-selector.component";
-import {TextFieldComponent} from "../components/text-field/text-field.component";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatCardModule} from "@angular/material/card";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import { SecurityComponent } from './profile/security/security.component';
-import { StatisticComponent } from './profile/statistic/statistic.component';
-import { MainComponent } from './profile/main/main.component';
-
+import {NewsComponent} from "@/app/navigation/news/news.component";
+import {CatalogComponent} from "@/app/navigation/catalog/catalog.component";
+import {DonateCardComponent} from "@/app/navigation/catalog/components/donate-card/donate-card.component";
+import {ProfileComponent} from "@/app/navigation/profile/profile.component";
+import {SecurityComponent} from "@/app/navigation/profile/security/security.component";
+import {StatisticComponent} from "@/app/navigation/profile/statistic/statistic.component";
+import {MainComponent} from "@/app/navigation/profile/main/main.component";
+import {TextFieldComponent} from "@/app/components/text-field/text-field.component";
+import {IButtonComponent} from "@/app/components/i-button/i-button.component";
+import {ServersComponent} from "@/app/navigation/servers/servers.component";
+import {CatalogModule} from "@/app/navigation/catalog/catalog.module";
+import {DonateCardModule} from "@/app/navigation/catalog/components/donate-card/donate-card.module";
+import {InputSelectorComponent} from "@/app/components/input-selector/input-selector.component";
 
 @NgModule({
   declarations: [

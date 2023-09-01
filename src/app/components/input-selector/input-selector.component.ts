@@ -4,9 +4,6 @@ import {MatSelect, MatSelectModule} from "@angular/material/select";
 import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 
-type ArrayWithObject = {
-  name: string;
-}
 @Component({
   selector: 'app-input-selector',
   templateUrl: './input-selector.component.html',
@@ -22,7 +19,7 @@ type ArrayWithObject = {
 })
 export class InputSelectorComponent implements OnInit{
   @Input()
-  servers: Array<ArrayWithObject>
+  servers: { name: string }[];
 
   list: FormControl;
 

@@ -1,23 +1,20 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-
-import {AppComponent} from "./app.component";
-import {PreviewComponent} from "./preview/preview.component";
-
-import {NavigationComponent} from "./navigation/navigation.component";
-import {NewsComponent} from "./navigation/news/news.component";
-import {ServersComponent} from "./navigation/servers/servers.component";
-import {AuthComponent} from "./auth/auth.component";
-import {AuthenticationComponent} from "./auth/authentification/authentication.component";
-import {RegistrationComponent} from "./auth/registration/registration.component";
-import {RecoveryAccountComponent} from "./auth/recovery-account/recovery-account.component";
-import {CodeComponent} from "./auth/code/code.component";
-import {ProfileComponent} from "./navigation/profile/profile.component";
-import {CatalogComponent} from "./navigation/catalog/catalog.component";
-import {StatisticComponent} from "./navigation/profile/statistic/statistic.component";
-import {SecurityComponent} from "./navigation/profile/security/security.component";
-import {MainComponent} from "./navigation/profile/main/main.component";
-import {Page404Component} from "./errors/page404/page404.component";
+import {RouterModule, Routes} from "@angular/router";
+import {NgModule} from "@angular/core";
+import {PreviewComponent} from "@/app/preview/preview.component";
+import {NavigationComponent} from "@/app/navigation/navigation.component";
+import {NewsComponent} from "@/app/navigation/news/news.component";
+import {ServersComponent} from "@/app/navigation/servers/servers.component";
+import {ProfileComponent} from "@/app/navigation/profile/profile.component";
+import {MainComponent} from "@/app/navigation/profile/main/main.component";
+import {SecurityComponent} from "@/app/navigation/profile/security/security.component";
+import {StatisticComponent} from "@/app/navigation/profile/statistic/statistic.component";
+import {CatalogComponent} from "@/app/navigation/catalog/catalog.component";
+import {AuthComponent} from "@/app/auth/auth.component";
+import {AuthenticationComponent} from "@/app/auth/authentification/authentication.component";
+import {RegistrationComponent} from "@/app/auth/registration/registration.component";
+import {RecoveryAccountComponent} from "@/app/auth/recovery-account/recovery-account.component";
+import {CodeComponent} from "@/app/auth/code/code.component";
+import {Page404Component} from "@/app/errors/page404/page404.component";
 
 
 const routes: Routes = [

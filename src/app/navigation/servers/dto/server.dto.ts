@@ -1,4 +1,4 @@
-export class GetServersDto {
+export class ServerDto {
   uniqueId: string;
   name: string;
   version: string;

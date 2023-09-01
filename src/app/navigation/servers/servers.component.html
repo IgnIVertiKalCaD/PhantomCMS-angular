@@ -21,7 +21,7 @@
 
     <div class="child-description">
       <div class="chips">
-        <mat-chip disableRipple class="chip" [ngClass]="'div'+(i+1)" *ngFor="let server of servers, let i = index">
+        <mat-chip disableRipple class="chip" [ngClass]="'div'+(i+1)" *ngFor="let server of servers$ | async, let i = index">
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_158_199)">
               <path d="M5.50008 7.82222C4.21675 7.82222 3.17786 6.78334 3.17786 5.5C3.17786 4.21667 4.21675 3.23889 5.50008 3.23889C6.78341 3.23889 7.8223 4.27778 7.8223 5.56111C7.8223 6.84445 6.78341 7.82222 5.50008 7.82222ZM5.50008 4.15556C4.76675 4.15556 4.09452 4.76667 4.09452 5.56111C4.09452 6.35556 4.70563 6.96667 5.50008 6.96667C6.29452 6.96667 6.90563 6.35556 6.90563 5.56111C6.90563 4.76667 6.23341 4.15556 5.50008 4.15556Z" fill="#6563EE"/>
@@ -33,7 +33,7 @@
               </clipPath>
             </defs>
           </svg>
-          <p>{{ server.text }}</p>
+          <p>{{ server.name }}</p>
         </mat-chip>
       </div>
 

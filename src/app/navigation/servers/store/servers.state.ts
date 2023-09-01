@@ -1,37 +1,36 @@
-import {State, Action, StateContext, Selector} from '@ngxs/store';
-import {ServersService} from "../servers.service";
+import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {Injectable} from "@angular/core";
-import {tap} from "rxjs"; // Ваш сервис для получения данных с API
+import {ServerDto} from "@/app/navigation/servers/dto/server.dto";
+import {ServersService} from "@/app/navigation/servers/servers.service";
 
-export interface ServersModel {
-  description: any;
+export class GetServers {
+  static readonly type = '[Servers] Get Servers'
 }
 
-export class FetchDescription {
-  static readonly type = '[Servers] Fetch description';
-}
-
-@State<ServersModel>({
+@State<ServerDto[]>({
   name: 'servers',
-  defaults: {
-    description: null
-  }
+  defaults: [
+    {
+      name: '',
+      icon: '',
+      description: '',
+      priority: 0,
+      uniqueId: '',
+      version: ''
+    }
+  ]
 })
 @Injectable()
 export class ServersState {
-  constructor(private readonly serversService: ServersService) {
-  }
+  constructor(private readonly serversService: ServersService) {}
 
   @Selector()
-  static getServersName(state: ServersModel): string {
-    return state.description
+  static getServers(state: ServerDto[]): ServerDto[] {
+    return state;
   }
 
-  @Action(FetchDescription)
-  fetchDescription(ctx: StateContext<ServersModel>) {
-    return this.serversService.getProducts()
-      .pipe(tap((result: { description: string }) => {
-        ctx.patchState({description: result.description})
-      }))
+  @Action(GetServers)
+  getServers(ctx: StateContext<ServerDto[]>) {
+    return this.serversService.getServers().subscribe(res => ctx.setState(res))
   }
 }

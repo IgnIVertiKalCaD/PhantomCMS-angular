@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {authValidator} from "../../common/validaters/authValidator";
+import {authValidator} from "@/app/common/validaters/authValidator";
+
 @Component({
   selector: 'app-recovery-account',
   templateUrl: './recovery-account.component.html',

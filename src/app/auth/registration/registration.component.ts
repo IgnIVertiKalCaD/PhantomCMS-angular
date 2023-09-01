@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {authValidator} from "../../common/validaters/authValidator";
 import {FormControl, Validators} from "@angular/forms";
+import {authValidator} from "@/app/common/validaters/authValidator";
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',

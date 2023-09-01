@@ -1,16 +1,12 @@
 import {Component} from '@angular/core';
 
-interface Server {
-  name: string;
-}
-
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent {
-  servers: Server[] = [
+  servers: { name: string }[] = [
     {
       name: 'NagievCraft'
     },
