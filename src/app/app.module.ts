@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {AppService} from "./app.service";
 import {HttpClientModule} from "@angular/common/http";
+import {NgxsModule} from '@ngxs/store';
 
 import {AppComponent} from './app.component';
 import {MatIconModule} from "@angular/material/icon";
@@ -19,13 +20,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {DockComponent} from "./components/dock/dock.component";
 import {PreviewComponent} from "./preview/preview.component";
 import {IButtonComponent} from "./components/i-button/i-button.component";
-import { StoreModule } from '@ngrx/store';
-import { RegistrationComponent } from './auth/registration/registration.component';
-import { RecoveryAccountComponent } from './auth/recovery-account/recovery-account.component';
+import {RegistrationComponent} from './auth/registration/registration.component';
+import {RecoveryAccountComponent} from './auth/recovery-account/recovery-account.component';
 import {NgxOtpInputModule} from "ngx-otp-input";
-import { CodeComponent } from './auth/code/code.component';
+import {CodeComponent} from './auth/code/code.component';
 import {NavigationModule} from "./navigation/navigation.module";
-import { Page404Component } from './errors/page404/page404.component';
+import {Page404Component} from './errors/page404/page404.component';
+import {ServersState} from "./navigation/servers/store/servers.state";
+import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 
 
 @NgModule({
@@ -56,11 +58,11 @@ import { Page404Component } from './errors/page404/page404.component';
     NgOptimizedImage,
     MatInputModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {})
+    NgxsModule.forRoot([ServersState], {}),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [AppService],
-  exports: [
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

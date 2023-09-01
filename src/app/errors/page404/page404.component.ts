@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./page404.component.scss']
 })
 export class Page404Component {
-  timer: number = 30
+  timer: number = 5
 }
