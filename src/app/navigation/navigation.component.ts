@@ -1,11 +1,23 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('200ms ease', style({opacity: 1})),
+      ]),
+      transition(':leave', [
+        animate('200ms ease', style({opacity: 0}))
+      ])
+    ]),
+  ],
 })
 export class NavigationComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) {
@@ -15,6 +27,20 @@ export class NavigationComponent implements OnInit {
   IconServerPage: SafeHtml;
   IconProfilePage: SafeHtml;
   IconStorePage: SafeHtml;
+
+  toUp(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  isShow: boolean = false;
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event): void {
+    this.isShow = window.scrollY > 100;
+  }
 
   ngOnInit() {
     this.IconMainPage = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
@@ -34,7 +60,7 @@ export class NavigationComponent implements OnInit {
       "</clipPath>\n" +
       "</defs>\n" +
       "</svg>")
-    this.IconStorePage = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"29\" height=\"32\" viewBox=\"0 0 29 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
+    this.IconStorePage = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
       "<path id=\"Vector (Stroke)\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M6.56289 7.775C6.56289 3.52575 9.97514 0.337502 14.0004 0.337502C18.0503 0.337502 21.4379 3.72513 21.4379 7.775V9.4375H23.2754C25.9253 9.4375 28.0879 11.6001 28.0879 14.25V27.025C28.0879 29.6749 25.9253 31.8375 23.2754 31.8375H4.90039C2.25052 31.8375 0.0878906 29.6749 0.0878906 27.025V14.25C0.0878906 11.6439 2.03249 9.4375 4.90039 9.4375H6.56289V7.775ZM9.18789 9.4375H18.8129V7.775C18.8129 5.17488 16.6005 2.9625 14.0004 2.9625C11.3756 2.9625 9.18789 5.02426 9.18789 7.775V9.4375ZM4.90039 12.0625C3.5683 12.0625 2.71289 13.0061 2.71289 14.25V27.025C2.71289 28.2251 3.70026 29.2125 4.90039 29.2125H23.2754C24.4755 29.2125 25.4629 28.2251 25.4629 27.025V14.25C25.4629 13.0499 24.4755 12.0625 23.2754 12.0625H4.90039ZM6.56289 17.4C6.56289 16.6751 7.15052 16.0875 7.87539 16.0875H7.89289C8.61776 16.0875 9.20539 16.6751 9.20539 17.4C9.20539 18.1249 8.61776 18.7125 7.89289 18.7125H7.87539C7.15052 18.7125 6.56289 18.1249 6.56289 17.4ZM18.8129 17.4C18.8129 16.6751 19.4005 16.0875 20.1254 16.0875H20.1429C20.8678 16.0875 21.4554 16.6751 21.4554 17.4C21.4554 18.1249 20.8678 18.7125 20.1429 18.7125H20.1254C19.4005 18.7125 18.8129 18.1249 18.8129 17.4Z\" fill=\"#fff\"/>\n" +
       "</svg>")
   }

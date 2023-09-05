@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {authValidator} from "../../common/validaters/authValidator";
 
 @Component({
   selector: 'app-news',
@@ -7,13 +6,16 @@ import {authValidator} from "../../common/validaters/authValidator";
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent {
-  servers: { name: string }[] = [
-    {
-      name: 'NagievCraft',
-    },
-    {
-      name: 'NagievCraft'
-    },
+
+  sortByType: { name: string }[] = [
+    {name: 'Новые'},
+    {name: 'Лучшее'},
   ];
-  protected readonly authValidator = authValidator;
+
+  sortByTime: { name: string }[] = [
+    {name: 'За всё время'},
+    {name: 'За последний день'},
+    {name: 'За последнюю неделю'},
+    {name: 'За последний месяц'},
+  ];
 }

@@ -15,7 +15,9 @@
     justify-content: center;
   }
 
-  section {width: 436px;}
+  section {
+    width: 436px;
+  }
 
   .mat-mdc-form-field {
     &.mat-form-field-invalid {
@@ -51,7 +53,10 @@
       }
     }
 
-    .mdc-text-field {padding-left: 6px; overflow: inherit}
+    .mdc-text-field {
+      padding-left: 6px;
+      overflow: inherit
+    }
   }
 
   .material-checkbox {
@@ -73,9 +78,15 @@
       display: inline-block;
       width: 32px;
       height: 32px;
-      background-image: url("/../assets/images/svg/auth/checkboxUncheck.svg");
       margin-right: 10px;
+
+
+      &.checked {
+        rect {fill: rgba(101, 99, 238, 0.3)}
+        circle {fill: #6563EE}
+      }
     }
+
 
     input[type="checkbox"] {
       position: absolute;
@@ -84,18 +95,11 @@
       height: 0;
     }
 
-    input[type="checkbox"]:checked ~ .checkmark:after {
-      display: block;
-      width: 32px;
-      height: 32px;
-      content: '';
-      background-image: url("/../assets/images/svg/auth/checkboxCheck.svg");
-    }
+
   }
+
   .remember-password {
     align-items: center;
     justify-content: space-between;
   }
-
-
 }

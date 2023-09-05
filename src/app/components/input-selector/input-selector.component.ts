@@ -19,7 +19,10 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 })
 export class InputSelectorComponent implements OnInit{
   @Input()
-  servers: { name: string }[];
+  listItems: { name: string }[];
+
+  @Input()
+  title: string
 
   list: FormControl;
 
@@ -27,8 +30,7 @@ export class InputSelectorComponent implements OnInit{
   selector: MatSelect
 
   ngOnInit() {
-    // Выполняем инициализацию panelColor с использованием this.servers[0].name
-    this.list = new FormControl(this.servers[0].name);
+    this.list = new FormControl(this.listItems[0].name);
   }
   unFocused() {
     this.selector.close()

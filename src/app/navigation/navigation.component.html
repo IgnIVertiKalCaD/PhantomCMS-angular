@@ -24,6 +24,10 @@
 
       <main>
         <router-outlet/>
+
+        <div @fade *ngIf="isShow" (click)="toUp()" class="toUp">
+          <img ngSrc="assets/images/svg/arrow-select.svg" class="pos-relative" fill="white" alt="toUp">
+        </div>
       </main>
     </section>
   </div>

@@ -17,8 +17,8 @@
   </main>
 
   <nav class="right">
-    <app-input-selector [servers]="servers"/>
-    <app-input-selector [servers]="servers"/>
+    <app-input-selector title="Сервер" [listItems]="sortByServer"/>
+    <app-input-selector title="Период" [listItems]="sortByPeriod"/>
     <i-button color="primary" className="store-btn" text="Купить"/>
   </nav>
 </section>

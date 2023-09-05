@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {AsyncPipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -20,6 +20,7 @@ import {ServersComponent} from "@/app/navigation/servers/servers.component";
 import {CatalogModule} from "@/app/navigation/catalog/catalog.module";
 import {DonateCardModule} from "@/app/navigation/catalog/components/donate-card/donate-card.module";
 import {InputSelectorComponent} from "@/app/components/input-selector/input-selector.component";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -29,9 +30,12 @@ import {InputSelectorComponent} from "@/app/components/input-selector/input-sele
     ProfileComponent,
     SecurityComponent,
     StatisticComponent,
+    ServersComponent,
     MainComponent
   ],
   imports: [
+    AsyncPipe,
+    MatChipsModule,
     TextFieldComponent,
     IButtonComponent,
     MatInputModule,
@@ -41,7 +45,6 @@ import {InputSelectorComponent} from "@/app/components/input-selector/input-sele
     MatOptionModule,
     MatFormFieldModule,
     MatCardModule,
-    ServersComponent,
     CatalogModule,
     DonateCardModule,
     ReactiveFormsModule,
@@ -51,6 +54,7 @@ import {InputSelectorComponent} from "@/app/components/input-selector/input-sele
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    NgClass,
   ],
 })
 export class NavigationModule {

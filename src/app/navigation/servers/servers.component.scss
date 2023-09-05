@@ -63,18 +63,16 @@
         border: 1px solid rgba(255, 255, 255, 0.05);
         background: rgba(101, 99, 238, 0.3);
 
-        i {
-          width: 30px;
-          height: 30px;
+        > img {
+          padding: 5px;
+          width: auto !important;
+          height: auto !important;
           display: flex;
           align-items: center;
           justify-content: center;
 
-          svg {
-            g {
-              transition: opacity .3s ease;
-            }
-          }
+          transition: opacity .3s ease;
+          opacity: .3;
         }
 
         .btn-show-full-server {
@@ -95,14 +93,7 @@
           padding-right: 90px;
           background: rgba(101, 99, 238, 1);
 
-          i {
-            svg {
-              g {
-                opacity: 1
-              }
-            }
-          }
-
+          img,
           .btn-show-full-server {
             opacity: 1;
           }
@@ -135,6 +126,35 @@
         > span {
           line-height: 38px;
           justify-content: space-between;
+        }
+
+        .progress {
+          width: 100%;
+          -webkit-appearance: none;
+          appearance: none;
+          border: none;
+          height: 12px;
+          border-radius: 12px;
+          overflow: hidden;
+          background: #1E1E25;
+        }
+
+        .progress::-webkit-progress-bar {
+          background-color: #1E1E25;
+        }
+
+        .progress::-webkit-progress-value {
+          background: #6563EE;
+        }
+
+        .progress::-webkit-progress-bar,
+        .progress::-webkit-progress-value {
+          border-radius: 12px;
+        }
+
+        .progress::-moz-progress-bar {
+          border-radius: 12px;
+          background-color: #6563EE;
         }
       }
 

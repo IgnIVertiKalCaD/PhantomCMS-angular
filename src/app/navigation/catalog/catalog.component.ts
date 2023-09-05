@@ -6,12 +6,17 @@ import {Component} from '@angular/core';
   styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent {
-  servers: { name: string }[] = [
-    {
-      name: 'NagievCraft'
-    },
-    {
-      name: 'NagievCraft'
-    },
+
+  sortByServer: { name: string }[] = [
+    {name: 'NagievCraft'},
+    {name: 'ArturCraft'},
   ];
+
+  sortByPeriod: { name: string }[] = [
+    {name: '2 месяцв'},
+    {name: '6 месяцев'},
+    {name: '1 год'},
+    {name: '5 лет'},
+  ];
+
 }

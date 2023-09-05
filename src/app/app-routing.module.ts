@@ -10,11 +10,12 @@ import {SecurityComponent} from "@/app/navigation/profile/security/security.comp
 import {StatisticComponent} from "@/app/navigation/profile/statistic/statistic.component";
 import {CatalogComponent} from "@/app/navigation/catalog/catalog.component";
 import {AuthComponent} from "@/app/auth/auth.component";
-import {AuthenticationComponent} from "@/app/auth/authentification/authentication.component";
+import {AuthenticationComponent} from "@/app/auth/authentication/authentication.component";
 import {RegistrationComponent} from "@/app/auth/registration/registration.component";
 import {RecoveryAccountComponent} from "@/app/auth/recovery-account/recovery-account.component";
 import {CodeComponent} from "@/app/auth/code/code.component";
 import {Page404Component} from "@/app/errors/page404/page404.component";
+import {authGuard} from "@/app/guards/auth.guard";
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   {
     path: '',
     component: NavigationComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'news',

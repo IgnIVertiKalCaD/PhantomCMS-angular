@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {authValidator} from "@/app/common/validaters/authValidator";
+import {Store} from "@ngxs/store";
+import {Registration} from "@/app/auth/registration/store/registration.store";
 
 @Component({
   selector: 'app-registration',
@@ -8,6 +10,8 @@ import {authValidator} from "@/app/common/validaters/authValidator";
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
+  constructor(private readonly store: Store) {}
+
   protected readonly authValidator = authValidator;
 
   auth_link: string = '/auth'
@@ -30,7 +34,15 @@ export class RegistrationComponent {
     Validators.pattern("^(?=.*[A-Z]).+$")
   ]);
 
-  isDisabled(): boolean {
+  isEnabled(): boolean {
     return this.login.valid && this.password.valid && this.email.valid
+  }
+
+  registration() {
+    this.store.dispatch(new Registration({
+      email: this.email.value as string,
+      password: this.password.value as string,
+      username: this.login.value as string
+    }))
   }
 }

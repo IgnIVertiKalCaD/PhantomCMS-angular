@@ -23,7 +23,7 @@ export class IButtonComponent {
   disabled: boolean
 
   @Input()
-  className?: 'outline' | 'i-btn' | 'get-help' | 'store-btn' | 'refresh-status'
+  className?: 'outline' | 'default' | 'get-help' | 'store-btn' | 'refresh-status' | 'auth'
 
   @Input()
   color?: 'primary' | 'accent' | 'warn'
