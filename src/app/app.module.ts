@@ -30,6 +30,7 @@ import { ApiInterceptor } from "./common/interceptors/api.interceptor";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {RegistrationStore} from "@/app/auth/registration/store/registration.store";
 import { OverlayComponent } from './components/overlay/overlay.component';
+import { CheckboxComponent } from './components/auth/checkbox/checkbox.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { OverlayComponent } from './components/overlay/overlay.component';
     Page404Component,
   ],
   imports: [
+    CheckboxComponent,
     OverlayComponent,
     IButtonComponent,
     NavigationModule,

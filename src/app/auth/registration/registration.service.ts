@@ -10,6 +10,6 @@ export class RegistrationService {
   constructor(private http: HttpClient) {}
 
   registration(registrationDto: RegistrationDto) {
-    return this.http.post<any>('auth/register', {...registrationDto});
+    return this.http.post<any>('auth/register', {...registrationDto}, {withCredentials: true});
   }
 }

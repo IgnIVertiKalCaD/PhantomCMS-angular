@@ -1,24 +1,61 @@
 import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {Injectable} from "@angular/core";
-import {AuthState} from "@/app/auth/authentication/dto/authState";
-import {AuthenticationService} from "@/app/auth/authentication/authentication.service";
-import {AuthenticationDto} from "@/app/auth/authentication/dto/authentication.dto";
-import {RegistrationDto} from "@/app/auth/registration/dto/registration.dto";
+import {RegistrationStateDto} from "@/app/auth/registration/dto/registration.state.dto";
 import {RegistrationService} from "@/app/auth/registration/registration.service";
+import {catchError, tap, throwError} from "rxjs";
+import {RegistrationStorageService} from "@/app/auth/registration/registration-storage.service";
+import {RegistrationDto} from "@/app/auth/registration/dto/registration.dto";
 
 export class Registration {
   static readonly type = '[Registration] Registration user';
-
   constructor(public payload: RegistrationDto) {}
 }
 
+export class SetStatusLoadingRegistration {
+  static readonly type = '[SetStatusLoadingRegistration] change status loading'
+  constructor(public status: boolean) {}
+}
+
+@State<RegistrationStateDto>({
+  name: 'registration',
+  defaults: {
+    username: null,
+    password: null,
+    email: null,
+    isLoading: false,
+    success: null,
+    error: null,
+  }
+})
 @Injectable()
 export class RegistrationStore {
-  constructor(private readonly registrationService: RegistrationService) {}
+  constructor(private readonly registrationService: RegistrationService,
+              private readonly registrationStorageService: RegistrationStorageService) {}
+
+  @Selector()
+  static getStatusLoading(state: RegistrationStateDto): boolean {
+    return state.isLoading
+  }
+
+  @Selector()
+  static isRegistrationAllRight(state: RegistrationStateDto): boolean | null {
+    return state.success
+  }
+
+  @Action(SetStatusLoadingRegistration)
+  changeStatusLoading(ctx: StateContext<RegistrationStateDto>, status: boolean) {
+    ctx.patchState({isLoading: status})
+  }
   @Action(Registration)
-  registration(ctx: StateContext<AuthState>, {payload}: { payload: AuthenticationDto }) {
-    return this.registrationService.registration(payload).subscribe(res => {
-      ctx.setState(res)
-    })
+  registration(ctx: StateContext<RegistrationStateDto>, {payload}: { payload: RegistrationDto }) {
+    return this.registrationService.registration(payload).pipe(
+      tap(() => {
+        ctx.patchState({success: true, isLoading: false})
+      }),
+      catchError(err => {
+        ctx.patchState({isLoading: false})
+        return throwError(err);
+      })
+    )
   }
 }

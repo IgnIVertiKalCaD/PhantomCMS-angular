@@ -1,6 +1,6 @@
 <section class="d-flex flex-column mt-6">
 
-  <div>
+  <div *ngIf="!(isLoading$ | async)">
     <mat-form-field class="login-field">
       <i class="icon">
         <img ngSrc="assets/images/svg/auth/loginField.svg" fill="white" class="pos-relative" alt="login">
@@ -18,11 +18,7 @@
     </mat-form-field>
 
     <div class='remember-password d-flex'>
-      <label class='material-checkbox save-password'>
-        <input type='checkbox' [(ngModel)]="rememberMe">
-        <span class='checkmark' [class.checked]="rememberMe" [innerHTML]="checkmark"></span>
-        <p>Запомнить меня</p>
-      </label>
+      <app-checkbox (eventCheck)="rememberMe"/>
 
       <a [routerLink]="resetAccount_link" class="link-effect">
         <p class='forgot-password'>Забыли пароль?</p>
@@ -41,7 +37,7 @@
     </div>
   </div>
 
-  <app-overlay/>
+  <app-overlay class="d-flex justify-center" *ngIf="isLoading$ | async"/>
 
 </section>
 

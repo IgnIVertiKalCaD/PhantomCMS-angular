@@ -9,4 +9,5 @@ export class AuthState {
     email: string | null;
     assets: any | null;
   }
+  isLoading: boolean;
 }

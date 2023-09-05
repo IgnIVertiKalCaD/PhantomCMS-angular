@@ -1,9 +1,9 @@
-import {Action, NgxsOnInit, Selector, State, StateContext} from "@ngxs/store";
+import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {Injectable} from "@angular/core";
 import {AuthState} from "@/app/auth/authentication/dto/authState";
 import {AuthenticationService} from "@/app/auth/authentication/authentication.service";
 import {AuthenticationDto} from "@/app/auth/authentication/dto/authentication.dto";
-import {tap} from "rxjs";
+import {catchError, of, tap, throwError} from "rxjs";
 import {AuthenticationStorageService} from "@/app/auth/authentication/authentication-storage.service";
 
 export class Login {
@@ -16,8 +16,13 @@ export class Login {
 export class Logout {
   static readonly type = '[Auth] Logout';
 
-  constructor() {
-  }
+  constructor() {}
+}
+
+export class SetStatusLoadingAuthentication {
+  static readonly type = '[SetStatusLoadingAuthentication] change status loading'
+
+  constructor(public status: boolean) {}
 }
 
 @State<AuthState>({
@@ -32,7 +37,8 @@ export class Logout {
         email: null,
         assets: null,
         permissions: null,
-      }
+      },
+      isLoading: false
     }
 })
 @Injectable()
@@ -58,8 +64,13 @@ export class AuthStore {
   }
 
   @Selector()
-  static getStatusLoader(state: AuthState) {
+  static getStatusLoading(state: AuthState): boolean {
+    return state.isLoading
+  }
 
+  @Action(SetStatusLoadingAuthentication)
+  changeStatusLoading(ctx: StateContext<AuthState>, status: boolean) {
+    ctx.patchState({isLoading: status})
   }
 
   @Action(Login)
@@ -82,10 +93,18 @@ export class AuthStore {
             email: res.user.email,
             assets: res.user.assets,
             permissions: res.user.permissions,
-          }
+          },
+          isLoading: false
         })
       }),
-    );
+
+      catchError(err => {
+        ctx.patchState({
+          isLoading: false
+        })
+        return throwError(err);
+      })
+    )
   }
 
   @Action(Logout)
@@ -96,7 +115,8 @@ export class AuthStore {
       tap(() => {
         ctx.setState({
           accessToken: null,
-          user: {username: null, email: null, assets: null, permissions: null}
+          user: {username: null, email: null, assets: null, permissions: null},
+          isLoading: false
         });
       })
     );

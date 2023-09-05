@@ -6,10 +6,15 @@ import {
 import {FormControl, Validators} from "@angular/forms";
 import {authValidator} from "@/app/common/validaters/authValidator";
 import {Select, Store} from "@ngxs/store";
-import {AuthStore, Login} from "@/app/auth/authentication/store/authentication.store";
+import {
+  AuthStore,
+  Login,
+  SetStatusLoadingAuthentication
+} from "@/app/auth/authentication/store/authentication.store";
 import {Observable} from "rxjs";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-authentication',
@@ -20,14 +25,15 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 })
 export class AuthenticationComponent implements OnInit {
   protected readonly authValidator = authValidator;
-  constructor(private readonly store: Store, private sanitizer: DomSanitizer) {
+
+  checkmark: SafeHtml;
+  constructor(private readonly store: Store, private sanitizer: DomSanitizer, private readonly router: Router) {
     this.checkmark = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
       "<rect width=\"32\" height=\"32\" rx=\"12\" fill=\"#1E1E25\"/>\n" +
       "<circle cx=\"16\" cy=\"16\" r=\"8.72727\" fill=\"#8f8f9433\"/>\n" +
       "</svg>");
   }
 
-  checkmark: SafeHtml;
 
   resetAccount_link: string = '/reset'
   registration_link: string = '/registration'
@@ -44,6 +50,7 @@ export class AuthenticationComponent implements OnInit {
     Validators.pattern("^(?!.*[А-Яа-я]).+$"),
     Validators.pattern("^(?=.*[A-Z]).+$")
   ]);
+
   isEnabled(): boolean {
     return this.login.valid && this.password.valid
   }
@@ -52,12 +59,17 @@ export class AuthenticationComponent implements OnInit {
   status$: Observable<boolean>;
 
   @Select(AuthStore.getUsername)
-  username$: Observable<string>
+  username$: Observable<string>;
+
+  @Select(AuthStore.getStatusLoading)
+  isLoading$: Observable<boolean>;
 
   rememberMe: boolean = false;
+
   authentication(): void {
     if (this.isEnabled()) {
       this.store.dispatch([
+        new SetStatusLoadingAuthentication(true),
         new Login({
           usernameOrEmail: this.login.value as string,
           password: this.password.value as string,
@@ -66,5 +78,10 @@ export class AuthenticationComponent implements OnInit {
       ])
     }
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.status$.subscribe(async done => {
+      if (done) await this.router.navigate(['/news'])
+    })
+  }
 }
