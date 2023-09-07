@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {authValidator} from "@/app/common/validaters/authValidator";
 import {Select, Store} from "@ngxs/store";
 import {
@@ -42,9 +42,14 @@ export class RegistrationComponent implements OnInit{
     Validators.pattern("^(?=.*[A-Z]).+$")
   ]);
 
+
+  agreeRule: boolean = false
+  agreeRules(event: boolean): void {
+     this.agreeRule = event
+  }
+
   isEnabled(): boolean {
-    // return this.login.valid && this.password.valid && this.email.valid
-    return true
+    return this.login.valid && this.password.valid && this.email.valid && this.agreeRule
   }
 
   @Select(RegistrationStore.getStatusLoading)

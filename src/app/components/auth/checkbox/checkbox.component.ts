@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
@@ -6,12 +6,13 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   imports: [
     FormsModule
   ],
   standalone: true
 })
-export class CheckboxComponent {
+export class CheckboxComponent implements OnInit{
   checkmark: SafeHtml;
 
   constructor(private readonly sanitizer: DomSanitizer) {
@@ -24,5 +25,13 @@ export class CheckboxComponent {
   isChecked: boolean = false;
 
   @Output()
-  eventCheck = new EventEmitter<boolean>();
+  eventCheck: EventEmitter<boolean> = new EventEmitter<boolean>()
+
+  emitIsChecked(isChecked: boolean): void {
+    this.isChecked = isChecked
+    this.eventCheck.emit(isChecked)
+  }
+
+  ngOnInit(): void {}
+
 }

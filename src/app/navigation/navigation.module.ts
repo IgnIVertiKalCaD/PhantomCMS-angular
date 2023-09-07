@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AsyncPipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {AsyncPipe, DatePipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -33,29 +33,30 @@ import {MatChipsModule} from "@angular/material/chips";
     ServersComponent,
     MainComponent
   ],
-  imports: [
-    AsyncPipe,
-    MatChipsModule,
-    TextFieldComponent,
-    IButtonComponent,
-    MatInputModule,
-    FormsModule,
-    NgForOf,
-    MatSelectModule,
-    MatOptionModule,
-    MatFormFieldModule,
-    MatCardModule,
-    CatalogModule,
-    DonateCardModule,
-    ReactiveFormsModule,
-    NgOptimizedImage,
-    InputSelectorComponent,
-    NgIf,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    NgClass,
-  ],
+    imports: [
+        AsyncPipe,
+        MatChipsModule,
+        TextFieldComponent,
+        IButtonComponent,
+        MatInputModule,
+        FormsModule,
+        NgForOf,
+        MatSelectModule,
+        MatOptionModule,
+        MatFormFieldModule,
+        MatCardModule,
+        CatalogModule,
+        DonateCardModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        InputSelectorComponent,
+        NgIf,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        NgClass,
+        DatePipe,
+    ],
 })
 export class NavigationModule {
 }

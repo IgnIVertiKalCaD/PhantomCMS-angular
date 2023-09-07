@@ -59,45 +59,6 @@
     }
   }
 
-  .material-checkbox {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    p {
-      color: #FFF;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 24px;
-      opacity: 0.5;
-    }
-
-    .checkmark {
-      position: relative;
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      margin-right: 10px;
-
-
-      &.checked {
-        rect {fill: rgba(101, 99, 238, 0.3)}
-        circle {fill: #6563EE}
-      }
-    }
-
-
-    input[type="checkbox"] {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-
-  }
-
   .remember-password {
     align-items: center;
     justify-content: space-between;

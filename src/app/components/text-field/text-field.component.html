@@ -1,4 +1,4 @@
 <mat-form-field class="input-text" [class]="className" subscriptSizing="dynamic">
   <input matInput [placeholder]="placeholder">
-  <img [ngSrc]="icon" fill="white" class="pos-relative" alt="icon">
+  <ng-content selector=".icons"></ng-content>
 </mat-form-field>

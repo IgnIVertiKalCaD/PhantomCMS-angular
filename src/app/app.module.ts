@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core";
+import {LOCALE_ID, NgModule} from "@angular/core";
 import {NgxOtpInputModule} from "ngx-otp-input";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from "@angular/material/icon";
@@ -26,12 +26,15 @@ import {NavigationModule} from "@/app/navigation/navigation.module";
 import {LogoComponent} from "@/app/components/dock/logo/logo.component";
 import {AppRoutingModule} from "@/app/app-routing.module";
 import {ServersStore} from "@/app/navigation/servers/store/servers-store.service";
-import { ApiInterceptor } from "./common/interceptors/api.interceptor";
+import {ApiInterceptor} from "./common/interceptors/api.interceptor";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {RegistrationStore} from "@/app/auth/registration/store/registration.store";
-import { OverlayComponent } from './components/overlay/overlay.component';
-import { CheckboxComponent } from './components/auth/checkbox/checkbox.component';
+import {OverlayComponent} from './components/overlay/overlay.component';
+import {CheckboxComponent} from './components/auth/checkbox/checkbox.component';
+import {registerLocaleData} from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
 
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
@@ -68,6 +71,9 @@ import { CheckboxComponent } from './components/auth/checkbox/checkbox.component
     FormsModule,
   ],
   providers: [
+    {
+      provide: LOCALE_ID, useValue: 'ru'
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,

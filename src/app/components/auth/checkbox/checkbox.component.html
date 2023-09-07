@@ -1,5 +1,7 @@
-<label class='material-checkbox save-password'>
-  <input type='checkbox' [(ngModel)]="isChecked">
+<label class='material-checkbox'
+(click)="emitIsChecked(checkbox.checked)">
+  <input type='checkbox' #checkbox>
   <span class='checkmark' [class.checked]="isChecked" [innerHTML]="checkmark"></span>
-  <p>Запомнить меня</p>
+
+  <ng-content selector=".text-label"></ng-content>
 </label>

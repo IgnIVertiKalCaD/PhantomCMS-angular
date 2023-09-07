@@ -16,5 +16,11 @@ export class ProfileComponent {
   @Select(AuthStore.getEmail)
   email$: Observable<string>
 
+  @Select(AuthStore.getCreatedAtAccount)
+  createdAt$: Observable<string>
+
+  @Select(AuthStore.getActiveGroup)
+  active_group$: Observable<string>
+
 
 }

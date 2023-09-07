@@ -37,6 +37,7 @@ export class SetStatusLoadingAuthentication {
         email: null,
         assets: null,
         permissions: null,
+        createdAt: null,
       },
       isLoading: false
     }
@@ -63,6 +64,15 @@ export class AuthStore {
     return state.user.email
   }
 
+  @Selector()
+  static getCreatedAtAccount(state: AuthState): string | null {
+    return state.user.createdAt
+  }
+
+  @Selector()
+  static getActiveGroup(state: AuthState): string | null | undefined {
+    return state.user.permissions?.roles[0]
+  }
   @Selector()
   static getStatusLoading(state: AuthState): boolean {
     return state.isLoading
@@ -93,6 +103,7 @@ export class AuthStore {
             email: res.user.email,
             assets: res.user.assets,
             permissions: res.user.permissions,
+            createdAt: res.user.createdAt
           },
           isLoading: false
         })
@@ -115,24 +126,10 @@ export class AuthStore {
       tap(() => {
         ctx.setState({
           accessToken: null,
-          user: {username: null, email: null, assets: null, permissions: null},
+          user: {username: null, email: null, assets: null, permissions: null, createdAt: null},
           isLoading: false
         });
       })
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

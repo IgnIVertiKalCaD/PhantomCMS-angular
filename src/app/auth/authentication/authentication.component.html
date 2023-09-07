@@ -18,7 +18,9 @@
     </mat-form-field>
 
     <div class='remember-password d-flex'>
-      <app-checkbox (eventCheck)="rememberMe"/>
+      <app-checkbox (eventCheck)="rememberMe($event)">
+        <p class="text-label">Запомнить меня</p>
+      </app-checkbox>
 
       <a [routerLink]="resetAccount_link" class="link-effect">
         <p class='forgot-password'>Забыли пароль?</p>

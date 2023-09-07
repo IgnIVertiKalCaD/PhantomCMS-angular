@@ -20,7 +20,4 @@ export class TextFieldComponent {
 
   @Input()
   placeholder: string
-
-  @Input()
-  icon: string
 }

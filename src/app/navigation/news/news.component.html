@@ -1,7 +1,9 @@
 <section class="d-flex">
   <div>
-    <app-text-field class="mb-4 d-block" placeholder="Что происходит?" className="default"
-                    icon="assets/images/svg/send-message.svg" />
+    <app-text-field class="mb-4 d-block" placeholder="Что происходит?" className="default">
+      <img ngSrc="assets/images/xyixnaet.svg" fill="white" class="icons pos-relative" alt="icon">
+      <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">
+    </app-text-field>
 
     <main class='news-section mb-6 pa-4'>
       <p class='title'>Lorem pizda</p>
@@ -20,9 +22,21 @@
       <div class='rating-div mt-4 d-flex justify-space-between'>
         <div class='d-flex align-center'>
           <div class='rating'>
-            <img ngSrc="assets/images/svg/arrow-select.svg" fill alt="edit news" class="pos-relative">
+
+            <i>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z" fill="white"/>
+              </svg>
+            </i>
+
             <b>30</b>
-            <img ngSrc="assets/images/svg/arrow-select.svg" fill alt="edit news" class="pos-relative">
+
+            <i>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z" fill="white"/>
+              </svg>
+            </i>
+
           </div>
           <span class='data ml-4'>03.08.2023, 20:21</span>
         </div>
@@ -56,8 +70,9 @@
         <span>посмотреть все комментарии</span>
       </div>
 
-      <app-text-field class="mt-4" placeholder="Добавить комментарий" className="default"
-                      icon="assets/images/svg/send-message.svg"/>
+      <app-text-field class="mt-4" placeholder="Добавить комментарий" className="default">
+        <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">
+      </app-text-field>
 
     </main>
   </div>
