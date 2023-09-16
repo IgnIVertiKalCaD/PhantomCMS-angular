@@ -4,7 +4,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
-import {BrowserModule} from "@angular/platform-browser";
+import {BrowserModule, provideClientHydration} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgOptimizedImage} from "@angular/common";
 import {MatInputModule} from "@angular/material/input";
@@ -33,6 +33,7 @@ import {OverlayComponent} from './components/overlay/overlay.component';
 import {CheckboxComponent} from './components/auth/checkbox/checkbox.component';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import {NewsStore} from "@/app/navigation/news/store/news.store";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -66,7 +67,7 @@ registerLocaleData(localeRu, 'ru');
     NgOptimizedImage,
     MatInputModule,
     ReactiveFormsModule,
-    NgxsModule.forRoot([ServersStore, AuthStore, RegistrationStore], {}),
+    NgxsModule.forRoot([ServersStore, AuthStore, RegistrationStore, NewsStore], {}),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     FormsModule,
   ],

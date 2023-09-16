@@ -38,11 +38,31 @@ header {
       display: flex;
       flex-direction: row-reverse;
 
+      .nickname {
+        transition: .3s ease;
+        cursor: pointer;
+
+        user-select: none;
+
+        &.active {
+          cursor: default;
+
+          &:hover {
+            color: white;
+          }
+        }
+
+        &:hover {
+          color: #a9a9a9;
+        }
+      }
+
       > section {
         display: flex;
         align-items: center;
         justify-content: flex-end;
 
+        min-height: 60px;
         width: 280px;
         border-radius: 24px;
 

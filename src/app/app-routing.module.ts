@@ -16,6 +16,7 @@ import {RecoveryAccountComponent} from "@/app/auth/recovery-account/recovery-acc
 import {CodeComponent} from "@/app/auth/code/code.component";
 import {Page404Component} from "@/app/errors/page404/page404.component";
 import {authGuard} from "@/app/guards/auth.guard";
+import {NewsDetailsComponent} from "@/app/navigation/news/news-details/news-details.component";
 
 
 const routes: Routes = [
@@ -32,14 +33,21 @@ const routes: Routes = [
       {
         path: 'news',
         component: NewsComponent,
+        data: {animation: 'NewsPage'},
+      }, {
+        path: 'news/:id',
+        component: NewsDetailsComponent
       },
+
       {
         path: 'servers',
         component: ServersComponent,
+        data: { animation: 'ServersPage' },
       },
       {
         path: 'profile',
         component: ProfileComponent,
+        data: { animation: 'ProfilePage' },
         children: [
           {
             path: '',
@@ -58,6 +66,7 @@ const routes: Routes = [
       {
         path: 'store',
         component: CatalogComponent,
+        data: { animation: 'StorePage' }
       }
     ]
   },
@@ -89,7 +98,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled", initialNavigation: 'enabledBlocking' }) ],
   exports: [RouterModule]
 })
 

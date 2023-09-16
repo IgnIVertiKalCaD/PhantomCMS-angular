@@ -22,8 +22,11 @@
         </a>
       </nav>
 
-      <main>
-        <router-outlet/>
+      <main class="pos-relative">
+
+        <div [@navigateAnimation]="getRouteAnimationData()">
+          <router-outlet/>
+        </div>
 
         <div @fade *ngIf="isShow" (click)="toUp()" class="toUp">
           <img ngSrc="assets/images/svg/arrow-select.svg" class="pos-relative" fill="white" alt="toUp">

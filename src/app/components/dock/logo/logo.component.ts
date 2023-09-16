@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-logo',
@@ -7,7 +8,8 @@ import {NgOptimizedImage} from "@angular/common";
   styleUrls: ['./logo.component.scss'],
   standalone: true,
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ]
 })
 export class LogoComponent {

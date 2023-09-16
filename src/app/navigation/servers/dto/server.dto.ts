@@ -4,5 +4,5 @@ export class ServerDto {
   version: string;
   priority: number;
   description: string;
-  icon: string;
+  icon: string | null;
 }

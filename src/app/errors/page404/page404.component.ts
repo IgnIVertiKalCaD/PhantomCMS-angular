@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -6,15 +6,21 @@ import {Router} from "@angular/router";
   templateUrl: './page404.component.html',
   styleUrls: ['./page404.component.scss']
 })
-export class Page404Component implements OnInit{
+export class Page404Component implements OnInit, OnDestroy {
   constructor(private readonly router: Router) {}
 
   timer: number = 5
+  interval: ReturnType<typeof setInterval>
 
   ngOnInit() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.timer--
-      if (this.timer < 0) this.router.navigate(['/'])
+      if (this.timer < 0)  {
+        this.router.navigate(['/'])
+      }
     }, 1000)
+  }
+  ngOnDestroy() {
+    clearInterval(this.interval)
   }
 }

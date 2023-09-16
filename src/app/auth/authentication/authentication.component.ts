@@ -43,7 +43,8 @@ export class AuthenticationComponent implements OnInit {
   ]);
 
   isEnabled(): boolean {
-    return this.login.valid && this.password.valid
+    return true
+    // return this.login.valid && this.password.valid;
   }
 
   @Select(AuthStore.isAuth)

@@ -1,13 +1,15 @@
 import {Component, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
-import {animate, state, style, transition, trigger} from "@angular/animations";
-
+import {animate, style, transition, trigger} from "@angular/animations";
+import {ChildrenOutletContexts} from "@angular/router";
+import {navigateAnimation} from "@/app/navigation/animation";
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [
+    navigateAnimation,
     trigger('fade', [
       transition(':enter', [
         style({opacity: 0}),
@@ -20,7 +22,11 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   ],
 })
 export class NavigationComponent implements OnInit {
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer, private contexts: ChildrenOutletContexts) {
+  }
+
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 
   IconMainPage: SafeHtml;

@@ -62,6 +62,10 @@ $displays: flex, block, grid, none;
 .w-100 {
   width: 100%;
 }
+
+.cur-p {
+  cursor: pointer;
+}
 $pos-layout: relative, absolute, sticky;
 @mixin position-layout {
   @each $i in $pos-layout {

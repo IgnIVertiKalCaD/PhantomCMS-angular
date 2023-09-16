@@ -2,18 +2,22 @@
 
   <div class="d-flex left">
     <app-logo/>
-    <p class="delimiter"></p>
-    <p class="description">test text </p>
+<!--    refactor-->
+    <p class="delimiter"
+       *ngIf="isAuth$ | async"></p>
+    <p class="description"
+       *ngIf="isAuth$ | async">{{ niceMessage }}</p>
+
   </div>
 
   <div class="right">
     <section style="background: #1E1E25;" *ngIf="isAuth$ | async">
       <div>
-        <img ngSrc="assets/images/playerDefault.png" alt="player" fill="white" class="pos-relative"/>
-        <span>{{ username$ | async }}</span>
+        <img ngSrc="assets/images/playerDefault.png" alt="player" priority fill class="pos-relative"/>
+        <span class="nickname" routerLink="profile" routerLinkActive="active">{{ username$ | async }}</span>
       </div>
       <button mat-mini-fab disableRipple class="exit" (click)="logout()">
-        <img ngSrc="assets/images/svg/tabler_logout.svg" fill="relative" alt="exit" class="pos-relative">
+        <img ngSrc="assets/images/svg/tabler_logout.svg" fill alt="exit" class="pos-relative">
       </button>
     </section>
 

@@ -1,9 +1,9 @@
 <section class="server" *ngFor="let server of servers$ | async, let i = index">
 
   <div class="img-container">
-<!--    <img [ngSrc]="server.icon ?? defaultImageServer"-->
-<!--         fill="white"-->
-<!--         alt="1">-->
+    <img [ngSrc]="server.icon ?? defaultImageServer"
+         fill="white"
+         alt="1">
   </div>
 
   <div class="info">
@@ -17,7 +17,7 @@
     </div>
 
     <span class="description pt-4">
-      Этот серер не является полностью попускным для таких игровок как: igni, frys, ixliynez и др.
+      {{ server.description }}
     </span>
 
     <div class="child-description">

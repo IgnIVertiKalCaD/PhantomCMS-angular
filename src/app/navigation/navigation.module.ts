@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AsyncPipe, DatePipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {AsyncPipe, DatePipe, NgClass, NgForOf, NgIf, NgOptimizedImage, SlicePipe} from "@angular/common";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -21,6 +21,7 @@ import {CatalogModule} from "@/app/navigation/catalog/catalog.module";
 import {DonateCardModule} from "@/app/navigation/catalog/components/donate-card/donate-card.module";
 import {InputSelectorComponent} from "@/app/components/input-selector/input-selector.component";
 import {MatChipsModule} from "@angular/material/chips";
+import { NewsDetailsComponent } from './news/news-details/news-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatChipsModule} from "@angular/material/chips";
     SecurityComponent,
     StatisticComponent,
     ServersComponent,
-    MainComponent
+    MainComponent,
+    NewsDetailsComponent
   ],
     imports: [
         AsyncPipe,
@@ -56,6 +58,7 @@ import {MatChipsModule} from "@angular/material/chips";
         RouterLinkActive,
         NgClass,
         DatePipe,
+        SlicePipe,
     ],
 })
 export class NavigationModule {

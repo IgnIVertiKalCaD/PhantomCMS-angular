@@ -53,10 +53,13 @@ $phantom-theme: mat.define-light-theme((
 
 @include mat.all-component-themes($phantom-theme);
 
+html {
+  scroll-behavior: smooth;
+}
 
 * {font-family: 'Inter',  sans-serif !important; letter-spacing: 0; margin: 0;padding: 0}
-html, body {margin: 0; height: 100%; background: #0D0D11 }
-body { overflow-y: scroll; scrollbar-width: thin;}
+html, body {margin: 0; height: 100%; background: #0D0D11;}
+body { overflow-y: scroll; scrollbar-width: thin; }
 
 .fill-height {
   height: 100%;

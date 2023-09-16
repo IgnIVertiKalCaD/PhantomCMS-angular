@@ -1,4 +1,5 @@
 @import "global-style-effects";
+
 @include main-nav-corrector;
 
 .news-section {
@@ -43,12 +44,14 @@
           font-size: 20px;
           font-weight: 600;
         }
+
         b {
           font-weight: 400;
           font-size: 16px;
           opacity: 0.5;
         }
       }
+
       .text {
         color: #FFF;
         font-size: 16px;
@@ -63,6 +66,14 @@
   .title {
     font-size: 24px;
     font-weight: 600;
+    width: fit-content;
+    transition: .2s ease;
+
+    &.hover {
+      &:hover {
+        color: #a9a9a9;
+      }
+    }
   }
 
   .description {
@@ -78,6 +89,7 @@
         transform: scale(1.02);
       }
 
+      image-rendering: smooth;
       transition: all .3s ease;
       object-fit: cover;
       height: 250px !important;
@@ -109,7 +121,10 @@
       transition: .2s ease;
 
       > i {
-        path {transition: .3s ease}
+        path {
+          transition: .3s ease
+        }
+
         @include icon-hover-pressed-effect(1);
         display: flex;
         justify-content: center;
@@ -123,7 +138,9 @@
         }
 
         &:hover {
-          path {fill: #6563EE}
+          path {
+            fill: #6563EE
+          }
         }
       }
 
