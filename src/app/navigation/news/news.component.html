@@ -5,7 +5,7 @@
       <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">
     </app-text-field>
 
-    <main class='news-section mb-6 pa-4' *ngFor="let news of listNews$ | async, let i = index">
+    <main class='news-section mb-6 pa-4' @inOutAnimation *ngFor="let news of listNews$ | async, let i = index">
       <p class='title hover cur-p'
          [routerLink]="['/news', news.id]"
       >{{ news.title }}</p>
@@ -83,4 +83,19 @@
     <app-input-selector title="Время" [listItems]="sortByTime"/>
   </nav>
 
+</section>
+
+<section class="dialog-news"
+         [ngClass]="{'blur-bg': isBlur}"
+         #closeDialogEl
+         (click)="closeDialog($event)"
+>
+  <div
+    [@animNewsDetails]="getRouteAnimationData()"
+  >
+    <router-outlet
+      (activate)="isBlur = true"
+      (deactivate)="isBlur = false"
+    />
+  </div>
 </section>

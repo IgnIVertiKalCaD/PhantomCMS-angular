@@ -13,11 +13,14 @@
   <div class="right">
     <section style="background: #1E1E25;" *ngIf="isAuth$ | async">
       <div>
-        <img ngSrc="assets/images/playerDefault.png" alt="player" priority fill class="pos-relative"/>
+        <img (load)="isHide = false" [ngClass]="{'fade-anim' : !isHide}"
+             width="50"
+             [src]="(head$ | async) ?? defaultHead"
+             alt="player" class="pos-relative"/>
         <span class="nickname" routerLink="profile" routerLinkActive="active">{{ username$ | async }}</span>
       </div>
       <button mat-mini-fab disableRipple class="exit" (click)="logout()">
-        <img ngSrc="assets/images/svg/tabler_logout.svg" fill alt="exit" class="pos-relative">
+        <i [outerHTML]="phantomIcons.logout_icon | safe"></i>
       </button>
     </section>
 

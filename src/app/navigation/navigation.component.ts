@@ -1,8 +1,9 @@
-import {Component, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
-import {animate, style, transition, trigger} from "@angular/animations";
+import {Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {animate, query, state, style, transition, trigger} from "@angular/animations";
 import {ChildrenOutletContexts} from "@angular/router";
 import {navigateAnimation} from "@/app/navigation/animation";
+import {phantomIcons} from "@/common/icons_kit_devtools/phantomIcons";
+import {fromEvent, map} from "rxjs";
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -22,17 +23,16 @@ import {navigateAnimation} from "@/app/navigation/animation";
   ],
 })
 export class NavigationComponent implements OnInit {
-  constructor(private sanitizer: DomSanitizer, private contexts: ChildrenOutletContexts) {
+  protected readonly phantomIcons = phantomIcons;
+
+  constructor(private contexts: ChildrenOutletContexts, private readonly elementRef: ElementRef) {
+
   }
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 
-  IconMainPage: SafeHtml;
-  IconServerPage: SafeHtml;
-  IconProfilePage: SafeHtml;
-  IconStorePage: SafeHtml;
 
   toUp(): void {
     window.scrollTo({
@@ -47,27 +47,5 @@ export class NavigationComponent implements OnInit {
   onScroll(event: Event): void {
     this.isShow = window.scrollY > 100;
   }
-
-  ngOnInit() {
-    this.IconMainPage = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-      "<path id=\"Vector\" d=\"M27.4536 4.66019C21.2141 -1.5534 11.0525 -1.5534 4.81297 4.66019C-1.42659 10.8738 -1.42659 20.9931 4.81297 27.2067C7.84361 30.4022 11.9439 32 16.0442 32C20.1444 32 24.2447 30.4022 27.4536 27.3842C33.6932 21.1706 33.6932 10.8738 27.4536 4.66019ZM26.384 24.3662L22.8185 20.8155C23.8882 19.5728 24.6013 17.7975 24.6013 16.0222C24.6013 14.2469 24.0664 12.4716 22.9968 11.0513L26.5623 7.50069C30.4843 12.4716 30.4843 19.5728 26.384 24.3662ZM11.9439 20.1054C10.8742 19.0402 10.1612 17.62 10.1612 16.0222C10.1612 14.4244 10.696 13.0042 11.9439 11.939C13.1918 10.8738 14.4397 10.1637 16.0442 10.1637C17.6486 10.1637 19.0748 10.6963 20.1444 11.939C21.2141 13.0042 21.9272 14.4244 21.9272 16.0222C21.9272 17.62 21.3924 19.0402 20.1444 20.1054C18.0052 22.2358 14.0832 22.2358 11.9439 20.1054ZM24.423 5.72538L20.8575 9.27601C19.6096 8.21082 17.8269 7.50069 16.0442 7.50069C14.2614 7.50069 12.4787 8.21082 11.0525 9.27601L7.48706 5.72538C12.4787 1.64216 19.6096 1.64216 24.423 5.72538ZM5.70433 7.67823L9.26979 11.2288C8.20015 12.4716 7.48706 14.2469 7.48706 16.0222C7.48706 17.7975 8.02188 19.5728 9.09152 20.9931L5.52606 24.5437C1.60405 19.5728 1.60405 12.4716 5.70433 7.67823ZM7.66534 26.319L11.2308 22.7684C12.4787 23.8336 14.2614 24.5437 16.0442 24.5437C17.8269 24.5437 19.6096 24.0111 21.0358 22.9459L24.6013 26.4965C19.6096 30.4022 12.4787 30.4022 7.66534 26.319Z\" fill=\"#fff\"/>\n" +
-      "</svg>");
-    this.IconServerPage = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-      "<path id=\"Vector\" d=\"M28.9778 13.8667H3.2C1.42222 13.8667 0 12.4444 0 10.6667V3.2C0 1.42222 1.42222 0 3.2 0H28.9778C30.7556 0 32.1778 1.42222 32.1778 3.2V10.6667C32 12.4444 30.5778 13.8667 28.9778 13.8667ZM3.2 2.66667C3.02222 2.66667 2.66667 2.84444 2.66667 3.2V10.6667C2.66667 10.8444 2.84444 11.2 3.2 11.2H28.9778C29.1556 11.2 29.5111 11.0222 29.5111 10.6667V3.2C29.5111 3.02222 29.3333 2.66667 28.9778 2.66667H3.2ZM28.9778 32H3.2C1.42222 32 0 30.5778 0 28.8V21.3333C0 19.5556 1.42222 18.1333 3.2 18.1333H28.9778C30.7556 18.1333 32.1778 19.5556 32.1778 21.3333V28.9778C32 30.5778 30.5778 32 28.9778 32ZM3.2 20.9778C3.02222 20.9778 2.66667 21.1556 2.66667 21.5111V29.1556C2.66667 29.3333 2.84444 29.6889 3.2 29.6889H28.9778C29.1556 29.6889 29.5111 29.5111 29.5111 29.1556V21.3333C29.5111 21.1556 29.3333 20.8 28.9778 20.8H3.2V20.9778Z\" fill=\"#fff\"/>\n" +
-      "</svg>")
-    this.IconProfilePage = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-      "<g id=\"SVG\" clip-path=\"url(#clip0_773_150)\">\n" +
-      "<path id=\"Vector\" d=\"M16 0C7.11111 0 0 7.11111 0 16C0 24.8889 7.11111 32 16 32C24.8889 32 32 24.8889 32 16C32 7.11111 24.8889 0 16 0ZM7.64444 26.4889C9.77778 24.1778 12.8 22.7556 16 22.7556C19.2 22.7556 22.2222 24.1778 24.3556 26.4889C22.0444 28.2667 19.2 29.3333 16 29.3333C12.8 29.3333 9.95556 28.2667 7.64444 26.4889ZM26.3111 24.5333C23.6444 21.6889 19.9111 19.9111 16 19.9111C12.0889 19.9111 8.35556 21.5111 5.68889 24.5333C3.73333 22.2222 2.66667 19.2 2.66667 16C2.66667 8.71111 8.71111 2.66667 16 2.66667C23.2889 2.66667 29.3333 8.71111 29.3333 16C29.3333 19.2 28.0889 22.2222 26.3111 24.5333Z\" fill=\"#fff\"/>\n" +
-      "<path id=\"Vector_2\" d=\"M15.9995 6.4C12.6217 6.4 9.95508 9.06667 9.95508 12.4444C9.95508 15.8222 12.6217 18.4889 15.9995 18.4889C19.3773 18.4889 22.044 15.8222 22.044 12.4444C22.044 9.06667 19.3773 6.4 15.9995 6.4ZM15.9995 15.8222C14.2217 15.8222 12.6217 14.2222 12.6217 12.4444C12.6217 10.6667 14.2217 9.06667 15.9995 9.06667C17.7773 9.06667 19.3773 10.6667 19.3773 12.4444C19.3773 14.2222 17.7773 15.8222 15.9995 15.8222Z\" fill=\"#fff\"/>\n" +
-      "</g>\n" +
-      "<defs>\n" +
-      "<clipPath id=\"clip0_773_150\">\n" +
-      "<rect width=\"32\" height=\"32\" fill=\"white\"/>\n" +
-      "</clipPath>\n" +
-      "</defs>\n" +
-      "</svg>")
-    this.IconStorePage = this.sanitizer.bypassSecurityTrustHtml("<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-      "<path id=\"Vector (Stroke)\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M6.56289 7.775C6.56289 3.52575 9.97514 0.337502 14.0004 0.337502C18.0503 0.337502 21.4379 3.72513 21.4379 7.775V9.4375H23.2754C25.9253 9.4375 28.0879 11.6001 28.0879 14.25V27.025C28.0879 29.6749 25.9253 31.8375 23.2754 31.8375H4.90039C2.25052 31.8375 0.0878906 29.6749 0.0878906 27.025V14.25C0.0878906 11.6439 2.03249 9.4375 4.90039 9.4375H6.56289V7.775ZM9.18789 9.4375H18.8129V7.775C18.8129 5.17488 16.6005 2.9625 14.0004 2.9625C11.3756 2.9625 9.18789 5.02426 9.18789 7.775V9.4375ZM4.90039 12.0625C3.5683 12.0625 2.71289 13.0061 2.71289 14.25V27.025C2.71289 28.2251 3.70026 29.2125 4.90039 29.2125H23.2754C24.4755 29.2125 25.4629 28.2251 25.4629 27.025V14.25C25.4629 13.0499 24.4755 12.0625 23.2754 12.0625H4.90039ZM6.56289 17.4C6.56289 16.6751 7.15052 16.0875 7.87539 16.0875H7.89289C8.61776 16.0875 9.20539 16.6751 9.20539 17.4C9.20539 18.1249 8.61776 18.7125 7.89289 18.7125H7.87539C7.15052 18.7125 6.56289 18.1249 6.56289 17.4ZM18.8129 17.4C18.8129 16.6751 19.4005 16.0875 20.1254 16.0875H20.1429C20.8678 16.0875 21.4554 16.6751 21.4554 17.4C21.4554 18.1249 20.8678 18.7125 20.1429 18.7125H20.1254C19.4005 18.7125 18.8129 18.1249 18.8129 17.4Z\" fill=\"#fff\"/>\n" +
-      "</svg>")
-  }
+  ngOnInit() {}
 }

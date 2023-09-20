@@ -1,11 +1,20 @@
-<main class='news-section mb-6 pa-4'>
-  <p class='title'>{{ (selectedNews$ | async)?.title }}</p>
-  <p class='description mt-4'>
-    {{ (selectedNews$ | async)?.content }}
-  </p>
+<main class='news-section details pa-4'>
 
-  <div class='img-container mt-4 d-flex overflow-hidden'>
+  <div class='img-container d-flex overflow-hidden'>
+    <p class='title'>{{ (selectedNews$ | async)?.title }}</p>
+    <p class='description'>
+      {{ (selectedNews$ | async)?.content }}
+    </p>
+    <i class='exit'
+       [innerHTML]="phantomIcons.exitNews_icon | safe"
+       routerLink="../"
+    ></i>
+
     <img [ngSrc]='(selectedNews$| async)?.image ?? defaultImageNews' alt='1' fill priority class="pos-relative"/>
+  </div>
+
+  <div class="content mt-5">
+    {{ (selectedNews$ | async)?.content }}
   </div>
 
   <div class='rating-div mt-4 d-flex justify-space-between'>
@@ -13,7 +22,9 @@
       <div class='rating'>
         <i>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z" fill="white"/>
+            <path
+              d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z"
+              fill="white"/>
           </svg>
         </i>
 
@@ -21,7 +32,9 @@
 
         <i>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z" fill="white"/>
+            <path
+              d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z"
+              fill="white"/>
           </svg>
         </i>
       </div>

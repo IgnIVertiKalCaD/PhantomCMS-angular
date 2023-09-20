@@ -1,29 +1,28 @@
-<div class="d-flex justify-center">
+<div class="d-flex justify-center" >
   <div class="container">
     <app-dock/>
 
     <section class="navigation-section">
       <nav class="d-flex flex-column">
         <a routerLink="/news" routerLinkActive="active" ariaCurrentWhenActive="page">
-          <i [innerHTML]="IconMainPage"></i>
+          <i [outerHTML]="phantomIcons.mainPage_icon | safe"></i>
           Главная
         </a>
         <a routerLink="/servers" routerLinkActive="active" ariaCurrentWhenActive="page">
-          <i [innerHTML]="IconServerPage"></i>
+          <i [outerHTML]="phantomIcons.serverPage_icon | safe"></i>
           Сервера
         </a>
         <a routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">
-          <i [innerHTML]="IconProfilePage"></i>
+          <i [outerHTML]="phantomIcons.profilePage_icon | safe"></i>
           Профиль
         </a>
         <a routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page">
-          <i [innerHTML]="IconStorePage"></i>
+          <i [outerHTML]="phantomIcons.storePage_icon | safe"></i>
           Магазин
         </a>
       </nav>
 
       <main class="pos-relative">
-
         <div [@navigateAnimation]="getRouteAnimationData()">
           <router-outlet/>
         </div>

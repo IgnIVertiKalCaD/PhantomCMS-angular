@@ -9,6 +9,8 @@ import { GetServersDto } from "./dto/get-servers.dto";
 export class ServersService {
   constructor(private http: HttpClient) { }
 
+
+
   getServers(getServersDto: GetServersDto) {
     return this.http.get<ServerDto[]>('servers', {
       params: {

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {phantomIcons} from "@/common/icons_kit_devtools/phantomIcons";
 
 @Component({
   selector: 'app-preview',
@@ -7,4 +8,5 @@ import {Component} from '@angular/core';
 })
 export class PreviewComponent {
 
+    protected readonly phantomIcons = phantomIcons;
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {authValidator} from "@/app/common/validaters/authValidator";
+import {authValidator} from "@/common/validaters/authValidator";
 import {Select, Store} from "@ngxs/store";
 import {
   Registration,
@@ -44,9 +44,6 @@ export class RegistrationComponent implements OnInit{
 
 
   agreeRule: boolean = false
-  agreeRules(event: boolean): void {
-     this.agreeRule = event
-  }
 
   isEnabled(): boolean {
     return this.login.valid && this.password.valid && this.email.valid && this.agreeRule
@@ -91,6 +88,4 @@ export class RegistrationComponent implements OnInit{
       }
     })
   }
-
-
 }

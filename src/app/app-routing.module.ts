@@ -15,7 +15,7 @@ import {RegistrationComponent} from "@/app/auth/registration/registration.compon
 import {RecoveryAccountComponent} from "@/app/auth/recovery-account/recovery-account.component";
 import {CodeComponent} from "@/app/auth/code/code.component";
 import {Page404Component} from "@/app/errors/page404/page404.component";
-import {authGuard} from "@/app/guards/auth.guard";
+import {authGuard} from "@/guards/auth.guard";
 import {NewsDetailsComponent} from "@/app/navigation/news/news-details/news-details.component";
 
 
@@ -34,9 +34,13 @@ const routes: Routes = [
         path: 'news',
         component: NewsComponent,
         data: {animation: 'NewsPage'},
-      }, {
-        path: 'news/:id',
-        component: NewsDetailsComponent
+        children: [
+          {
+            path: ':id',
+            component: NewsDetailsComponent,
+            data: { animation: 'NewsDetails' }
+          },
+        ]
       },
 
       {
@@ -98,7 +102,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled", initialNavigation: 'enabledBlocking' }) ],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "disabled"}) ],
   exports: [RouterModule]
 })
 

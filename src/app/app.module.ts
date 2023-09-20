@@ -26,7 +26,6 @@ import {NavigationModule} from "@/app/navigation/navigation.module";
 import {LogoComponent} from "@/app/components/dock/logo/logo.component";
 import {AppRoutingModule} from "@/app/app-routing.module";
 import {ServersStore} from "@/app/navigation/servers/store/servers-store.service";
-import {ApiInterceptor} from "./common/interceptors/api.interceptor";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {RegistrationStore} from "@/app/auth/registration/store/registration.store";
 import {OverlayComponent} from './components/overlay/overlay.component';
@@ -34,6 +33,11 @@ import {CheckboxComponent} from './components/auth/checkbox/checkbox.component';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import {NewsStore} from "@/app/navigation/news/store/news.store";
+import { SafePipe } from '@/pipes/safe.pipe';
+import {AssetsStore} from "@/store/assets-manager/assets-store";
+
+import {ApiInterceptor} from "@/common/interceptors/api.interceptor";
+import {AuthInterceptor} from "@/common/interceptors/auth.interceptor";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -51,6 +55,7 @@ registerLocaleData(localeRu, 'ru');
     Page404Component,
   ],
   imports: [
+    SafePipe,
     CheckboxComponent,
     OverlayComponent,
     IButtonComponent,
@@ -67,7 +72,7 @@ registerLocaleData(localeRu, 'ru');
     NgOptimizedImage,
     MatInputModule,
     ReactiveFormsModule,
-    NgxsModule.forRoot([ServersStore, AuthStore, RegistrationStore, NewsStore], {}),
+    NgxsModule.forRoot([ServersStore, AuthStore, RegistrationStore, NewsStore, AssetsStore], {}),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     FormsModule,
   ],
@@ -79,8 +84,14 @@ registerLocaleData(localeRu, 'ru');
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
     }
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

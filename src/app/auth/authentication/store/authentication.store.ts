@@ -1,10 +1,12 @@
-import {Action, Selector, State, StateContext} from "@ngxs/store";
+import {Action, Selector, State, StateContext, Store} from "@ngxs/store";
 import {Injectable} from "@angular/core";
 import {AuthState} from "@/app/auth/authentication/dto/authState";
 import {AuthenticationService} from "@/app/auth/authentication/authentication.service";
 import {AuthenticationDto} from "@/app/auth/authentication/dto/authentication.dto";
 import {catchError, of, tap, throwError} from "rxjs";
-import {AuthenticationStorageService} from "@/app/auth/authentication/authentication-storage.service";
+import { StorageManagerService } from "@/common/storage/storage-manager.service";
+import {patch} from "@ngxs/store/operators";
+import {AssetsStore} from "@/store/assets-manager/assets-store";
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -15,10 +17,11 @@ export class Login {
 
 export class Logout {
   static readonly type = '[Auth] Logout';
-
-  constructor() {}
 }
 
+export class UpdateAccessToken {
+  static readonly type = '[UpdateAccessToken] Update accessToken';
+}
 export class SetStatusLoadingAuthentication {
   static readonly type = '[SetStatusLoadingAuthentication] change status loading'
 
@@ -26,29 +29,23 @@ export class SetStatusLoadingAuthentication {
 }
 
 @State<AuthState>({
-  name: 'auth',
+  name: 'auth_store',
   defaults:
     JSON.parse(localStorage.getItem('user')!) ||
-    JSON.parse(sessionStorage.getItem('user')!) ||
-    {
-      accessToken: null,
-      user: {
-        username: null,
-        email: null,
-        assets: null,
-        permissions: null,
-        createdAt: null,
-      },
-      isLoading: false
-    }
+    JSON.parse(sessionStorage.getItem('user')!)
 })
 @Injectable()
 export class AuthStore {
   constructor(
+    private readonly store: Store,
     private readonly authenticationService: AuthenticationService,
-    private readonly authStorageService: AuthenticationStorageService
+    private readonly authStorageService: StorageManagerService,
   ) {}
 
+  @Selector()
+  static getAccessToken(state: AuthState): string | null {
+    return state.accessToken;
+  }
   @Selector()
   static isAuth(state: AuthState): boolean {
     return !!state.accessToken;
@@ -89,11 +86,13 @@ export class AuthStore {
       usernameOrEmail: payload.usernameOrEmail,
       password: payload.password
     }).pipe(
-      tap((res: AuthState): void => {
+      tap((res): void => {
+        res.user.assets = undefined
+
         if (payload.rememberMe) {
-          this.authStorageService.save('localStorage', {key: 'user', payload: res});
+          this.authStorageService.save({type: 'localStorage', key: 'user', payload: res});
         } else {
-          this.authStorageService.save('sessionStorage', {key: 'user', payload: res});
+          this.authStorageService.save({type: 'sessionStorage', key: 'user', payload: res});
         }
 
         ctx.patchState({
@@ -101,7 +100,6 @@ export class AuthStore {
           user: {
             username: res.user.username,
             email: res.user.email,
-            assets: res.user.assets,
             permissions: res.user.permissions,
             createdAt: res.user.createdAt
           },
@@ -126,10 +124,29 @@ export class AuthStore {
       tap(() => {
         ctx.setState({
           accessToken: null,
-          user: {username: null, email: null, assets: null, permissions: null, createdAt: null},
+          user: {username: null, email: null, permissions: null, createdAt: null},
           isLoading: false
         });
       })
     );
   }
+
+  @Action(UpdateAccessToken)
+  async updateAccessToken(ctx: StateContext<AuthState>) {
+    return this.authenticationService.refreshToken().pipe(
+      tap((res) => {
+
+        const oldDataCache: AuthState = this.authStorageService.get({type: 'localStorage', key: 'user'}) || this.authStorageService.get({ type: 'sessionStorage', key: 'user'})
+        oldDataCache.accessToken = res.accessToken
+        this.authStorageService.save({type: 'localStorage', key: 'user', payload: oldDataCache});
+
+        ctx.setState(
+          patch({
+            accessToken: res.accessToken
+          })
+        );
+      })
+    );
+  }
+
 }

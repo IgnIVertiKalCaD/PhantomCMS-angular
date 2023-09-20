@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {GetServers, ServersStore} from "@/app/navigation/servers/store/servers-store.service";
 import {ServerDto} from "@/app/navigation/servers/dto/server.dto";
 import { GetServersDto } from "./dto/get-servers.dto";
+import {phantomIcons} from "@/common/icons_kit_devtools/phantomIcons";
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
@@ -26,4 +27,6 @@ export class ServersComponent implements OnInit{
   ngOnInit() {
     this.store.dispatch(new GetServers(this.params));
   }
+
+  protected readonly phantomIcons = phantomIcons;
 }

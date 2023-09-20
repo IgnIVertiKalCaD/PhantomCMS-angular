@@ -13,7 +13,12 @@ export class AuthenticationService {
     return this.http.post<any>('auth/login', {...authenticationDto}, {withCredentials: true});
   }
 
-  logout():Observable<any> {
+  logout(): Observable<any> {
     return this.http.post<any>('auth/logout', '', {withCredentials: true });
+  }
+
+  refreshToken(): Observable<any>{
+    console.log('refresh')
+    return this.http.post<{accessToken: string}>('auth/refresh', '', {withCredentials: true });
   }
 }

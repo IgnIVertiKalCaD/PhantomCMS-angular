@@ -3,7 +3,6 @@ import {Injectable} from "@angular/core";
 import {RegistrationStateDto} from "@/app/auth/registration/dto/registration.state.dto";
 import {RegistrationService} from "@/app/auth/registration/registration.service";
 import {catchError, tap, throwError} from "rxjs";
-import {RegistrationStorageService} from "@/app/auth/registration/registration-storage.service";
 import {RegistrationDto} from "@/app/auth/registration/dto/registration.dto";
 
 export class Registration {
@@ -18,19 +17,10 @@ export class SetStatusLoadingRegistration {
 
 @State<RegistrationStateDto>({
   name: 'registration',
-  defaults: {
-    username: null,
-    password: null,
-    email: null,
-    isLoading: false,
-    success: null,
-    error: null,
-  }
 })
 @Injectable()
 export class RegistrationStore {
-  constructor(private readonly registrationService: RegistrationService,
-              private readonly registrationStorageService: RegistrationStorageService) {}
+  constructor(private readonly registrationService: RegistrationService) {}
 
   @Selector()
   static getStatusLoading(state: RegistrationStateDto): boolean {

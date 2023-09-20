@@ -22,6 +22,8 @@ import {DonateCardModule} from "@/app/navigation/catalog/components/donate-card/
 import {InputSelectorComponent} from "@/app/components/input-selector/input-selector.component";
 import {MatChipsModule} from "@angular/material/chips";
 import { NewsDetailsComponent } from './news/news-details/news-details.component';
+import {SafePipe} from "@/pipes/safe.pipe";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { NewsDetailsComponent } from './news/news-details/news-details.component
         NgClass,
         DatePipe,
         SlicePipe,
+        SafePipe,
+        MatButtonModule,
     ],
 })
 export class NavigationModule {

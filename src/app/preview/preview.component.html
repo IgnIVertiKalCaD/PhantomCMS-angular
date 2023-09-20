@@ -5,18 +5,18 @@
 
     <section class="previewPage fill-height">
       <div class="header d-flex">
-        <span>НЕГРЫ ПИДОРАСЫ <br/>
-              а Нагиев просто бомба</span>
+        <span>PhantomCMS <br/>
+              Shadow, Color, Piska</span>
 
-        <p>Ихлизнез бомбастик, передай привет маме игни :/</p>
+        <p>Ultra mega super man</p>
 
         <div class="d-flex">
-          <i-button color="primary" link="/one" className="default" text="Личный кабинет"/>
-          <i-button color="accent" class="ml-4" className="outline" link="/one" text="Скачать лаунчер"/>
+          <i-button color="primary" className="default" link="/profile" text="Личный кабинет"/>
+          <i-button color="accent" class="ml-4" className="outline" link="/auth" text="Скачать лаунчер"/>
         </div>
 
         <div class='online-section mt-4 d-flex align-center'>
-          <i><img ngSrc="assets/images/svg/online-icon.svg" fill="white" class="pos-relative" alt="online"></i>
+          <i [innerHTML]="phantomIcons.preview_serverOnline_icon | safe"></i>
           <span class='text-online'>Текущий онлайн: <b>45</b></span>
         </div>
       </div>
@@ -58,6 +58,11 @@
         <div>
           <strong>Остались вопросы?</strong>
           <i-button color="primary" link="/one" className="get-help" text="Задать вопрос"/>
+          <div>
+            <i [outerHTML]="phantomIcons.footer_masterCard_icon | safe"></i>
+            <i [outerHTML]="phantomIcons.footer_visa_icon | safe"></i>
+            <i [outerHTML]="phantomIcons.footer_mir_icon | safe"></i>
+          </div>
         </div>
 
       </footer>

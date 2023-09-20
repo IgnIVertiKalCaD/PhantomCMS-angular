@@ -18,12 +18,9 @@ section {
         font-weight: 500;
 
 
-        > i {
+        svg {
           height: 32px;
           margin-right: 8px;
-        }
-
-        svg {
           transition: .2s ease;
           opacity: .5
         }

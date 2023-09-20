@@ -4,12 +4,11 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {authValidator} from "@/app/common/validaters/authValidator";
+import {authValidator} from "@/common/validaters/authValidator";
 import {Select, Store} from "@ngxs/store";
 import {
   AuthStore,
   Login,
-  SetStatusLoadingAuthentication
 } from "@/app/auth/authentication/store/authentication.store";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
@@ -62,13 +61,15 @@ export class AuthenticationComponent implements OnInit {
     this.isRememberMe = event
   }
 
+  // usernameOrEmail: this.login.value as string,
+  // password: this.password.value as string,
+
   authentication(): void {
     if (this.isEnabled()) {
       this.store.dispatch([
-        new SetStatusLoadingAuthentication(true),
         new Login({
-          usernameOrEmail: this.login.value as string,
-          password: this.password.value as string,
+          usernameOrEmail: 'IgnI',
+          password: 'Qwerty123',
           rememberMe: this.isRememberMe
         }),
       ])

@@ -12,7 +12,7 @@ $light-primary-text: white;
 $phantom-pallet: (
   50:  #6563EE,
   100: rgba(0, 0, 0, 0),
-  200: #fff,
+  200: #F44,
   300: #7986cb,
   400: #5c6bc0,
   500: #3f51b5,
@@ -40,11 +40,13 @@ $phantom-pallet: (
 
 $my-primary: mat.define-palette($phantom-pallet, 50);
 $my-accent: mat.define-palette($phantom-pallet, 100);
+$my-warn: mat.define-palette($phantom-pallet, 200);
 
 $phantom-theme: mat.define-light-theme((
   color: (
     primary: $my-primary,
     accent: $my-accent,
+    warn: $my-warn
   ),
   typography: mat.define-typography-config(
     $font-family: 'Inter',
@@ -55,11 +57,14 @@ $phantom-theme: mat.define-light-theme((
 
 html {
   scroll-behavior: smooth;
+  background: #0D0D11;
 }
 
 * {font-family: 'Inter',  sans-serif !important; letter-spacing: 0; margin: 0;padding: 0}
-html, body {margin: 0; height: 100%; background: #0D0D11;}
-body { overflow-y: scroll; scrollbar-width: thin; }
+html, body {height: 100%}
+body {
+  background: #0D0D11;
+}
 
 .fill-height {
   height: 100%;

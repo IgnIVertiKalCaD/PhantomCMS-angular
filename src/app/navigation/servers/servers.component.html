@@ -12,7 +12,7 @@
       <p>{{ server.name }}</p>
       <div class='icon-show-full-server'>
         <span class='btn-show-full-server'>Подробнее</span>
-        <img alt="server-icon" ngSrc="assets/images/svg/server-icon-info.svg" class="pos-relative" fill="">
+        <i [outerHTML]="phantomIcons.serverDetails_icon | safe"></i>
       </div>
     </div>
 

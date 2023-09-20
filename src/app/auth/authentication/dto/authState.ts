@@ -7,7 +7,6 @@ export class AuthState {
       perms: string[];
     } | null;
     email: string | null;
-    assets: any | null;
     createdAt: string | null,
   }
   isLoading: boolean;
