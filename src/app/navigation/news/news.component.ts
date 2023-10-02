@@ -3,10 +3,20 @@ import {Select, Store} from "@ngxs/store";
 import {GetNews, NewsStore} from "@/app/navigation/news/store/news.store";
 import {Observable} from "rxjs";
 import {NewsDto} from "@/app/navigation/news/dto/news.dto";
-import {animate, animateChild, group, keyframes, query, state, style, transition, trigger} from "@angular/animations";
+import {
+  animate,
+  animateChild,
+  group,
+  keyframes,
+  query,
+  stagger,
+  state,
+  style,
+  transition,
+  trigger
+} from "@angular/animations";
 import {ChildrenOutletContexts, Router} from "@angular/router";
 import {Location} from '@angular/common';
-import {GetUserHead, GetUserSkin} from "@/store/assets-manager/assets-store";
 
 @Component({
   selector: 'app-news',
@@ -33,39 +43,23 @@ import {GetUserHead, GetUserSkin} from "@/store/assets-manager/assets-store";
       ]),
     ]),
 
-  trigger("inOutAnimation", [
-      state("in", style({ opacity: 1 })),
-      transition(":enter", [
-        animate(
-          200,
-          keyframes([
-            style({ opacity: 0, offset: 0 }),
-            style({ opacity: 0.25, offset: 0.25 }),
-            style({ opacity: 0.5, offset: 0.5 }),
-            style({ opacity: 0.75, offset: 0.75 }),
-            style({ opacity: 1, offset: 1 }),
+    trigger('listAnimation', [
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity: 0 }),
+          stagger(100, [
+            animate('0.3s', style({ opacity: 1 }))
           ])
-        )
-      ]),
-      transition(":leave", [
-        animate(
-          200,
-          keyframes([
-            style({ opacity: 1, offset: 0 }),
-            style({ opacity: 0.75, offset: 0.25 }),
-            style({ opacity: 0.5, offset: 0.5 }),
-            style({ opacity: 0.25, offset: 0.75 }),
-            style({ opacity: 0, offset: 1 }),
-          ])
-        )
+        ], { optional: true })
       ])
     ])
+
   ]
 })
 export class NewsComponent implements OnInit, AfterContentChecked {
   constructor(private readonly store: Store, private readonly router: Router,
               private contexts: ChildrenOutletContexts,
-              private readonly changeDetector: ChangeDetectorRef, private location: Location) {}
+              private readonly changeDetector: ChangeDetectorRef, private readonly location: Location) {}
 
   isBlur: boolean;
 
@@ -100,12 +94,9 @@ export class NewsComponent implements OnInit, AfterContentChecked {
   listNews$: Observable<NewsDto[]>
 
   ngOnInit() {
-    this.store.dispatch([
-      new GetNews(),
-      // new GetUserSkin('IgnI'),
-      // new GetUserHead('IgnI')
-    ]);
+    this.store.dispatch(new GetNews());
   }
+
   ngAfterContentChecked(): void {
     this.changeDetector.detectChanges();
   }

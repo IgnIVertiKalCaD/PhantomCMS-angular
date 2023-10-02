@@ -24,6 +24,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import { NewsDetailsComponent } from './news/news-details/news-details.component';
 import {SafePipe} from "@/pipes/safe.pipe";
 import {MatButtonModule} from "@angular/material/button";
+import {SkinViewer3dComponent} from "@/app/components/global/skin-viewer3d/skin-viewer3d.component";
 
 @NgModule({
   declarations: [
@@ -35,35 +36,36 @@ import {MatButtonModule} from "@angular/material/button";
     StatisticComponent,
     ServersComponent,
     MainComponent,
-    NewsDetailsComponent
+    NewsDetailsComponent,
   ],
-    imports: [
-        AsyncPipe,
-        MatChipsModule,
-        TextFieldComponent,
-        IButtonComponent,
-        MatInputModule,
-        FormsModule,
-        NgForOf,
-        MatSelectModule,
-        MatOptionModule,
-        MatFormFieldModule,
-        MatCardModule,
-        CatalogModule,
-        DonateCardModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        InputSelectorComponent,
-        NgIf,
-        RouterOutlet,
-        RouterLink,
-        RouterLinkActive,
-        NgClass,
-        DatePipe,
-        SlicePipe,
-        SafePipe,
-        MatButtonModule,
-    ],
+  imports: [
+    AsyncPipe,
+    MatChipsModule,
+    TextFieldComponent,
+    IButtonComponent,
+    MatInputModule,
+    FormsModule,
+    NgForOf,
+    MatSelectModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatCardModule,
+    CatalogModule,
+    DonateCardModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    InputSelectorComponent,
+    NgIf,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    NgClass,
+    DatePipe,
+    SlicePipe,
+    SafePipe,
+    MatButtonModule,
+    SkinViewer3dComponent,
+  ],
 })
 export class NavigationModule {
 }

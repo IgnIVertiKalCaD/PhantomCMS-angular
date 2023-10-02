@@ -5,20 +5,21 @@
   line-height: 28px;
   text-align: center;
 
+  height: auto;
+
   border-radius: 16px;
   display: block;
   padding: 18px 68px;
 }
 
 a {
-  transition: all .3s ease;
+  transition: .3s ease;
 
   &.default {
     @include default-btn;
 
-    height: auto;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--default-button-text);
+    border: 1.6px solid var(--default-button-color-border);
 
     &:hover {
       opacity: .75;
@@ -32,16 +33,15 @@ a {
   &.outline {
     @include default-btn;
 
-    height: auto;
-    color: rgba(255, 255, 255, 0.75);
-    border: 1.5px solid rgba(56, 56, 62, 1);
+    color: rgba(var(--accent-button-text), 0.75);
+    border: 1.6px solid rgba(var(--accent-button-color-border), 0.15);
 
     &:hover {
-      border-color: rgba(255, 255, 255, 0.75);
+      border-color: rgba(var(--accent-button-color-border), 0.75);
 
       &:active {
-        color: white;
-        border-color: rgba(255, 255, 255, 1)
+        color: rgba(var(--accent-button-text), 1);
+        border-color: rgba(var(--accent-button-color-border), 1)
       }
     }
   }
@@ -49,8 +49,6 @@ a {
   &.get-help {
     @include default-btn;
     border-radius: 12px;
-    height: auto;
-
     padding: 6px 0;
 
     &:hover {
@@ -89,6 +87,6 @@ a {
     min-width: 36px;
 
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(var(--remove-button-text), 0.05);
   }
 }

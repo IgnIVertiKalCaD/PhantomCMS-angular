@@ -1,20 +1,51 @@
 :root {
+  //buttons
+  --default-color: #6563EE;
+
+  --default-button-color: #6563EE;
+  --default-button-text: #fff;
+  --default-button-color-border: rgba(255, 255, 255, 0.05);
+
+  --accent-button-color: rgba(0, 0, 0, 0);
+  --accent-button-text: 255, 255, 255;
+  --accent-button-color-border: 255, 255, 255;
+
+  --warn-button-color: #F44;
+  --warn-button-text: #fff;
+
+  ////profile
+  --remove-button-text: 255, 255, 255;
+
+  //backgrounds
+  --background-color: #0D0D11;
+
+  //inputs
+  --default-color-text-placeholder: rgba(255, 255, 255, 0.5);
+  --default-bg-color-inputs: #09090C;
+
+  //card-text
+  --default-card-color-text: #fff;
+  --default-card-color-sub-text: rgba(255, 255, 255, 0.5);
+  --bg-card-color: #151519;
+
+  --mdc-filled-text-field-focus-label-text-color: #b0b0b4;
   --mdc-filled-text-field-container-color: #1E1E25 !important;
   --mdc-filled-text-field-input-text-color: #fff !important;
-  --mat-select-panel-background-color: #09090;
-
-  --mat-option-label-text-color: #fff;
-  --mat-option-focus-state-layer-color: #1E1E25;
   --mdc-filled-text-field-label-text-color: #8F8F94;
-  --mat-select-enabled-trigger-text-color: #fff;
   --mat-option-selected-state-layer-color: #1E1E25;
-
+  --mat-option-focus-state-layer-color: #1E1E25;
+  --mat-select-enabled-trigger-text-color: #fff;
+  --mat-select-panel-background-color: #09090;
   --mat-select-enabled-arrow-color: #fff;
-
   --mat-table-background-color: #1E1E25;
+  --mat-option-label-text-color: #fff;
 
   .mat-mdc-select-arrow-wrapper {
     display: none;
+  }
+
+  .mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-label-text-color: var(--default-button-text);
   }
 
   .mat-mdc-option {
@@ -22,12 +53,12 @@
     border-radius: 8px;
     margin: 0 10px 5px 10px;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-
     &.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
       color: white;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
 
     &:hover:not(.mdc-list-item--disabled) {
@@ -56,11 +87,11 @@
     }
 
     .mdc-text-field {
-      background-color: #09090C;
+      background-color: var(--default-bg-color-inputs);
       border: 2px solid transparent;
 
       &:hover {
-        border-color: #6563EE;
+        border-color: var(--default-color);
 
         img {
           opacity: .75;
@@ -73,10 +104,10 @@
   .cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel {
     border-radius: 16px;
     padding: 10px 0;
-    background-color: #09090C;
+    background-color: var(--default-bg-color-inputs);
     margin-top: 10px;
     box-shadow: none;
-    border: 2px solid #6563EE;
+    border: 2px solid var(--default-color);
   }
 
   .mat-mdc-chip.mat-mdc-standard-chip {
@@ -103,8 +134,9 @@
     .mdc-text-field {
       border: 2px solid transparent;
     }
+
     &.mdc-text-field--focused {
-      border-color: #6563EE;
+      border-color: var(--default-color);
     }
   }
 
@@ -129,7 +161,7 @@
     position: relative;
 
     &.mdc-text-field--focused {
-      border-color: #6563EE;
+      border-color: var(--default-color);
 
       .icon {
         > img {
@@ -141,7 +173,7 @@
   }
 
   .mat-mdc-form-field-error {
-    --mdc-theme-error: #F44;
+    --mdc-theme-error: var(--warn-color);
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -158,5 +190,5 @@
 
 input::placeholder {
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: var(--default-color-text-placeholder) !important;
 }

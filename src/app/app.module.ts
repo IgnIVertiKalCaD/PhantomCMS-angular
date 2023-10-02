@@ -38,6 +38,8 @@ import {AssetsStore} from "@/store/assets-manager/assets-store";
 
 import {ApiInterceptor} from "@/common/interceptors/api.interceptor";
 import {AuthInterceptor} from "@/common/interceptors/auth.interceptor";
+import { ImgFillDirective } from '@/directives/imgfill.directive';
+import { SkinViewer3dComponent } from './components/global/skin-viewer3d/skin-viewer3d.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -55,6 +57,8 @@ registerLocaleData(localeRu, 'ru');
     Page404Component,
   ],
   imports: [
+    SkinViewer3dComponent,
+    ImgFillDirective,
     SafePipe,
     CheckboxComponent,
     OverlayComponent,
@@ -91,7 +95,9 @@ registerLocaleData(localeRu, 'ru');
       multi: true,
     }
   ],
-  exports: [],
+    exports: [
+        SkinViewer3dComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

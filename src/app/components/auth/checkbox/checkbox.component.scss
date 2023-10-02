@@ -22,7 +22,7 @@
 
     &.checked {
       rect {fill: rgba(101, 99, 238, 0.3)}
-      circle {fill: #6563EE}
+      circle {fill: var(--default-button-color)}
     }
   }
 

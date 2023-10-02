@@ -28,7 +28,6 @@ export class AssetsManagerService {
 
   //cape
   getUserCape(username: string): Observable<ArrayBuffer> {
-    console.log('send req cape')
     return this.http.get(`users/assets/${username}/cape`, { responseType: 'arraybuffer'});
   }
 

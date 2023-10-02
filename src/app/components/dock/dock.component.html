@@ -1,4 +1,4 @@
-<header class="dock d-flex">
+<header #header class="dock d-flex">
 
   <div class="d-flex left">
     <app-logo/>
@@ -6,7 +6,7 @@
     <p class="delimiter"
        *ngIf="isAuth$ | async"></p>
     <p class="description"
-       *ngIf="isAuth$ | async">{{ niceMessage }}</p>
+       *ngIf="isAuth$ | async">{{ message }}</p>
 
   </div>
 

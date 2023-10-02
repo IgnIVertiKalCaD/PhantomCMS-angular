@@ -4,6 +4,7 @@ import {NewsService} from "@/app/navigation/news/news.service";
 import {catchError, tap, throwError} from "rxjs";
 import {NewsDto} from "@/app/navigation/news/dto/news.dto";
 import {patch, updateItem} from "@ngxs/store/operators";
+import {StorageManagerService} from "@/common/storage/storage-manager.service";
 
 
 export class GetNews {
@@ -30,11 +31,16 @@ class NewsState {
 
 @State<NewsState>({
   name: 'news_store',
-  defaults: {news: [], selectedNews: null}
+  defaults: {
+    news: JSON.parse(sessionStorage.getItem('news')!),
+    selectedNews: null
+  }
 })
 @Injectable()
 export class NewsStore {
-  constructor(private readonly newsService: NewsService) {}
+  constructor(
+    private readonly storageManager: StorageManagerService,
+    private readonly newsService: NewsService) {}
 
   @Selector()
   static getNews(state: NewsState): NewsDto[] {
@@ -52,6 +58,8 @@ export class NewsStore {
         ctx.setState(patch({
           news: res
         }))
+
+        this.storageManager.save({type: 'sessionStorage', key: 'news', payload: res})
       }),
 
       catchError(err => {

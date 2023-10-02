@@ -57,13 +57,10 @@ div.donate-card {
   }
 
   > img {
-    inset: auto !important;
     right: 0 !important;
-    width: auto !important;
-    height: auto !important;
   }
 
   &:hover {
-    border-color: #6563EE;
+    border-color: var(--default-button-color);
   }
 }

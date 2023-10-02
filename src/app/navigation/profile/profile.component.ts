@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Select} from "@ngxs/store";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {Observable} from "rxjs";
+import {phantomIcons} from "@/common/icons_kit_devtools/phantomIcons";
 
 @Component({
   selector: 'app-profile',
@@ -9,6 +10,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
+  protected readonly phantomIcons = phantomIcons;
 
   @Select(AuthStore.getUsername)
   username$: Observable<string>;
@@ -21,6 +23,4 @@ export class ProfileComponent {
 
   @Select(AuthStore.getActiveGroup)
   active_group$: Observable<string>
-
-
 }

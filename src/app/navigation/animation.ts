@@ -39,7 +39,6 @@ export const navigateAnimation =
           }),
           animate('.15s', style({ opacity: 1 }))
         ],
-        { optional: true }
       )
     ])
   ]);

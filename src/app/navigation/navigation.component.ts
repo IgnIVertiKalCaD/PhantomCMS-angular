@@ -1,9 +1,9 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {animate, query, state, style, transition, trigger} from "@angular/animations";
+import {Component, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {animate, style, transition, trigger} from "@angular/animations";
 import {ChildrenOutletContexts} from "@angular/router";
 import {navigateAnimation} from "@/app/navigation/animation";
 import {phantomIcons} from "@/common/icons_kit_devtools/phantomIcons";
-import {fromEvent, map} from "rxjs";
+import {DockComponent} from "@/app/components/dock/dock.component";
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -25,14 +25,14 @@ import {fromEvent, map} from "rxjs";
 export class NavigationComponent implements OnInit {
   protected readonly phantomIcons = phantomIcons;
 
-  constructor(private contexts: ChildrenOutletContexts, private readonly elementRef: ElementRef) {
+  constructor(private contexts: ChildrenOutletContexts) {}
 
-  }
+  @ViewChild('dock', {static: true})
+  dock: DockComponent
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
-
 
   toUp(): void {
     window.scrollTo({
@@ -42,10 +42,11 @@ export class NavigationComponent implements OnInit {
   }
 
   isShow: boolean = false;
-
+  isPinedDock: boolean = false;
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
     this.isShow = window.scrollY > 100;
+    this.isPinedDock =  1 < window.scrollY;
   }
   ngOnInit() {}
 }

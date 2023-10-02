@@ -28,7 +28,7 @@ export class RegistrationStore {
   }
 
   @Selector()
-  static isRegistrationAllRight(state: RegistrationStateDto): boolean | null {
+  static isRegistrationAllRight(state: RegistrationStateDto): boolean {
     return state.success
   }
 

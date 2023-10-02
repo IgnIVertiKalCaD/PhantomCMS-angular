@@ -1,13 +1,32 @@
 @import "global-style-effects";
 
+:host.pin {
+  transition: .2s ease;
+
+  padding: 14px 0 !important;
+  background: rgba(21, 21, 25, 0.2);
+  backdrop-filter: blur(50px);
+}
+
+:host.unpin {
+  display: block;
+  position: sticky;
+
+  top: 0;
+  padding: 20px 0;
+  transition: .1s ease;
+
+  margin-top: -20px;
+  z-index: 1;
+}
+
 $player-img: 50px;
 $exit-img: 22px;
 
 header {
-  position: sticky;
-  width: 100%;
-  margin-top: 20px;
-  top: 0;
+  margin: 0 auto;
+  max-width: 1300px;
+  transition: 0.2s ease;
 
   &.dock {
     .left {

@@ -15,10 +15,10 @@
         <td>Регистрация аккаунта:</td>
         <td>{{ createdAt$ | async | date: 'mediumDate' }}</td>
       </tr>
-<!--      <tr>-->
-<!--        <td>Последняя активность:</td>-->
-<!--        <td>12.08.2023</td>-->
-<!--      </tr>-->
+      <!--      <tr>-->
+      <!--        <td>Последняя активность:</td>-->
+      <!--        <td>12.08.2023</td>-->
+      <!--      </tr>-->
       <tr>
         <td>Защита 2FA:</td>
         <td>Подключена</td>
@@ -50,7 +50,8 @@
 
   <main class='mt-5'>
     <nav class='navigation w-100 fill-height'>
-      <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page">
+      <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+         ariaCurrentWhenActive="page">
         Главная
       </a>
       <a routerLink="security" routerLinkActive="active" ariaCurrentWhenActive="page">
@@ -61,9 +62,12 @@
       </a>
     </nav>
 
-    <hr class="mt-4">
+    <hr class="mt-4 mb-4">
 
-    <router-outlet/>
+    <div class="profile-router-view d-flex">
+      <app-skin-viewer3d/>
 
+      <router-outlet class="ml-4"/>
+    </div>
   </main>
 </section>

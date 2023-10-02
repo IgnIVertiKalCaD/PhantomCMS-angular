@@ -15,6 +15,21 @@
   }
 }
 
+@mixin button-hover-pressed-effect($opacity: 1) {
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+  opacity: $opacity;
+
+  &:hover {
+    opacity: .75;
+
+    &:active {
+      opacity: .5;
+    }
+  }
+}
+
 @mixin font-config($font-size: 14px, $color: #8F8F94, $weight: 400, $line-height: 14px) {
   color: $color;
   font-size: $font-size;

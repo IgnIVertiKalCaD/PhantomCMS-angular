@@ -14,7 +14,7 @@ section {
   > div {
     border-radius: 39px;
     display: flex;
-    border: 1.5px solid #6563EE;
+    border: 1.5px solid var(--default-button-color);
     background: #1E1E25;
     align-items: center;
     flex-direction: row;

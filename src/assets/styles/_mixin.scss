@@ -1,37 +1,37 @@
-$columns: 12;
+$col: 12;
 
 @mixin padding-spacing-list {
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .pl-#{$i} { padding-left: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .pr-#{$i} { padding-right: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .pt-#{$i} { padding-top: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .pb-#{$i} { padding-bottom: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .pa-#{$i} { padding: #{$i * 4}px !important}
   }
 }
 
 @mixin margin-spacing-list {
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .ml-#{$i} { margin-left: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .mr-#{$i} { margin-right: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .mt-#{$i} { margin-top: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .mb-#{$i} { margin-bottom: #{$i * 4}px !important}
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through $col {
     .ma-#{$i} { margin: #{$i * 4}px !important}
   }
 }
@@ -48,11 +48,21 @@ $displays: flex, block, grid, none;
 .justify-space-between {
   justify-content: space-between;
 }
+.justify-center {
+  justify-content: center;
+}
 .align-center {
   align-items: center;
 }
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.fill-height {
+  height: 100%;
+}
+.h-100 {
+  height: 100vh;
 }
 
 .text-center {text-align: center}
