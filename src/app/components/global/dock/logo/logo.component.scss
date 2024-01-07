@@ -1,0 +1,15 @@
+.logo {
+  display: flex;
+  align-items: center;
+
+  border-radius: 27px;
+  transition: opacity .3s ease;
+
+  &:hover {
+    opacity: .8;
+
+    &:active {
+      opacity: .6;
+    }
+  }
+}

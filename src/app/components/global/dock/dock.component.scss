@@ -1,0 +1,126 @@
+@import "../../../../assets/styles/global-style-effects";
+
+$player-img: 50px;
+$exit-img: 22px;
+
+:host {
+  &.pin {
+    transition: .2s ease;
+
+    padding: 14px 0 !important;
+    background: rgba(21, 21, 25, 0.2);
+    backdrop-filter: blur(50px);
+  }
+
+  &.unpin {
+    display: block;
+    position: sticky;
+
+    top: 0;
+    padding: 20px 0;
+    transition: .1s ease;
+
+    margin-top: -20px;
+    z-index: 1;
+  }
+}
+
+header {
+  margin: 0 auto;
+  transition: 0.2s ease;
+
+  &.dock {
+    .left {
+      .delimiter {
+        width: 1.5px;
+        height: 16px;
+        background: #8F8F94;
+        margin: 0 15px
+      }
+
+      .description {
+        color: #8F8F94;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+
+    > .right {
+      color: #FFF;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px;
+
+      align-items: center;
+      display: flex;
+      flex-direction: row-reverse;
+
+      .nickname {
+        transition: .3s ease;
+        cursor: pointer;
+
+        user-select: none;
+
+        &.active {
+          cursor: default;
+
+          &:hover {
+            color: white;
+          }
+        }
+
+        &:hover {
+          color: #a9a9a9;
+        }
+      }
+
+      > section {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        min-height: 60px;
+        width: 280px;
+        border-radius: 24px;
+
+        div {
+          display: flex;
+          align-items: center;
+
+          > img {
+            transition: .3s ease;
+            opacity: 0;
+            margin: 5px 10px 5px 5px;
+            border-radius: 20px;
+            max-width: $player-img;
+            max-height: $player-img;
+
+            &.fade-anim {
+              opacity: 1;
+            }
+          }
+        }
+
+        > .exit {
+          box-shadow: none;
+          display: block;
+          width: $exit-img;
+          height: $exit-img;
+          margin-right: 14px;
+          background: transparent;
+
+          @include icon-hover-pressed-effect;
+        }
+      }
+
+    }
+
+    div {
+      align-items: center;
+      flex: 1 1 33.3%;
+    }
+  }
+}

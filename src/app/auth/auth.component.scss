@@ -1,0 +1,66 @@
+@import "global-style-effects";
+
+.auth-section {
+  background-image: url("/../assets/images/svg/backgroundAuth.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .auth-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  section {
+    width: 436px;
+  }
+
+  .mat-mdc-form-field {
+    &.mat-form-field-invalid {
+      .mat-mdc-form-field-subscript-wrapper {
+        margin-bottom: 10px;
+      }
+    }
+
+    &.password-field,
+    &.email-field,
+    &.login-field {
+      .mat-mdc-form-field-infix {
+        display: flex;
+      }
+    }
+
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #151519;
+      padding: 8px;
+      border-radius: 12px;
+      margin-right: 8px;
+
+      > img {
+        transition: .2s ease;
+        opacity: 0.5;
+        $lokerWH: 32px;
+        width: $lokerWH !important;
+        height: $lokerWH !important;
+      }
+    }
+
+    .mdc-text-field {
+      padding-left: 6px;
+      overflow: inherit
+    }
+  }
+
+  .remember-password {
+    align-items: center;
+    justify-content: space-between;
+  }
+}

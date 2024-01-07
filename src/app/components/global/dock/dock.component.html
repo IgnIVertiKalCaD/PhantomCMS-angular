@@ -1,0 +1,32 @@
+<header #header class="dock d-flex">
+
+  <div class="d-flex left">
+    <app-logo/>
+<!--    refactor-->
+    <p class="delimiter"
+       *ngIf="isAuth$ | async"></p>
+    <p class="description"
+       *ngIf="isAuth$ | async">{{ message }}</p>
+
+  </div>
+
+  <div class="right">
+    <section style="background: #1E1E25;" *ngIf="isAuth$ | async">
+      <div>
+        <img (load)="isHide = false" [ngClass]="{'fade-anim' : !isHide}"
+             width="50"
+             [src]="(head$ | async) ?? defaultHead"
+             alt="player" class="pos-relative"/>
+        <span class="nickname" routerLink="profile" routerLinkActive="active">{{ username$ | async }}</span>
+      </div>
+      <button mat-mini-fab disableRipple class="exit" (click)="logout()">
+        <i [outerHTML]="phantomIcons.logout_icon | safe"></i>
+      </button>
+    </section>
+
+    <section *ngIf="!(isAuth$ | async)">
+      <i-button className="auth" color="primary" text="Войти" link="/auth"/>
+    </section>
+  </div>
+
+</header>

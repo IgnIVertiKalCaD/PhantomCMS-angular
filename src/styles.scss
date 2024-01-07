@@ -1,0 +1,103 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "media";
+@import "mixin";
+@import "variables";
+@import "global-style";
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+
+$phantom-pallet: (
+  50: var(--default-button-color),
+  100: var(--accent-button-color),
+  200: var(--warn-button-color),
+  700: #303f9f,
+  800: #283593,
+  900: #1a237e,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$my-primary: mat.define-palette($phantom-pallet, 50);
+$my-accent: mat.define-palette($phantom-pallet, 100);
+$my-warn: mat.define-palette($phantom-pallet, 200);
+
+$phantom-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn
+  ),
+  typography: mat.define-typography-config(
+    $font-family: 'Inter',
+  )
+));
+
+@include mat.all-component-themes($phantom-theme);
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background-color);
+}
+
+* {
+  font-family: 'Inter', sans-serif !important;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0
+}
+
+html, body {
+  height: auto
+}
+
+body {
+  background: var(--background-color);
+}
+
+
+.mat-mdc-button-touch-target {
+  width: 0 !important
+}
+
+.mat-mdc-button-persistent-ripple::before {
+  display: none !important
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-border-radius: 1em;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.space-border {
+  margin: 0 60px;
+}

@@ -1,0 +1,19 @@
+<section class="d-flex flex-column mt-4">
+  <p class="d-flex mb-4">Введите адрес электронной почты, который был использован для регистрации. Вам будет выслано письмо с дальнейшими инструкциями по сбросу пароля.</p>
+  <mat-form-field class="email-field">
+    <i class="icon">
+      <img ngSrc="assets/images/svg/auth/loginField.svg" fill="white" class="pos-relative" alt="email">
+    </i>
+    <input matInput placeholder="Email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{authValidator.getEmailFieldErrorMessage(email)}}</mat-error>
+  </mat-form-field>
+
+  <div class='d-flex flex-column mt-2'>
+    <i-button [disabled]="!isDisabled()" class='mb-4' color="primary" text="Отправить письмо" className="default"/>
+
+    <a [routerLink]="registration_link" class="link-effect text-center w-fit-content m-0-auto">
+      <p class='registration'>Зарегистрироваться</p>
+    </a>
+  </div>
+
+</section>

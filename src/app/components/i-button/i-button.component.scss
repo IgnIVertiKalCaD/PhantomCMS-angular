@@ -1,0 +1,92 @@
+@mixin default-btn() {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: center;
+
+  height: auto;
+
+  border-radius: 16px;
+  display: block;
+  padding: 18px 68px;
+}
+
+a {
+  transition: .3s ease;
+
+  &.default {
+    @include default-btn;
+
+    color: var(--default-button-text);
+    border: 1.6px solid var(--default-button-color-border);
+
+    &:hover {
+      opacity: .75;
+
+      &:active {
+        opacity: .5
+      }
+    }
+  }
+
+  &.outline {
+    @include default-btn;
+
+    color: rgba(var(--accent-button-text), 0.75);
+    border: 1.6px solid rgba(var(--accent-button-color-border), 0.15);
+
+    &:hover {
+      border-color: rgba(var(--accent-button-color-border), 0.75);
+
+      &:active {
+        color: rgba(var(--accent-button-text), 1);
+        border-color: rgba(var(--accent-button-color-border), 1)
+      }
+    }
+  }
+
+  &.get-help {
+    @include default-btn;
+    border-radius: 12px;
+    padding: 6px 0;
+
+    &:hover {
+      opacity: .75;
+
+      &:active {
+        opacity: .5
+      }
+    }
+  }
+
+  &.store-btn {
+    @extend .default;
+    padding: 16px 0;
+  }
+
+  &.refresh-status {
+    @extend .default;
+    padding: 11px 0;
+  }
+
+  &.auth {
+    @extend .default;
+    padding: 10px 32px;
+  }
+
+  &.profile {
+    @extend .default;
+    border-radius: 12px;
+    padding: 2px 0;
+  }
+
+  &.remove {
+    padding: 0;
+    height: 100%;
+    min-width: 36px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(var(--remove-button-text), 0.05);
+  }
+}

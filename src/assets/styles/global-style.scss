@@ -1,0 +1,23 @@
+:root {
+  .card {
+    border-radius: 16px;
+    background: var(--bg-card-color);
+
+    .mat-mdc-card-title {
+      color: var(--default-card-color-text);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 24px;
+      font-style: normal;
+    }
+
+    .mat-mdc-card-subtitle {
+      color: var(--default-card-color-sub-text);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      font-style: normal;
+      padding-bottom: 3em;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+div.donate-card {
+  position: relative;
+  border-radius: 16px;
+  background: #151519;
+  overflow: hidden;
+  border: 1.5px solid transparent;
+  transition: .3s ease;
+  cursor: pointer;
+
+  padding: 45px;
+
+  .left-segment {
+    margin-right: 40px;
+
+    line-height: 28px;
+    font-weight: 600;
+    font-style: normal;
+
+    .title {
+      display: block;
+      line-height: 1;
+      color: #FF862E;
+      font-size: 48px;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 24px;
+    }
+  }
+
+  .right-segment {
+    display: flex;
+    color: white;
+
+    img {
+      margin-right: 10px;
+      position: relative !important;
+      width: auto !important;
+      height: auto !important;
+    }
+
+    .cross-section,
+    .tick-section {
+      margin-bottom: 16px;
+      display: flex;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .sub-right {
+      opacity: .5;
+      margin-left: 40px;
+    }
+  }
+
+  > img {
+    right: 0 !important;
+  }
+
+  &:hover {
+    border-color: var(--default-button-color);
+  }
+}

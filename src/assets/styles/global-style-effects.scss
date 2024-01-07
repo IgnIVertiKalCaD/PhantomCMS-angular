@@ -1,0 +1,82 @@
+@import "media";
+
+@mixin icon-hover-pressed-effect($opacity: 0.5) {
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+  opacity: $opacity;
+
+  &:hover {
+    opacity: .75;
+
+    &:active {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin button-hover-pressed-effect($opacity: 1) {
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+  opacity: $opacity;
+
+  &:hover {
+    opacity: .75;
+
+    &:active {
+      opacity: .5;
+    }
+  }
+}
+
+@mixin font-config($font-size: 14px, $color: #8F8F94, $weight: 400, $line-height: 14px) {
+  color: $color;
+  font-size: $font-size;
+  font-style: normal;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+.link-effect {
+    transition: .3s ease;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+
+      &:active {
+        opacity: .75
+      }
+    }
+}
+@mixin main-nav-corrector {
+  nav.right {
+    flex: 0 1 45%;
+
+    min-width: $nav-width;
+    max-width: $nav-width;
+
+    margin-left: 30px;
+  }
+  section > main {
+    flex: 0 2 auto;
+  }
+}
+
+@keyframes blink {
+  0% {
+    background-color: rgba(255, 68, 68, 1);
+  }
+  50% {
+    background-color: rgba(255, 68, 68, 0.5);
+  }
+  100% {
+    background-color: rgba(255, 68, 68, 1);
+  }
+}

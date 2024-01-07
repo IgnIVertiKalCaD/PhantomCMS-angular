@@ -1,0 +1,102 @@
+<section class="d-flex w-100">
+  <div class="w-100">
+    <app-text-field class="mb-4 d-block" placeholder="Что происходит?" className="default">
+      <img ngSrc="assets/images/xyixnaet.svg" fill class="icons pos-relative" alt="icon">
+      <img ngSrc="assets/images/svg/send-message.svg" fill class="icons pos-relative" alt="icon">
+    </app-text-field>
+
+    <main [@listAnimation]="(listNews$ | async)?.length">
+      <div class="news-section mb-4 pa-4" *ngFor="let news of listNews$ | async, let i = index">
+        <p class='title hover cur-p'
+           [routerLink]="['/news', news.id]"
+        >{{ news.title }}</p>
+        <p class='description mt-4'>
+          {{ (news.content.length > 400) ? (news.content | slice:0:400) + '...' : (news.content) }}
+        </p>
+
+        <div class='img-container mt-4 d-flex overflow-hidden'>
+          <img [ngSrc]='news.image ?? defaultImageNews' alt='1' fill priority class="pos-relative cur-p"
+               [routerLink]="['/news', news.id]"
+          />
+        </div>
+
+        <div class='rating-div mt-4 d-flex justify-space-between'>
+          <div class='d-flex align-center'>
+            <div class='rating'>
+              <i>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z"
+                    fill="white"/>
+                </svg>
+              </i>
+
+              <b>30</b>
+
+              <i>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z"
+                    fill="white"/>
+                </svg>
+              </i>
+            </div>
+
+            <span class='data ml-4'>{{ news.createdAt | date:'short' }}</span>
+          </div>
+
+          <img ngSrc="assets/images/svg/dots-for-edit-news.svg"
+               alt="edit news"
+               class="pos-relative"
+               fill>
+        </div>
+
+        <!--      <div class='comments mt-4'>-->
+        <!--        <section class='d-flex mb-4' *ngFor="let user of news.comments">-->
+        <!--          <img alt="head"-->
+        <!--            src='data:image/jpeg;base64,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'>-->
+        <!--          <div class='comment-child-section d-flex flex-column'>-->
+        <!--            <div class='title'>-->
+        <!--              <span>{{ user.username }}</span>-->
+        <!--              <b>{{ user.createdAt | date:'short' }}</b>-->
+        <!--            </div>-->
+
+        <!--            <div class='text'>-->
+        <!--              {{ user.content }}-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </section>-->
+        <!--      </div>-->
+
+        <!--      <div class='download-comments'>-->
+        <!--        <span>посмотреть все комментарии</span>-->
+        <!--      </div>-->
+
+        <app-text-field class="mt-4" placeholder="Добавить комментарий" className="default">
+          <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">
+        </app-text-field>
+      </div>
+    </main>
+  </div>
+
+  <nav class='right'>
+    <app-input-selector title="Сортировка" [listItems]="sortByType"/>
+    <app-input-selector title="Время" [listItems]="sortByTime"/>
+  </nav>
+
+</section>
+
+<section class="dialog-news"
+         [ngClass]="{'blur-bg': isBlur}"
+         #closeDialogEl
+         (click)="closeDialog($event)"
+>
+  <div
+    [@animNewsDetails]="getRouteAnimationData()"
+  >
+    <router-outlet
+      (activate)="isBlur = true"
+      (deactivate)="isBlur = false"
+    />
+  </div>
+</section>

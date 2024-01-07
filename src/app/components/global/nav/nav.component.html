@@ -1,0 +1,18 @@
+<nav class="d-flex flex-column">
+    <app-router>
+      Главная
+    </app-router>
+
+  <a routerLink="/servers" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <i [outerHTML]="phantomIcons.serverPage_icon | safe"></i>
+    Сервера
+  </a>
+  <a routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <i [outerHTML]="phantomIcons.profilePage_icon | safe"></i>
+    Профиль
+  </a>
+  <a routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <i [outerHTML]="phantomIcons.storePage_icon | safe"></i>
+    Магазин
+  </a>
+</nav>
