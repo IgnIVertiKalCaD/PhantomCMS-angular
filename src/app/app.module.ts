@@ -40,7 +40,6 @@ import {ApiInterceptor} from "@/common/interceptors/api.interceptor";
 import {AuthInterceptor} from "@/common/interceptors/auth.interceptor";
 import { ImgFillDirective } from '@/directives/imgfill.directive';
 import { SkinViewer3dComponent } from './components/global/skin-viewer3d/skin-viewer3d.component';
-import { NavComponent } from './components/global/nav/nav.component';
 import { RouterComponent } from './components/global/nav/router/router.component';
 
 registerLocaleData(localeRu, 'ru');
@@ -57,7 +56,6 @@ registerLocaleData(localeRu, 'ru');
     CodeComponent,
     NavigationComponent,
     Page404Component,
-    NavComponent,
     RouterComponent,
   ],
   imports: [

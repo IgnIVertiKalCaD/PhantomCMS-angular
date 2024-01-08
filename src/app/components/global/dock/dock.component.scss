@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/global-style-effects";
+@import "global-style-effects";
 
 $player-img: 50px;
 $exit-img: 22px;
@@ -20,7 +20,6 @@ $exit-img: 22px;
     padding: 20px 0;
     transition: .1s ease;
 
-    margin-top: -20px;
     z-index: 1;
   }
 }

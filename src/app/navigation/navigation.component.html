@@ -3,5 +3,19 @@
   class="unpin"
   [ngClass]="{'pin': isPinedDock}"/>
 
-<app-nav></app-nav>
-<router-outlet></router-outlet>
+<div class="navigation">
+  <nav>
+    <app-router
+      *ngFor="let r of navRoutes"
+      ariaCurrentWhenActive="page"
+      [routerLinkActiveOptions]="{exact: true}"
+      [routerLinkActive]="r.routerLinkActive"
+      [routerLink]="r.link"
+      [icon]="r.icon"
+    >
+      {{ r.text }}
+    </app-router>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

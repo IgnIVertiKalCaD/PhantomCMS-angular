@@ -1,4 +1,9 @@
-<a [routerLink]="routerLink" [routerLinkActive]="routerLinkActive" [ariaCurrentWhenActive]="ariaCurrentWhenActive">
-  <i [outerHTML]="routerIcons | safe"></i>
-  <ng-content/>
+<a [routerLink]="routerLink"
+   [routerLinkActive]="routerLinkActive"
+   [ariaCurrentWhenActive]="ariaCurrentWhenActive"
+   [routerLinkActiveOptions]="routerLinkActiveOptions">
+  <i [outerHTML]="icon | safe"></i>
+  <p>
+    <ng-content/>
+  </p>
 </a>

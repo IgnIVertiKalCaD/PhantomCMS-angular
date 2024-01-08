@@ -1,12 +1,15 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {routerIcons} from "@/common/icons/routerIcons";
 
 @Component({
   selector: 'app-router',
+  encapsulation: ViewEncapsulation.ShadowDom,
   templateUrl: './router.component.html',
   styleUrls: ['./router.component.scss']
 })
 export class RouterComponent {
+  @Input()
+  icon: string;
 
   @Input()
   routerLink: string;
@@ -18,7 +21,9 @@ export class RouterComponent {
   routerLinkActive: string;
 
   @Input()
-  ariaCurrentWhenActive: boolean | "page" | "step" | "location" | "date" | "time" | undefined;
+  routerLinkActiveOptions: any;
 
+  @Input()
+  ariaCurrentWhenActive: boolean | "page" | "step" | "location" | "date" | "time" | undefined;
   protected readonly routerIcons = routerIcons;
 }

@@ -1,0 +1,21 @@
+app-router {
+  display: flex;
+  flex-direction: column;
+
+  //dev
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.navigation {
+  display: flex;
+
+  > * {
+    &:last-child {
+      width: 100%;
+    }
+  }
+}
