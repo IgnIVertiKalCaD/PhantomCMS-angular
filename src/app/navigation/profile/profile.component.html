@@ -1,73 +1,19 @@
-<section class='profile d-flex flex-column'>
-
-  <div class='d-flex w-100 flex-wrap'>
-    <table class="mr-5">
-      <tbody>
-      <tr>
-        <td>Действующая группа:</td>
-        <td>{{ active_group$ | async }}</td>
-      </tr>
-      <tr>
-        <td>Ваша почта:</td>
-        <td>{{ email$ | async }}</td>
-      </tr>
-      <tr>
-        <td>Регистрация аккаунта:</td>
-        <td>{{ createdAt$ | async | date: 'mediumDate' }}</td>
-      </tr>
-      <!--      <tr>-->
-      <!--        <td>Последняя активность:</td>-->
-      <!--        <td>12.08.2023</td>-->
-      <!--      </tr>-->
-      <tr>
-        <td>Защита 2FA:</td>
-        <td>Подключена</td>
-      </tr>
-      </tbody>
-    </table>
-
-    <div class='add-money d-flex flex-column'>
-      <label class='mb-5'>
-        Пополнить
-        <br/>
-        Баланс
-      </label>
-      <b>ваш баланс:</b>
-      <span><b>0</b>&nbsp;очков</span>
-      <div class='bg'></div>
-    </div>
-
-    <div class='profile-info d-flex flex-column'>
-      <div class='sub'>
-        <div class='d-flex flex-column'>
-          <span class='nickname'>{{ username$ | async }}</span>
-          <span class='status mt-5'>Не в игре</span>
-        </div>
-        <i-button color="primary" className="refresh-status" class="refresh-btn" text="Публичный профиль"/>
-      </div>
-    </div>
-  </div>
-
-  <main class='mt-5'>
-    <nav class='navigation w-100 fill-height'>
-      <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-         ariaCurrentWhenActive="page">
-        Главная
-      </a>
-      <a routerLink="security" routerLinkActive="active" ariaCurrentWhenActive="page">
-        Безопасность
-      </a>
-      <a routerLink="statistic" routerLinkActive="active" ariaCurrentWhenActive="page">
-        Статистика
-      </a>
+<section class="w-100 d-flex justify-center">
+  <div>
+    <nav>
+      <app-router
+        *ngFor="let router of navRoutes"
+        [routerLink]="router.link" [routerLinkActive]="router.routerLinkActive"
+        [routerLinkActiveOptions]="{exact: true}"
+        className="profile"
+        ariaCurrentWhenActive="page">
+        {{ router.text }}
+      </app-router>
     </nav>
 
-    <hr class="mt-4 mb-4">
-
-    <div class="profile-router-view d-flex">
-      <app-skin-viewer3d/>
-
-      <router-outlet class="ml-4"/>
-    </div>
-  </main>
+    <router-outlet/>
+  </div>
 </section>
+
+
+<nav class="nav-spacer"></nav>

@@ -1,19 +1,68 @@
-<section class="main d-flex">
+<app-skin-viewer3d/>
 
-  <div class="right">
-    <mat-card class="card">
-      <mat-card-header class="card-header">
-        <mat-card-title>Внешний вид персонажа</mat-card-title>
-        <mat-card-subtitle class="mt-4">Хотите подчеркнуть свою индивидуальность и выглядеть по-настоящему круто?
-          Персонализируйте Вашего игрового персонажа и загрузите скин всего в два клика!
-        </mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
+<section>
+  <div class='main-information'>
+    <table>
+      <tbody>
+      <tr>
+        <td>Почта:</td>
+        <td>{{ email$ | async }}</td>
+      </tr>
+      <tr>
+        <td>Регистрация аккаунта:</td>
+        <td>12.08.2023</td>
+      </tr>
+      <!--    <tr>-->
+      <!--      <td>Действующая группа:</td>-->
+      <!--      <td>{{ active_group$ | async }}</td>-->
+      <!--    </tr>-->
+
+      <tr>
+        <td>Последняя активность:</td>
+        <td>12.08.2023</td>
+      </tr>
+      <tr>
+        <td>Защита 2FA:</td>
+        <td>Подключена</td>
+      </tr>
+      </tbody>
+    </table>
 
 
-    <div class="d-flex mt-4">
-      <i-button color="primary" class="mr-2 w-100" className="default" text="Телепорт на спавн"/>
-      <i-button color="primary" class="ml-2 w-100" className="default" text="Публичный профиль"/>
+    <div class='profile-info d-flex flex-column justify-space-between'>
+      <p class="mt-1">ТЕКУЩИЙ АВАТАР</p>
+      <img width="64"
+           [src]="(head$ | async) ?? defaultHead"
+           alt="player"/>
+
+      <div class="mb-3">
+        <app-button routerLink="./" className="load-avatar">Загрузить аватар</app-button>
+        <app-button routerLink="./" class="ml-2 small" className="remove">
+          <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.4103 7.03468L10.3359 11.3895M6.32051 4.75679V3.88583C6.32051 3.14887 6.98974 2.5459 7.80769 2.5459H10.0385C10.8564 2.5459 11.5256 3.14887 11.5256 3.88583V4.82379L6.32051 4.75679ZM4.46154 4.82379L4.98205 12.2604C5.05641 12.9974 5.65128 13.5334 6.46923 13.5334H11.4513C12.2692 13.5334 12.8641 12.9974 12.9385 12.2604L13.3846 4.82379H4.46154ZM3.56923 4.82379H14.3513H3.56923ZM7.4359 7.03468L7.51025 11.3895L7.4359 7.03468Z"
+              stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </app-button>
+      </div>
     </div>
+
+  </div>
+
+  <div class='add-money d-flex flex-column'>
+    <label class='mb-5'>
+      текущие ограничения на аккаунте
+    </label>
+    <b>сейчас на ВАШЕМ аккаунте:</b>
+    <span><b>0</b>&nbsp;ограничений</span>
+
+    <img class="frog" ngSrc="assets/images/add-money-frog.svg.png" width="357" height="200" alt="money">
+
+    <app-button class="mt-8" className="default">Посмотреть историю</app-button>
   </div>
 </section>
+
+
+
+
+

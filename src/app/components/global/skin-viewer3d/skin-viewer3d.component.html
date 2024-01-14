@@ -1,16 +1,16 @@
-<div class="left">
-  <canvas id="skin_container" class="skinViewer"></canvas>
-  <div class="controls mt-4">
-    <div class="first">
-      <i-button color="primary" class="w-100" className="profile" (click)="skinInput.click()" text="Загрузить скин"/>
-      <input hidden (change)="loadSkin($event)" #skinInput type="file">
-      <i-button (click)="removeMeSkin()" color="warn" className="remove" class="trash"><i [outerHTML]="phantomIcons.removeSkinOrCape_icon | safe"></i></i-button>
-    </div>
+<canvas id="skin_container" class="skinViewer"></canvas>
+<div class="controls mt-4">
+  <div class="first">
+    <app-button class="w-100" className="load-skin_cape" (click)="skinInput.click()">Загрузить скин</app-button>
+    <input hidden (change)="loadSkin($event)" #skinInput type="file">
+    <app-button (click)="removeMeSkin()" className="remove" class="trash"><i
+      [outerHTML]="phantomIcons.removeSkinOrCape_icon | safe"></i></app-button>
+  </div>
 
-    <div class="second">
-      <i-button color="primary" class="w-100" className="profile" (click)="capeInput.click()" text="Загрузить плащ"/>
-      <input hidden (change)="loadCape($event)" #capeInput type="file">
-      <i-button (click)="removeMeCape()" color="warn" className="remove" class="trash"><i [outerHTML]="phantomIcons.removeSkinOrCape_icon | safe"></i></i-button>
-    </div>
+  <div class="second">
+    <app-button class="w-100" className="load-skin_cape" (click)="capeInput.click()">Загрузить плащ</app-button>
+    <input hidden (change)="loadCape($event)" #capeInput type="file">
+    <app-button (click)="removeMeCape()" className="remove" class="trash"><i
+      [outerHTML]="phantomIcons.removeSkinOrCape_icon | safe"></i></app-button>
   </div>
 </div>

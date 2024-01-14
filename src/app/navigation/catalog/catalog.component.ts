@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {InputSelectDto} from "@/app/components/inputs/input-selector/dto/input-select.dto";
 
 @Component({
   selector: 'app-catalog',
@@ -7,16 +8,16 @@ import {Component} from '@angular/core';
 })
 export class CatalogComponent {
 
-  sortByServer: { name: string }[] = [
-    {name: 'NagievCraft'},
-    {name: 'ArturCraft'},
+  sortByServer: InputSelectDto = [
+    {text: 'NagievCraft'},
+    {text: 'ArturCraft'},
   ];
 
-  sortByPeriod: { name: string }[] = [
-    {name: '2 месяцв'},
-    {name: '6 месяцев'},
-    {name: '1 год'},
-    {name: '5 лет'},
+  sortByPeriod: InputSelectDto = [
+    {text: '2 месяцв'},
+    {text: '6 месяцев'},
+    {text: '1 год'},
+    {text: '5 лет'},
   ];
 
 }

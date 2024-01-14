@@ -1,3 +1,146 @@
-.card-header {
-  height: 180px;
+@import "variables";
+
+:host {
+  display: flex;
+  gap: 28px;
+
+  margin-top: 85px;
+
+  > section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+}
+
+.main-information {
+  display: flex;
+  column-gap: 28px;
+}
+
+.profile-info {
+  border-radius: 16px;
+  background: #151519;
+  color: #fff;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex: 2 0 auto;
+
+  min-width: 230px;
+
+  text-align: center;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  > img {
+    border-radius: 12px;
+  }
+
+  > p {
+    text-transform: uppercase;
+
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+}
+
+
+table {
+  background-color: #151519;
+  border-radius: 16px;
+  padding: 5px 16px 10px 16px;
+
+  flex: 2 1 60%;
+
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+
+  tr {
+    padding: 0 10px;
+    display: block;
+    border-radius: 10px;
+
+    &:nth-child(2n) {
+      background: #2C2C4E;
+    }
+
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  th,
+  td {
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+
+    &:last-child,
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  p {
+    margin-block: 1.5rem;
+    text-align: justify;
+  }
+}
+
+.add-money {
+  .frog {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  position: relative;
+  flex: 1 1 auto;
+  padding: 12px;
+  border-radius: 16px;
+  background: #151519;
+
+  line-height: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  label {
+    color: $base-text-accent-color;
+    font-size: 24px;
+  }
+
+  > b {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: none;
+
+    b {
+      color: $base-text-accent-color;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+  }
 }

@@ -1,0 +1,73 @@
+@import "variables";
+@import "../../../../styles/global-style-effects";
+
+app-text-field {
+  .default {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background: #09090C;
+
+    padding: 18px;
+
+    input {
+      flex: 1;
+
+      font-size: 16px;
+      color: white;
+      font-weight: 400;
+      line-height: 24px;
+
+      &::placeholder {
+        opacity: 0.5;
+        color: white;
+      }
+    }
+
+    > svg {
+      margin-right: 14px;
+
+      @include icon-hover-pressed-effect;
+    }
+  }
+
+  .outline {
+    display: flex;
+    align-items: center;
+    background: transparent;
+
+    padding: 16px 20px;
+
+    border-radius: 16px;
+    border: 1px solid #6563EE;
+
+    input {
+      flex: 1;
+
+      color: $white-1;
+
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 28px;
+
+      &::placeholder {
+        opacity: 0.5;
+        color: white;
+      }
+    }
+
+    > svg {
+      margin-right: 14px;
+
+      @include icon-hover-pressed-effect;
+    }
+  }
+
+  .toggle {
+    cursor: pointer;
+
+    > i {
+      display: flex;
+    }
+  }
+}

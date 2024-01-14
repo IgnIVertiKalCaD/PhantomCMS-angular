@@ -1,8 +1,9 @@
-<a [routerLink]="routerLink"
+<a [class]="className"
+   [routerLink]="routerLink"
    [routerLinkActive]="routerLinkActive"
    [ariaCurrentWhenActive]="ariaCurrentWhenActive"
    [routerLinkActiveOptions]="routerLinkActiveOptions">
-  <i [outerHTML]="icon | safe"></i>
+  <i *ngIf="icon" [outerHTML]="icon | safe"></i>
   <p>
     <ng-content/>
   </p>

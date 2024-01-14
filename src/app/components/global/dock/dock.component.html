@@ -19,13 +19,15 @@
              alt="player" class="pos-relative"/>
         <span class="nickname" routerLink="profile" routerLinkActive="active">{{ username$ | async }}</span>
       </div>
-      <button mat-mini-fab disableRipple class="exit" (click)="logout()">
+      <button class="exit" (click)="logout()">
         <i [outerHTML]="phantomIcons.logout_icon | safe"></i>
       </button>
     </section>
 
     <section *ngIf="!(isAuth$ | async)">
-      <i-button className="auth" color="primary" text="Войти" link="/auth"/>
+      <app-button className="auth" link="/auth">
+        Войти
+      </app-button>
     </section>
   </div>
 

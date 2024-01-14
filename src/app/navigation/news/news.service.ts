@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {NewsDto} from "@/app/navigation/news/dto/news.dto";
+import {newsSortBy} from "@/app/navigation/news/types/newsSortBy";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getNews() {
-    return this.http.get<NewsDto[]>('/news');
+  getNews(sortBy: newsSortBy) {
+    return this.http.get<NewsDto[]>(`/news?sortBy=${sortBy}`);
   }
 
   getNewsById(id: number) {

@@ -10,7 +10,6 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
   selector: 'app-servers',
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('listAnimation', [
       transition('* => *', [

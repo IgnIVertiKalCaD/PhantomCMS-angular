@@ -1,0 +1,24 @@
+@import "variables";
+
+:host {
+  > p {
+    text-align: center;
+  }
+
+  .card-session {
+    border: 1px solid $base-border-color;
+    border-radius: 16px;
+
+    padding: 20px;
+
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+
+    span, .browser {
+      color: rgba(255, 255, 255, 0.50);
+    }
+
+  }
+}

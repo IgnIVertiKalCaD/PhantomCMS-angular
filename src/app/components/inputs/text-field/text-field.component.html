@@ -1,0 +1,8 @@
+<div [class]="className">
+  <input [placeholder]="placeholder" [type]="selectType()">
+  <span *ngIf="type === 'password'" class="toggle" (click)="toggleShowPassword()">
+        <i *ngIf="!isHide" [innerHTML]="phantomIcons.eye_password_show | safe"></i>
+        <i *ngIf="isHide" [innerHTML]="phantomIcons.eye_password_hide | safe"></i>
+    </span>
+  <ng-content selector=".icon"></ng-content>
+</div>

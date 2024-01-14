@@ -1,21 +1,93 @@
 <app-dock
   #dock
   class="unpin"
-  [ngClass]="{'pin': isPinedDock}"/>
+  [ngClass]="{'pin': isPinedDock}"
+/>
 
 <div class="navigation">
-  <nav>
-    <app-router
-      *ngFor="let r of navRoutes"
-      ariaCurrentWhenActive="page"
-      [routerLinkActiveOptions]="{exact: true}"
-      [routerLinkActive]="r.routerLinkActive"
-      [routerLink]="r.link"
-      [icon]="r.icon"
-    >
-      {{ r.text }}
-    </app-router>
+  <nav class="left nav-spacer">
+
+    <div class="routers">
+      <app-router
+        *ngFor="let r of navRoutes"
+        ariaCurrentWhenActive="page"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLinkActive]="r.routerLinkActive"
+        [routerLink]="r.link"
+        [icon]="r.icon"
+      >
+        {{ r.text }}
+      </app-router>
+    </div>
+
+    <div class="more-info mt-2">
+      <app-input-selector
+        [showOnline]="true"
+        [listItems]="[{text: 'Hi-Tech'}, {text: 'MiniGames'}, {text: 'DivineRPG'} ]">
+      </app-input-selector>
+
+      <div class="slider">
+        <div class="navigation-wrapper">
+          <div class="keen-slider keen-slider--vertical d-flex"
+               #sliderRef>
+            <div class="keen-slider__slide number-slide1">1</div>
+            <div class="keen-slider__slide number-slide2">2</div>
+            <div class="keen-slider__slide number-slide3">3</div>
+          </div>
+        </div>
+        <div class="dots">
+          <button
+            (click)="slider.moveToIdx(i)"
+            *ngFor="let slide of dotHelper; let i = index"
+            [class]="'dot ' + (i === currentSlide ? 'active' : '')"
+          ></button>
+        </div>
+      </div>
+
+      <div class="icons">
+        <app-icon>
+          <i [outerHTML]="phantomIcons.footer_vk | safe"></i>
+        </app-icon>
+        <app-icon>
+          <i [outerHTML]="phantomIcons.footer_youtube | safe"></i>
+        </app-icon>
+        <app-icon>
+          <i [outerHTML]="phantomIcons.footer_twitch | safe"></i>
+        </app-icon>
+      </div>
+
+      <footer>
+        <app-router className="footer">
+          Личный кабинет
+        </app-router>
+        <app-router className="footer">
+          О нас
+        </app-router>
+        <app-router className="footer">
+          Личный кабинет
+        </app-router>
+        <app-router className="footer">
+          VK
+        </app-router>
+        <app-router className="footer">
+          Discord
+        </app-router>
+        <app-router className="footer">
+          Пользовательское соглашение
+        </app-router>
+        <app-router className="footer">
+          Правила
+        </app-router>
+        <app-router className="footer">
+          Магазин
+        </app-router>
+      </footer>
+    </div>
+
   </nav>
 
-  <router-outlet></router-outlet>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
 </div>

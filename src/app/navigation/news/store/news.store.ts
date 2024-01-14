@@ -5,22 +5,21 @@ import {catchError, tap, throwError} from "rxjs";
 import {NewsDto} from "@/app/navigation/news/dto/news.dto";
 import {patch, updateItem} from "@ngxs/store/operators";
 import {StorageManagerService} from "@/common/storage/storage-manager.service";
+import {newsSortBy} from "@/app/navigation/news/types/newsSortBy";
 
 
 export class GetNews {
   static readonly type = '[news_store] Get news'
-  constructor() {}
+  constructor(public sortBy: newsSortBy) {}
 }
 
 export class GetSelectedNews {
   static readonly type = '[news_store] Get selected news'
-
   constructor(public id: number) {}
 }
 
 export class ClearSelectedNews {
   static readonly type = '[news_store] Remove selected news'
-
   constructor() {}
 }
 
@@ -52,8 +51,8 @@ export class NewsStore {
   }
 
   @Action(GetNews)
-  getNews(ctx: StateContext<NewsState>) {
-    return this.newsService.getNews().pipe(
+  getNews(ctx: StateContext<NewsState>, payload: GetNews) {
+    return this.newsService.getNews(payload.sortBy).pipe(
       tap((res: NewsDto[]): void => {
         ctx.setState(patch({
           news: res

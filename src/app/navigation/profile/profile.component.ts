@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
-import {Select} from "@ngxs/store";
-import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
-import {Observable} from "rxjs";
 import {phantomIcons} from "@/common/icons/phantomIcons";
+import {RouterType} from "@/app/components/global/nav/router/types/RouterType";
 
 @Component({
   selector: 'app-profile',
@@ -12,15 +10,19 @@ import {phantomIcons} from "@/common/icons/phantomIcons";
 export class ProfileComponent {
   protected readonly phantomIcons = phantomIcons;
 
-  @Select(AuthStore.getUsername)
-  username$: Observable<string>;
-
-  @Select(AuthStore.getEmail)
-  email$: Observable<string>
-
-  @Select(AuthStore.getCreatedAtAccount)
-  createdAt$: Observable<string>
-
-  @Select(AuthStore.getActiveGroup)
-  active_group$: Observable<string>
+  navRoutes: RouterType[] = [
+    {
+      text: 'Основное',
+      link: './',
+      routerLinkActive: 'active'
+    }, {
+      text: 'Безопасность',
+      link: 'security',
+      routerLinkActive: 'active'
+    }, {
+      text: 'Пополнение',
+      link: 'restocking',
+      routerLinkActive: 'active'
+    }
+  ]
 }

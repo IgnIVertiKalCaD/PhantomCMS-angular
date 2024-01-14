@@ -1,3 +1,33 @@
 <div class="preview">
+  <div class="logo_title">
+    <i [outerHTML]="phantomIcons.logo_phantom_without_CMS | safe"></i>
+    <span class="pos-relative separator">
+        <i></i>
+    </span>
+    <p>CMS</p>
+  </div>
+
   <img ngSrc="assets/images/turtle.png" width="356" height="207">
+
+  <div class="description">
+    <div class="upper">
+      <span>Уникальные</span> игровые сервера Minecraft с модами совершенно по-новому!
+    </div>
+    <div class="lower mt-3">
+      <span>Присоединяйтесь</span> к тысяче игроков прямо сейчас и <span>покоряйте</span> новые вершины!
+    </div>
+  </div>
+
+  <app-modal id="modal-1">
+    <h1>A custom modal popup</h1>
+    <p>Home page text:</p>
+    <button (click)="modalService.close();">Close</button>
+  </app-modal>
+
+  <app-button
+    (click)="modalService.open('modal-1')"
+    className="start-play">приступить к игре</app-button>
+
 </div>
+
+<nav class='nav-spacer'></nav>

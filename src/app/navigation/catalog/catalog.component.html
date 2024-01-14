@@ -16,9 +16,9 @@
     <app-donate-card class="root-donate-card"/>
   </main>
 
-  <nav class="right">
+  <nav class="right nav-spacer">
     <app-input-selector title="Сервер" [listItems]="sortByServer"/>
     <app-input-selector title="Период" [listItems]="sortByPeriod"/>
-    <i-button color="primary" className="store-btn" text="Купить"/>
+    <app-button className="default">Купить</app-button>
   </nav>
 </section>

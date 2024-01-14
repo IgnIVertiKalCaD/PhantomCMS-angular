@@ -1,21 +1,30 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {routerIcons} from "@/common/icons/routerIcons";
+import {RouterLink, RouterLinkActive} from "@angular/router";
+import {SafePipe} from "@/pipes/safe.pipe";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-router',
-  encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
   templateUrl: './router.component.html',
-  styleUrls: ['./router.component.scss']
+  styleUrls: ['./router.component.scss'],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    SafePipe,
+    NgIf
+  ]
 })
 export class RouterComponent {
   @Input()
-  icon: string;
+  icon: string | undefined;
 
   @Input()
   routerLink: string;
 
   @Input()
-  test: string;
+  className: 'profile' | 'default' | 'footer' = 'default';
 
   @Input()
   routerLinkActive: string;
@@ -25,5 +34,4 @@ export class RouterComponent {
 
   @Input()
   ariaCurrentWhenActive: boolean | "page" | "step" | "location" | "date" | "time" | undefined;
-  protected readonly routerIcons = routerIcons;
 }

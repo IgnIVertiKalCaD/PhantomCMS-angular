@@ -1,0 +1,16 @@
+<p class="title">сменить электронную почту</p>
+
+<div class="d-flex">
+  <app-text-field
+    class="flex-1"
+    className="outline"
+    placeholder="Введите новый e-mail">
+  </app-text-field>
+
+  <app-button className="send-code" class="ml-4">Запросить код</app-button>
+</div>
+
+<div class="block-error">
+  <i [outerHTML]="phantomIcons.error_circles_icon | safe"></i>
+  <p>Пользователь с такой учётной записью уже существует!</p>
+</div>

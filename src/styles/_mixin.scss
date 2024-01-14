@@ -57,6 +57,9 @@ $displays: flex, block, grid, none;
 .flex-wrap {
   flex-wrap: wrap;
 }
+.flex-1 {
+  flex: 1;
+}
 
 .fill-height {
   height: 100%;

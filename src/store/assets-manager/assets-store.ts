@@ -8,7 +8,6 @@ import {Buffer} from 'buffer'
 import {patch} from "@ngxs/store/operators";
 import {steve} from "@/common/defaultSkins/steve";
 import {base64ToBlobURL} from "@/common/utils/base64ToBlobURL";
-import {HttpErrorResponse} from "@angular/common/http";
 
 //HEAD
 export class GetUserHead {

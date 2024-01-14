@@ -1,0 +1,13 @@
+app-icon {
+  display: flex;
+
+  .solid {
+    display: flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 16px;
+    background: rgba(103, 99, 255, 0.15);
+  }
+}

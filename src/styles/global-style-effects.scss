@@ -3,7 +3,7 @@
 @mixin icon-hover-pressed-effect($opacity: 0.5) {
   cursor: pointer;
 
-  transition: opacity 0.3s ease;
+  transition: opacity 0.1s ease-in;
   opacity: $opacity;
 
   &:hover {
@@ -56,14 +56,6 @@
     }
 }
 @mixin main-nav-corrector {
-  nav.right {
-    flex: 0 1 45%;
-
-    min-width: $nav-width;
-    max-width: $nav-width;
-
-    margin-left: 30px;
-  }
   section > main {
     flex: 0 2 auto;
   }

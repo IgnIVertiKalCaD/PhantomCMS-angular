@@ -7,7 +7,6 @@ import {ServersComponent} from "@/app/navigation/servers/servers.component";
 import {ProfileComponent} from "@/app/navigation/profile/profile.component";
 import {MainComponent} from "@/app/navigation/profile/main/main.component";
 import {SecurityComponent} from "@/app/navigation/profile/security/security.component";
-import {StatisticComponent} from "@/app/navigation/profile/statistic/statistic.component";
 import {CatalogComponent} from "@/app/navigation/catalog/catalog.component";
 import {AuthComponent} from "@/app/auth/auth.component";
 import {AuthenticationComponent} from "@/app/auth/authentication/authentication.component";
@@ -17,6 +16,7 @@ import {CodeComponent} from "@/app/auth/code/code.component";
 import {Page404Component} from "@/app/errors/page404/page404.component";
 import {authGuard} from "@/guards/auth.guard";
 import {NewsDetailsComponent} from "@/app/navigation/news/news-details/news-details.component";
+import {RestockingComponent} from "@/app/navigation/profile/restocking/restocking.component";
 
 
 const routes: Routes = [
@@ -61,8 +61,8 @@ const routes: Routes = [
             component: SecurityComponent,
           },
           {
-            path: 'statistic',
-            component: StatisticComponent,
+            path: 'restocking',
+            component: RestockingComponent,
           },
         ]
       },

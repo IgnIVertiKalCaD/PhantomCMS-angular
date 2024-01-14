@@ -1,0 +1,53 @@
+app-chip {
+
+  > div {
+    border-radius: 12px;
+    width: fit-content;
+  }
+
+  .for-news {
+
+    color: #6563EE;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 24px;
+
+
+    > p {
+    }
+
+    > svg {
+    }
+  }
+
+  .for-servers {
+    background: #1E1E25;
+
+    display: flex;
+    align-items: center;
+    padding: 3px 6px 3px 3px;
+
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    > p {
+      margin-left: 5px;
+
+      color: rgba(255, 255, 255, 0.50);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    > svg {
+      border-radius: 10px;
+      background: rgba(101, 99, 238, 0.2);
+      padding: 4px;
+    }
+  }
+
+}

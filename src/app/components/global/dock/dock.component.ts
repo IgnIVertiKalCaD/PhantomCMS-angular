@@ -23,7 +23,7 @@ export class DockComponent implements OnInit, AfterViewInit {
 
   public heightHeader: number;
 
-  defaultHead: string = 'assets/images/playerDefault.png'
+  defaultHead: string = 'assets/images/defaultPlayer.png'
 
   isHide: boolean = true
 

@@ -9,7 +9,7 @@ $exit-img: 22px;
 
     padding: 14px 0 !important;
     background: rgba(21, 21, 25, 0.2);
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(15px);
   }
 
   &.unpin {
@@ -40,7 +40,6 @@ header {
       .description {
         color: #8F8F94;
         font-size: 16px;
-        font-style: normal;
         font-weight: 400;
         line-height: 24px;
       }
@@ -49,7 +48,6 @@ header {
     > .right {
       color: #FFF;
       font-size: 16px;
-      font-style: normal;
       font-weight: 700;
       line-height: 24px;
 
@@ -82,7 +80,7 @@ header {
         justify-content: flex-end;
 
         min-height: 60px;
-        width: 280px;
+        width: 300px;
         border-radius: 24px;
 
         div {

@@ -1,0 +1,44 @@
+@import "variables";
+
+app-security {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 28px;
+
+  margin: 65px 4rem 0 4rem;
+
+  > * {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    padding: 24px 12px;
+
+    font-style: normal;
+    border-radius: 16px;
+
+    background: $base-bg-accent-color;
+
+    > .upper,
+    > .title {
+      color: $base-text-accent-color;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 28px;
+      text-transform: uppercase;
+    }
+  }
+
+  .block-error {
+    color: $red-light;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+}

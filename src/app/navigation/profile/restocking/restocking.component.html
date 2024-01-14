@@ -1,0 +1,14 @@
+<p class="title">Пополнить ИГРОВОЙ баланс</p>
+
+<app-text-field className="outline" placeholder="Введите желаемую сумму коинов"/>
+
+<app-input-selector
+  title="Выберите способ оплаты"
+  [listItems]="[{text: 'MasterPidr'}, {text: 'ViskiVisa'}]"
+></app-input-selector>
+
+<app-button
+  class="mt-2"
+  className="restocking">
+  Пополнить
+</app-button>

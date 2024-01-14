@@ -21,7 +21,7 @@ import {RecoveryAccountComponent} from "@/app/auth/recovery-account/recovery-acc
 import {CodeComponent} from "@/app/auth/code/code.component";
 import {NavigationComponent} from "@/app/navigation/navigation.component";
 import {Page404Component} from "@/app/errors/page404/page404.component";
-import {IButtonComponent} from "@/app/components/i-button/i-button.component";
+import {ButtonComponent} from "@/app/components/button/button.component";
 import {NavigationModule} from "@/app/navigation/navigation.module";
 import {LogoComponent} from "@/app/components/global/dock/logo/logo.component";
 import {AppRoutingModule} from "@/app/app-routing.module";
@@ -41,6 +41,10 @@ import {AuthInterceptor} from "@/common/interceptors/auth.interceptor";
 import { ImgFillDirective } from '@/directives/imgfill.directive';
 import { SkinViewer3dComponent } from './components/global/skin-viewer3d/skin-viewer3d.component';
 import { RouterComponent } from './components/global/nav/router/router.component';
+import {InputSelectorComponent} from "@/app/components/inputs/input-selector/input-selector.component";
+import { ProgressComponent } from './components/progress/progress.component';
+import { IconComponent } from './components/icon/icon.component';
+import { ModalComponent } from './components/global/modal/modal.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -56,15 +60,18 @@ registerLocaleData(localeRu, 'ru');
     CodeComponent,
     NavigationComponent,
     Page404Component,
-    RouterComponent,
+    IconComponent,
+    ModalComponent,
   ],
   imports: [
+    ProgressComponent,
+    RouterComponent,
     SkinViewer3dComponent,
     ImgFillDirective,
     SafePipe,
     CheckboxComponent,
     OverlayComponent,
-    IButtonComponent,
+    ButtonComponent,
     NavigationModule,
     NgxOtpInputModule,
     LogoComponent,
@@ -81,6 +88,7 @@ registerLocaleData(localeRu, 'ru');
     NgxsModule.forRoot([ServersStore, AuthStore, RegistrationStore, NewsStore, AssetsStore], {}),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     FormsModule,
+    InputSelectorComponent,
   ],
   providers: [
     {
@@ -97,9 +105,10 @@ registerLocaleData(localeRu, 'ru');
       multi: true,
     }
   ],
-    exports: [
-        SkinViewer3dComponent
-    ],
+  exports: [
+    SkinViewer3dComponent,
+    RouterComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

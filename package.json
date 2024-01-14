@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 8080 --host 10.66.66.5 --disable-host-check",
+    "start": "ng serve --port 8080 --host 10.66.66.4 --disable-host-check",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -23,6 +23,7 @@
     "@angular/router": "^16.2.0",
     "@ngxs/store": "^3.8.1",
     "express": "^4.15.2",
+    "keen-slider": "^6.8.6",
     "ngx-otp-input": "^0.11.4",
     "nopt": "^7.2.0",
     "rxjs": "~7.8.0",

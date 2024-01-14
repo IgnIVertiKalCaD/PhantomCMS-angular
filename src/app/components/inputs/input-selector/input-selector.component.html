@@ -1,0 +1,31 @@
+<div class="input-select"
+     [class.open]="isOpen"
+     #selector
+>
+
+  <div class="d-flex align-center justify-space-between w-100"
+  #titleRef
+  >
+    <p class="title">{{ title }}</p>
+    <p *ngIf="showOnline" class="online">325</p>
+  </div>
+
+  <i
+    [innerHTML]="phantomIcons.arrow_select | safe"
+    (click)="isOpen = !isOpen"
+    #icon
+  ></i>
+
+</div>
+
+<div class="options"
+     *ngIf="isOpen">
+  <div class="option d-flex align-center justify-space-between w-100"
+       [style.width.px]="titleRef.offsetWidth"
+       *ngFor="let option of listItems">
+    <p class="title">{{ option.text }}</p>
+    <p *ngIf="showOnline"
+       class="online">325</p>
+  </div>
+
+</div>

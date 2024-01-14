@@ -11,7 +11,7 @@ import {
 import {Observable} from "rxjs";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {IButtonComponent} from "@/app/components/i-button/i-button.component";
+import {ButtonComponent} from "@/app/components/button/button.component";
 import {SafePipe} from "@/pipes/safe.pipe";
 
 @Component({
@@ -19,7 +19,7 @@ import {SafePipe} from "@/pipes/safe.pipe";
   templateUrl: './skin-viewer3d.component.html',
   styleUrls: ['./skin-viewer3d.component.scss'],
   imports: [
-    IButtonComponent,
+    ButtonComponent,
     SafePipe
   ],
   standalone: true
@@ -69,8 +69,8 @@ export class SkinViewer3dComponent implements OnInit {
 
     this.skinViewer = new SkinViewer({
       canvas: document.getElementById("skin_container") as HTMLCanvasElement,
-      width: 290,
-      height: 280,
+      width: 301,
+      height: 271,
     });
 
     this.cape$.subscribe((el: string) => {

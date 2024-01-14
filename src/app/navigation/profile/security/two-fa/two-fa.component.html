@@ -1,0 +1,13 @@
+<p class="title">двухэтапная авторизация</p>
+
+<div class="d-flex">
+  <app-otp-input></app-otp-input>
+
+  <app-button className="send-code" class="ml-4">Подключить</app-button>
+  <app-button className="outline" class="ml-4">QR-код</app-button>
+</div>
+
+<div class="block-error">
+  <i [outerHTML]="phantomIcons.error_circles_icon | safe"></i>
+  <p>Вы указали неверный код!</p>
+</div>

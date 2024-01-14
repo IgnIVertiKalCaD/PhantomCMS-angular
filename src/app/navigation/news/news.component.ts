@@ -5,18 +5,18 @@ import {Observable} from "rxjs";
 import {NewsDto} from "@/app/navigation/news/dto/news.dto";
 import {
   animate,
-  animateChild,
   group,
-  keyframes,
   query,
   stagger,
-  state,
   style,
   transition,
   trigger
 } from "@angular/animations";
 import {ChildrenOutletContexts, Router} from "@angular/router";
 import {Location} from '@angular/common';
+import {InputSelectDto} from "@/app/components/inputs/input-selector/dto/input-select.dto";
+import {newsSortBy} from "@/app/navigation/news/types/newsSortBy";
+import {phantomIcons} from "@/common/icons/phantomIcons";
 
 @Component({
   selector: 'app-news',
@@ -65,17 +65,7 @@ export class NewsComponent implements OnInit, AfterContentChecked {
 
   defaultImageNews: string = 'assets/images/defaultServer.png'
 
-  sortByType: { name: string }[] = [
-    {name: 'Новые'},
-    {name: 'Лучшее'},
-  ];
-
-  sortByTime: { name: string }[] = [
-    {name: 'За всё время'},
-    {name: 'За последний день'},
-    {name: 'За последнюю неделю'},
-    {name: 'За последний месяц'},
-  ];
+  sortBy: newsSortBy = "id:ASC";
 
   @ViewChild('closeDialogEl', {static: false})
   closeDialogEl: ElementRef
@@ -94,10 +84,12 @@ export class NewsComponent implements OnInit, AfterContentChecked {
   listNews$: Observable<NewsDto[]>
 
   ngOnInit() {
-    this.store.dispatch(new GetNews());
+    this.store.dispatch(new GetNews(this.sortBy));
   }
 
   ngAfterContentChecked(): void {
     this.changeDetector.detectChanges();
   }
+
+  protected readonly phantomIcons = phantomIcons;
 }
