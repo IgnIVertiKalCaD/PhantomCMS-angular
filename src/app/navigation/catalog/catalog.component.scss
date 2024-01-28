@@ -1,10 +1,6 @@
-@import "global-style-effects";
-@include main-nav-corrector;
+@import "variables";
 
-section {
-  .root-donate-card {margin: 8px}
+app-catalog {
 
-  nav.catalog-right-nav {
-  }
 
 }

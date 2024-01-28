@@ -1,31 +1,70 @@
-<div class="input-select"
-     [class.open]="isOpen"
-     #selector
->
-
-  <div class="d-flex align-center justify-space-between w-100"
-  #titleRef
+<section [class]="className">
+  <div class="selector"
+       #selector
+       (click)="isOpen = !isOpen"
+       [class.open]="isOpen"
   >
-    <p class="title">{{ title }}</p>
-    <p *ngIf="showOnline" class="online">325</p>
+
+    <div class="d-flex align-center w-100 content-selector"
+         *ngFor="let selOpt of selectedOption">
+      <div>
+        <p class="title"
+           *ngIf="title"
+        >
+          {{ title }}
+        </p>
+
+        <p class="selected-option">
+          <img
+            *ngIf="selOpt.icon"
+            [src]="selOpt.icon" width="32" alt="1"
+          >
+          {{ selOpt.text }}
+        </p>
+      </div>
+
+      <p *ngIf="selOpt.extra" class="extra">{{ selOpt?.extra?.value }} {{ selOpt?.extra?.currency }}</p>
+    </div>
+
+
+    <app-icon
+      [class]="className + '_' + 'icon'"
+      [class.open]="isOpen"
+    >
+      <i [outerHTML]="phantomIcons.arrow_select | safe"></i>
+    </app-icon>
+
+
   </div>
 
-  <i
-    [innerHTML]="phantomIcons.arrow_select | safe"
-    (click)="isOpen = !isOpen"
-    #icon
-  ></i>
+  <div class="options"
+       *ngIf="isOpen"
+  >
+    <div class="option d-flex align-center"
+         *ngFor="let option of listOptions"
+         (click)="selectOption(option)"
+    >
+      <p class="title">
+        <img
+          *ngIf="option.icon"
+          [src]="option.icon" width="24" alt="1">
+        {{ option.text }}
+      </p>
 
-</div>
+      &nbsp;
 
-<div class="options"
-     *ngIf="isOpen">
-  <div class="option d-flex align-center justify-space-between w-100"
-       [style.width.px]="titleRef.offsetWidth"
-       *ngFor="let option of listItems">
-    <p class="title">{{ option.text }}</p>
-    <p *ngIf="showOnline"
-       class="online">325</p>
+      <p *ngIf="option?.extra?.value"
+         class="extra">
+        {{ option?.extra?.value }}
+
+        {{ option?.extra?.currency }}
+      </p>
+
+      <app-icon *ngIf="spacer"
+                [class]="className + '_' + 'icon'">
+        <i [outerHTML]="phantomIcons.arrow_select | safe"></i>
+      </app-icon>
+    </div>
+
   </div>
-
-</div>
+</section>

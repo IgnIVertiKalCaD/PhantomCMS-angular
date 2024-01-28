@@ -1,6 +1,6 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
-import {ChildrenOutletContexts} from "@angular/router";
+import {ChildrenOutletContexts, IsActiveMatchOptions} from "@angular/router";
 import {navigateAnimation} from "@/app/navigation/animation";
 import {DockComponent} from "@/app/components/global/dock/dock.component";
 import {routerIcons} from "@/common/icons/routerIcons";
@@ -30,7 +30,7 @@ import KeenSlider, { KeenSliderInstance } from "keen-slider"
   ],
 })
 
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, AfterViewInit {
   constructor(private contexts: ChildrenOutletContexts) {}
 
   @ViewChild("sliderRef") sliderRef: ElementRef<HTMLElement>
@@ -38,6 +38,8 @@ export class NavigationComponent implements OnInit {
   currentSlide: number = 0
   dotHelper: Array<Number> = []
   slider: KeenSliderInstance;
+
+
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -97,27 +99,22 @@ export class NavigationComponent implements OnInit {
       icon: routerIcons.main_icon,
       text: 'Главная',
       link: '',
-      routerLinkActive: 'active'
     }, {
       icon: routerIcons.news_icon,
       text: 'Новости',
       link: '/news',
-      routerLinkActive: 'active'
     }, {
       icon: routerIcons.servers_icon,
       text: 'Сервера',
       link: '/servers',
-      routerLinkActive: 'active'
     }, {
       icon: routerIcons.profile_icon,
       text: 'Профиль',
       link: '/profile',
-      routerLinkActive: 'active'
     }, {
       icon: routerIcons.store_icon,
       text: 'Магазин',
       link: '/store',
-      routerLinkActive: 'active'
     },
   ]
 
@@ -132,10 +129,10 @@ export class NavigationComponent implements OnInit {
   isPinedDock: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event): void {
-    this.isShow = window.scrollY > 100;
-    this.isPinedDock = 1 < window.scrollY;
-  }
+  // onScroll(event: Event): void {
+  //   this.isShow = window.scrollY > 100;
+  //   this.isPinedDock = 1 < window.scrollY;
+  // }
 
   ngOnInit() {
   }

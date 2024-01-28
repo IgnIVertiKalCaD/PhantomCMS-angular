@@ -1,0 +1,47 @@
+<div class="block-auth">
+  <div class="steps">
+    <span
+      *ngFor="let el of [].constructor(countSteps); let i = index"
+      [class.active]="IdComponent >= i">
+    </span>
+  </div>
+
+  <div class="center">
+    <div class="block-title">
+      <img ngSrc="assets/images/turtle.png" width="177" height="103" alt="turtle">
+      <p class="guideline">{{ scene.inputs.title }}</p>
+    </div>
+
+    <ng-container *ngComponentOutlet="scene.component"/>
+
+  </div>
+
+  <div class="auxiliary">
+    <div
+      *ngIf="!isTheEnd && IdComponent > 0"
+    >
+      <app-button
+        (click)="back()"
+        class="back"
+        className="solid">
+        <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>
+        Назад
+      </app-button>
+
+      <hr>
+    </div>
+
+    <div
+    >
+      <p>{{ IdComponent < 1 ? 'Ещё нет аккаунта?' : 'Забыли пароль?' }}</p>
+      &nbsp;
+      <app-router
+        class="auth"
+        className="auxiliary"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="IdComponent < 1 ? registration_link : resetAccount_link">
+        {{ IdComponent < 1 ? 'Регистрация' : 'Восстановить' }}
+      </app-router>
+    </div>
+  </div>
+</div>

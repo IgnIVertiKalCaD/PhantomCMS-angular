@@ -1,0 +1,48 @@
+@import "variables";
+
+:host {
+  display: block;
+
+  > label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      color: #FFF;
+      opacity: .5;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px; /* 140% */
+    }
+
+    .checkmark {
+      position: relative;
+      display: flex;
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 5px;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      &.checked {
+        background: #6763FF;
+      }
+    }
+
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+}
+

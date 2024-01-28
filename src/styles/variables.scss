@@ -1,13 +1,16 @@
 //colors
 $base-bg-color: #0D0D11;
 $base-bg-accent-color: #151519;
+
 $white-1: #FFF;
 
+
 //dev
-$white-09: #FFF;
-$white-08: #FFF;
-$white-075: #FFF;
-$white-07: #FFF;
+$white-09: rgba(255, 255, 255, 0.9);
+$white-08: rgba(255, 255, 255, 0.8);
+$white-075: rgba(255, 255, 255, 0.75);
+$white-07: rgba(255, 255, 255, 0.7);
+$white-05: rgba(255, 255, 255, 0.5);
 //end dev
 
 $red: #F44;
@@ -16,6 +19,11 @@ $red-light: #FF5353;
 $base-button-accent-color: #6563EE;
 $base-text-accent-color: #6563EE;
 $base-border-color: #6563EE;
+
+$base-bg-inputs: #1E1E25;
+$base-bg-input-selector: #24233B;
+
+$second-bg-input-selector: #161623;
 
 $accent-color: #8887E1;
 

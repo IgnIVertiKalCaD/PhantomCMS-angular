@@ -1,5 +1,9 @@
-<div class="modal">
-  <div class="modal-body">
+<div #modal
+  @modalOpenAnimation
+  *ngIf="isOpen"
+  class="modal">
+
+  <section>
     <ng-content></ng-content>
-  </div>
+  </section>
 </div>

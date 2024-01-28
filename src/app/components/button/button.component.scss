@@ -14,23 +14,23 @@
 
   height: auto;
 
-  border-radius: 16px;
+  border-radius: 12px;
   display: block;
 
   transition: 0.1s ease-out;
+
+  &:hover {
+    opacity: .75;
+
+    &:active {
+      opacity: .5
+    }
+  }
 }
 
 app-button {
   .default {
     @include default-btn;
-
-    &:hover {
-      opacity: .75;
-
-      &:active {
-        opacity: .5
-      }
-    }
   }
   .outline {
     @include default-btn;
@@ -48,6 +48,12 @@ app-button {
         opacity: .5
       }
     }
+  }
+
+  .auth {
+    @include default-btn;
+    padding: 16px 30px;
+
   }
 
   .load-avatar {
@@ -104,24 +110,30 @@ app-button {
     border-radius: 32px;
   }
 
-  .send-code {
-    @include default-btn;
+  &.send-code {
+    .solid {
+      @include default-btn;
 
-    height: 100%;
+      height: 100%;
+      padding: 0 12px;
 
-    font-weight: 400;
-    padding: 0 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
 
   }
 
-  .change-password {
-    @include default-btn;
+  &.change-password {
+    .solid {
+      @include default-btn;
 
-    font-weight: 400;
+      padding: 8px 12px;
+      justify-content: center;
+      align-items: center;
 
-    padding: 16px 4em;
-    justify-content: center;
-    align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+    }
 
   }
 
@@ -144,5 +156,126 @@ app-button {
 
     width: 18rem;
     padding: 16px 20px;
+  }
+
+  &.two-fa {
+    .solid {
+      @include default-btn;
+
+      height: 100%;
+      padding: 0 12px;
+
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .outline {
+      border-radius: 16px;
+      padding: 0 12px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  &.auth-btn {
+    .solid {
+      @include default-btn;
+
+      font-weight: 400;
+
+      display: flex;
+      align-items: center;
+
+      gap: 6px;
+
+      padding: 10px 20px;
+    }
+  }
+
+  &.modal-btn {
+    .solid {
+      @include default-btn;
+
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      padding: 16px 34px;
+    }
+    .outline {
+      padding: 15px 34px;
+
+      border: 1px solid rgba(255, 255, 255, 0.50);
+    }
+  }
+
+  &.good-game {
+    .solid {
+      @include default-btn;
+
+      font-weight: 400;
+
+      display: flex;
+      align-items: center;
+
+      gap: 6px;
+
+      padding: 16px 20px;
+    }
+  }
+  &.back {
+    .solid {
+      @include default-btn;
+
+      font-weight: 400;
+
+      display: flex;
+      align-items: center;
+
+      gap: 4px;
+
+      padding: 6px 10px;
+
+      > svg {
+        //rotate from right to left
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+  .with-icon {
+    cursor: pointer;
+    display: flex;
+
+    path {
+      fill: #6763FF;
+    }
+    line {
+      stroke: #6763FF;
+    }
+
+  }
+
+  &.items-card {
+    .solid {
+      @include default-btn;
+
+      width: 100%;
+
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &.profile {
+    &.main {
+      .solid {
+        @include default-btn;
+
+        padding: 0 36px;
+      }
+    }
   }
 }

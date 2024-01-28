@@ -11,13 +11,23 @@ import {CatalogComponent} from "@/app/navigation/catalog/catalog.component";
 import {AuthComponent} from "@/app/auth/auth.component";
 import {AuthenticationComponent} from "@/app/auth/authentication/authentication.component";
 import {RegistrationComponent} from "@/app/auth/registration/registration.component";
-import {RecoveryAccountComponent} from "@/app/auth/recovery-account/recovery-account.component";
-import {CodeComponent} from "@/app/auth/code/code.component";
 import {Page404Component} from "@/app/errors/page404/page404.component";
 import {authGuard} from "@/guards/auth.guard";
 import {NewsDetailsComponent} from "@/app/navigation/news/news-details/news-details.component";
 import {RestockingComponent} from "@/app/navigation/profile/restocking/restocking.component";
+import {StoreItemsComponent} from "@/app/navigation/catalog/store-items/store-items.component";
+import {StorePrivilegesComponent} from "@/app/navigation/catalog/store-privileges/store-privileges.component";
 
+
+// type RoutePaths<T> = T extends { path: infer P, children?: infer C }
+//   ? P extends string
+//     ? C extends unknown[]
+//       ? `${P & string}/${RoutePaths<C[number]>}`
+//       : P & string
+//     : never
+//   : never;
+//
+// type RoutePathsArray<T extends Readonly<Array<{ path: string }>>> = RoutePaths<T[number]>;
 
 const routes: Routes = [
   {
@@ -69,7 +79,17 @@ const routes: Routes = [
       {
         path: 'store',
         component: CatalogComponent,
-        data: { animation: 'StorePage' }
+        data: { animation: 'StorePage' },
+        children: [
+          {
+            path: '',
+            component: StoreItemsComponent,
+          },
+          {
+            path: 'privileges',
+            component: StorePrivilegesComponent,
+          },
+        ]
       }
     ]
   },
@@ -86,19 +106,13 @@ const routes: Routes = [
         path: 'registration',
         component: RegistrationComponent,
       },
-      {
-        path: 'reset',
-        component: RecoveryAccountComponent,
-      },
-      {
-        path: 'code',
-        component: CodeComponent,
-      },
     ]
   },
 
   { path: '**', component: Page404Component },  // Wildcard route for a 404 page
 ];
+
+// export type RoutesType = RoutePathsArray<typeof routes>
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "disabled"}) ],

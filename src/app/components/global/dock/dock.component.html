@@ -2,7 +2,6 @@
 
   <div class="d-flex left">
     <app-logo/>
-<!--    refactor-->
     <p class="delimiter"
        *ngIf="isAuth$ | async"></p>
     <p class="description"
@@ -25,7 +24,7 @@
     </section>
 
     <section *ngIf="!(isAuth$ | async)">
-      <app-button className="auth" link="/auth">
+      <app-button className="auth" routerLink="/auth">
         Войти
       </app-button>
     </section>

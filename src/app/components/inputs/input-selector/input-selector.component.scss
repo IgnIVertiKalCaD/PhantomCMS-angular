@@ -1,92 +1,250 @@
+@import "variables";
+
 $padding: 9px;
 
-.input-select, .options {
-  flex: 1;
+.extra {
+  user-select: none;
+  padding: 0 8px;
 
+  margin-left: auto;
+
+  color: #6763FF;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+
+  border-radius: 6px;
+  background: rgba(103, 99, 255, 0.15);
+}
+
+@mixin default-selector() {
   transition: .05s ease-in;
+
   padding: $padding;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  color: #FFF;
+  color: $white-1;
   font-size: 14px;
   font-weight: 600;
 
-  border-radius: 12px;
-  background: rgba(118, 114, 255, 0.15);;
+  background: $base-bg-input-selector;
 
-  div {
-    > .online {
-      user-select: none;
-      padding: 0 8px;
-
-      color: #6763FF;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 24px; /* 171.429% */
-
-      border-radius: 6px;
-      background: rgba(103, 99, 255, 0.15);
-    }
-  }
-
-  > i {
-    display: flex;
-    align-items: center;
-    padding: 10.075px 7px 8.175px 7px;
-
-    transition: .1s ease;
-    &:hover {
-      cursor: pointer;
-      opacity: .75;
-    }
-  }
 }
 
-.input-select.open {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-
-  > i {
-    transform: rotate(180deg);
-  }
-}
-
-.options {
-  overflow: hidden;
-  align-items: flex-start;
+@mixin default-options() {
   flex-direction: column;
 
-  padding: 0;
+  background: $base-bg-input-selector;
 
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  transition: .05s ease-in;
 
+  padding-bottom: 5px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: $white-1;
+  font-size: 14px;
+  font-weight: 600;
 
   .option {
+
     user-select: none;
 
-    margin-bottom: 9px;
     transition: .1s ease-in;
 
-    > .title {
-      padding: $padding;
-    }
-
-    &:hover {
-      background: rgba(91, 87, 232, 0.15);
+    padding: calc($padding / 2) $padding;
 
 
-      &:active {
-
-      }
-    }
-    &:last-child {
-      margin-bottom: 0;
+    > app-icon {
+      visibility: hidden;
     }
   }
+}
+
+:host {
+
+  .solid_v1 {
+    overflow: hidden;
+    border-radius: 12px;
+
+    width: 100%;
+
+    .selector {
+      @include default-selector();
+
+      padding: $padding;
+
+      cursor: pointer;
+
+
+    }
+    .options {
+      @include default-options();
+
+      margin-top: - calc($padding / 2);
+
+    }
+  }
+
+  .solid_v2 {
+    overflow: hidden;
+    border-radius: 12px;
+
+    .selector {
+      @include default-selector();
+
+      cursor: pointer;
+
+      border-radius: 16px;
+      background: $base-bg-accent-color;
+
+      padding: 9px 16px;
+
+      .title {
+        color: #8F8F94;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+
+      .selected-option {
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+
+    }
+    .options {
+      @include default-options();
+
+      background: $base-bg-accent-color;
+      border: 1.5px solid #6563EE;
+      border-radius: 16px;
+
+      margin-top: 10px;
+      padding: 10px 0;
+
+      gap: 5px;
+
+
+      .option {
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+
+        padding: 8px;
+        margin: 0 10px;
+
+        &:hover {
+          background: #1E1E25;
+        }
+      }
+    }
+  }
+
+  .solid_v3 {
+    width: 330px;
+
+    overflow: hidden;
+    border-radius: 12px;
+
+    .extra {
+      margin: 0;
+      padding: 0;
+
+      background: none;
+
+      color: rgba(255, 255, 255, 0.50);
+    }
+
+
+    .selector {
+      @include default-selector();
+
+      cursor: pointer;
+
+      height: 46px;
+
+      background: $second-bg-input-selector;
+
+      padding: 0 14px;
+
+      > .content-selector {
+        justify-content: space-between;
+      }
+
+      .extra {
+        margin: 0 14px;
+      }
+
+      .title {
+        color: $white-075;
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .selected-option {
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+
+        gap: 12px;
+
+        display: flex;
+        align-items: center;
+      }
+
+    }
+    .options {
+      @include default-options();
+
+      background: $second-bg-input-selector;
+
+      padding: 10px 0;
+
+      gap: 5px;
+
+
+      .option {
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+
+        padding: 8px;
+        margin: 0 10px;
+
+        .title {
+          gap: 10px;
+
+          display: flex;
+          align-items: center;
+        }
+
+        &:hover {
+          background: #1E1E25;
+        }
+      }
+    }
+  }
+
+
 }
 

@@ -57,6 +57,8 @@ export class DockComponent implements OnInit, AfterViewInit {
     if (this.isAuth) this.store.dispatch(new GetUserHead(this.username))
 
     this.message = this.niceMessages[this.getRandomInt(this.niceMessages.length)]
+
+
   }
   ngAfterViewInit() {
     this.heightHeader = this.header.nativeElement.offsetHeight

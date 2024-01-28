@@ -1,0 +1,14 @@
+<div class="block-enter">
+  <div>
+    <app-text-field className="outline" placeholder="Придумайте уникальный ник"
+                    [control]="nickname"
+    />
+    <app-button class="auth-btn" className="solid"
+                (click)="next(this.nickname.valid)"
+    >
+      Далее
+      <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>
+    </app-button>
+  </div>
+  <p class="hint">Другие игроки будут узнавать вас по нику. Будьте внимательнее, ник нельзя сменить в будущем.</p>
+</div>

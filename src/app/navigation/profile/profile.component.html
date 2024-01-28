@@ -3,7 +3,7 @@
     <nav>
       <app-router
         *ngFor="let router of navRoutes"
-        [routerLink]="router.link" [routerLinkActive]="router.routerLinkActive"
+        [routerLink]="router.link"
         [routerLinkActiveOptions]="{exact: true}"
         className="profile"
         ariaCurrentWhenActive="page">

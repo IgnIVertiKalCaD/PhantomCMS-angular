@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {ModalService} from "@/services/modal.service";
 
@@ -10,12 +10,11 @@ import {ModalService} from "@/services/modal.service";
     'class': 'd-flex'
   }
 })
-export class PreviewComponent {
-    constructor(
-      protected modalService: ModalService
-    ) {
-    }
+export class PreviewComponent implements OnInit {
+  constructor(protected readonly modalService: ModalService) {}
 
+  ngOnInit() {
+  }
 
-    protected readonly phantomIcons = phantomIcons;
+  protected readonly phantomIcons = phantomIcons;
 }

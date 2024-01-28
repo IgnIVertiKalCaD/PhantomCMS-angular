@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-active-sessions',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./active-sessions.component.scss']
 })
 export class ActiveSessionsComponent {
+
+  sessions: [] = []
 
 }

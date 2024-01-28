@@ -1,51 +1,48 @@
-<section class="d-flex flex-column mt-6">
-  <div *ngIf="!(isLoading$ | async)">
-    <mat-form-field class="login-field">
-      <i class="icon">
-        <img ngSrc="assets/images/svg/auth/loginField.svg" fill class="pos-relative" alt="login">
-      </i>
-      <input matInput placeholder="Имя пользователя или Email" minlength="3" maxlength="16" [formControl]="login"
-             required>
-      <mat-error *ngIf="login.invalid">{{authValidator.getLoginFieldErrorMessage(login)}}</mat-error>
-    </mat-form-field>
-    <mat-form-field class="email-field">
-      <i class="icon">
-        <img ngSrc="assets/images/svg/auth/emailField.svg" fill class="pos-relative" alt="email">
-      </i>
-      <input matInput placeholder="Email" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{authValidator.getEmailFieldErrorMessage(email)}}</mat-error>
-    </mat-form-field>
-    <mat-form-field class="password-field">
-      <i class="icon">
-        <img ngSrc="assets/images/svg/auth/passwordField.svg" fill class="pos-relative" alt="password">
-      </i>
-      <input matInput placeholder="Пароль" [formControl]="password" required>
-      <mat-error *ngIf="password.invalid">{{authValidator.getPasswordFieldErrorMessage(password)}}</mat-error>
-    </mat-form-field>
-    <mat-form-field class="password-field">
-      <i class="icon">
-        <img ngSrc="assets/images/svg/auth/passwordField.svg" fill class="pos-relative" alt="password">
-      </i>
-      <input matInput placeholder="Повторите пароль" [formControl]="password" required>
-      <mat-error *ngIf="password.invalid">{{authValidator.getPasswordFieldErrorMessage(password)}}</mat-error>
-    </mat-form-field>
-
-    <div class='remember-password d-flex'>
-      <app-checkbox (eventCheck)="agreeRule = $event">
-        <p>Я прочитал и принимаю&nbsp;</p><a href='http://localhost:8080'>правила</a>
-        <p>&nbsp;проекта</p>
-      </app-checkbox>
-    </div>
-
-    <div class='d-flex flex-column mt-4'>
-      <app-button [disabled]="!isEnabled()" (click)="registration()" class='mb-4' color="primary"
-                text="Зарегистрироваться" className="default"/>
-      <a [routerLink]="auth_link" class="link-effect text-center w-fit-content m-0-auto">
-        <p class='registration'>Войти</p>
-      </a>
-    </div>
+<div class="block-auth">
+  <div class="steps">
+    <span
+      *ngFor="let el of [].constructor(countSteps); let i = index"
+      [class.active]="IdComponent >= i">
+    </span>
   </div>
 
-  <app-overlay class="d-flex justify-center" *ngIf="isLoading$ | async"/>
+  <div class="center">
+    <div class="block-title">
+      <img ngSrc="assets/images/turtle.png" width="177" height="103" alt="turtle">
+      <p class="guideline">{{ scene.inputs.title }}</p>
+    </div>
 
-</section>
+    <ng-container *ngComponentOutlet="scene.component"/>
+
+  </div>
+
+  <div class="auxiliary">
+    <div
+      *ngIf="!isTheEnd && IdComponent > 0"
+    >
+      <app-button
+        (click)="back()"
+        class="back"
+        className="solid">
+        <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>
+        Назад
+      </app-button>
+
+      <hr>
+    </div>
+
+    <div
+      *ngIf="!isTheEnd"
+    >
+      <p>Уже есть аккаунт?</p>
+      &nbsp;
+      <app-router
+        class="auth"
+        className="auxiliary"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="auth_link">
+        Войти
+      </app-router>
+    </div>
+  </div>
+</div>

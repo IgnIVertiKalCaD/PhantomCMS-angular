@@ -1,6 +1,11 @@
-<div [class]="className">
-  <input [placeholder]="placeholder" [type]="selectType()">
-  <span *ngIf="type === 'password'" class="toggle" (click)="toggleShowPassword()">
+<div [class]="className"  [class.focus]="isFocused">
+  <input [placeholder]="placeholder"
+         (focusin)="isFocused = true"
+         (focusout)="isFocused = false"
+         [type]="selectType()" [formControl]="control">
+
+  <span *ngIf="type === 'password'" class="toggle"
+        (click)="toggleShowPassword()">
         <i *ngIf="!isHide" [innerHTML]="phantomIcons.eye_password_show | safe"></i>
         <i *ngIf="isHide" [innerHTML]="phantomIcons.eye_password_hide | safe"></i>
     </span>

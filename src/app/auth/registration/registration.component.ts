@@ -1,91 +1,61 @@
-import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {authValidator} from "@/common/validaters/authValidator";
+import {Component, inject, OnInit} from '@angular/core';
+import {phantomIcons} from "@/common/icons/phantomIcons";
+import {AuthScenesService} from "@/app/auth/services/auth-scenes.service";
 import {Select, Store} from "@ngxs/store";
-import {
-  Registration,
-  RegistrationStore,
-  SetStatusLoadingRegistration
-} from "@/app/auth/registration/store/registration.store";
+import {SceneChanger} from "@/app/auth/registration/store/sceneСhanger.store";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
-import {Login, SetStatusLoadingAuthentication} from "@/app/auth/authentication/store/authentication.store";
+import {NavigationLogic} from "@/app/auth/core/navigationLogic";
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent implements OnInit{
-  constructor(private readonly store: Store, private readonly router: Router) {
-  }
-
-  protected readonly authValidator = authValidator;
-
+export class RegistrationComponent extends NavigationLogic implements OnInit {
   auth_link: string = '/auth'
 
-  login = new FormControl('', [
-    Validators.required,
-    Validators.pattern("^(?!.*[А-Яа-я]).+$"),
-    Validators.minLength(3),
-    Validators.maxLength(16)
-  ]);
-  email = new FormControl('', [
-    Validators.required,
-    Validators.pattern("^[\\w.-]+@(?:gmail|yandex|mail|rambler|yahoo)\\.(?:com|ru)$")
-  ]);
-  password = new FormControl('', [
-    Validators.required,
-    Validators.minLength(6),
-    Validators.maxLength(32),
-    Validators.pattern("^(?!.*[А-Яа-я]).+$"),
-    Validators.pattern("^(?=.*[A-Z]).+$")
-  ]);
+  protected regList = inject(AuthScenesService).getRegistrationScenes();
+
+  countSteps: number = this.regList.length - 1;
+  IdComponent: number = 0;
+
+  //rofl var. i like it
+  isTheEnd: boolean = false
 
 
-  agreeRule: boolean = false
-
-  isEnabled(): boolean {
-    return this.login.valid && this.password.valid && this.email.valid && this.agreeRule
-  }
-
-  @Select(RegistrationStore.getStatusLoading)
-  isLoading$: Observable<boolean>;
-
-  @Select(RegistrationStore.isRegistrationAllRight)
-  allRight$: Observable<boolean>;
-
-  registration(): void {
-    if (this.isEnabled()) {
-      this.store.dispatch([
-        new SetStatusLoadingRegistration(true),
-        new Registration({
-          username: this.login.value,
-          email: this.email.value,
-          password: this.password.value
-        })
-      ])
+  scene: {
+    component: any,
+    inputs: {
+      title: string
     }
-  }
+  };
 
-  async authentication(): Promise<void> {
-      this.store.dispatch([
-        new SetStatusLoadingAuthentication(true),
-        new Login({
-          usernameOrEmail: this.login.value as string,
-          password: this.password.value as string,
-          rememberMe: true
-        }),
-      ])
+  @Select(SceneChanger.getCurrentIndex)
+  currIndex$: Observable<number>;
 
-    await this.router.navigate(['/news'])
-  }
+  ngOnInit() {
+    // let i = 0;
+    //
+    // this.IdComponent = i
+    // this.scene = this.regList[i]
+    //
 
-  ngOnInit(): void {
-    this.allRight$.subscribe(async done => {
-      if (done) {
-        await this.authentication()
+
+    // setInterval(() => {
+    //   i++
+    //   this.scene = this.regList[i]
+    // }, 2000)
+
+
+    this.currIndex$.subscribe(i => {
+      if (i === this.countSteps) {
+        this.isTheEnd = true
       }
+
+      this.scene = this.regList[i]
+      this.IdComponent = i
     })
   }
+
+  protected readonly phantomIcons = phantomIcons;
 }

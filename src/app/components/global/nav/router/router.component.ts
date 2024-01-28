@@ -1,5 +1,5 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {RouterLink, RouterLinkActive} from "@angular/router";
+import {IsActiveMatchOptions, RouterLink, RouterLinkActive} from "@angular/router";
 import {SafePipe} from "@/pipes/safe.pipe";
 import {NgIf} from "@angular/common";
 
@@ -21,17 +21,19 @@ export class RouterComponent {
   icon: string | undefined;
 
   @Input()
-  routerLink: string;
+  routerLink: string = '';
 
   @Input()
-  className: 'profile' | 'default' | 'footer' = 'default';
+  className: 'profile' | 'default' | 'footer' | 'auxiliary' = 'default';
 
   @Input()
-  routerLinkActive: string;
+  routerLinkActive: string = 'active';
 
   @Input()
-  routerLinkActiveOptions: any;
+  routerLinkActiveOptions: {
+    exact: boolean
+  } | IsActiveMatchOptions  = {exact: false};
 
   @Input()
-  ariaCurrentWhenActive: boolean | "page" | "step" | "location" | "date" | "time" | undefined;
+  ariaCurrentWhenActive: boolean | "page" | "step" | "location" | "date" | "time" | undefined = 'page';
 }

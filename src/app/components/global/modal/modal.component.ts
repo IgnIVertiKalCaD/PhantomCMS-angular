@@ -1,53 +1,81 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalService} from "@/services/modal.service";
+import {animate, keyframes, query, state, style, transition, trigger} from "@angular/animations";
+import {Location, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  animations: [
+    trigger('modalOpenAnimation', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('150ms cubic-bezier(0.35, 0, 0.25, 1)', style({opacity: 1})),
+      ]),
+      transition(':leave', [
+        query('section', [
+          animate('150ms cubic-bezier(0.35, 0, 0.25, 1)', style({transform: 'scale(0.85)', opacity: 0})),
+        ]),
+
+        animate('100ms', style({opacity: 0})),
+      ])
+    ]),
+  ],
+  imports: [
+    NgIf
+  ],
+  standalone: true
 })
 export class ModalComponent implements OnInit, OnDestroy {
-  @Input() id?: string;
+  @Input()
+  id?: string;
+
+  @Input()
+  rollback?: boolean = false;
+
   isOpen = false;
+
+  @ViewChild('modal')
+  modal: ElementRef<HTMLDivElement>
 
   private readonly element: any;
 
-  constructor(private modalService: ModalService, private el: ElementRef) {
+  constructor(
+    private readonly location: Location,
+    private modalService: ModalService,
+    private el: ElementRef) {
     this.element = el.nativeElement;
   }
 
   ngOnInit() {
-    // add self (this modal instance) to the modal service so it can be opened from any component
     this.modalService.add(this);
 
-    // move element to bottom of page (just before </body>) so it can be displayed above everything else
     document.body.appendChild(this.element);
 
-    // close modal on background click
     this.element.addEventListener('click', (el: any) => {
-      if (el.target.className === 'jw-modal') {
+      if (el.target.classList[0] === 'modal') {
+
+        if (this.rollback) {
+          this.location.back()
+        }
+
         this.close();
       }
     });
   }
 
   ngOnDestroy() {
-    // remove self from modal service
     this.modalService.remove(this);
-
-    // remove modal element from html
     this.element.remove();
   }
 
   open() {
-    this.element.style.display = 'block';
-    document.body.classList.add('jw-modal-open');
+    document.body.classList.add('modal-open');
     this.isOpen = true;
   }
 
   close() {
-    this.element.style.display = 'none';
-    document.body.classList.remove('jw-modal-open');
+    document.body.classList.remove('modal-open');
     this.isOpen = false;
   }
 }

@@ -1,13 +1,51 @@
 app-icon {
   display: flex;
 
-  .solid {
-    display: flex;
-    padding: 4px;
-    justify-content: center;
-    align-items: center;
+  svg {
+    transition: .1s ease-out;
+  }
 
-    border-radius: 16px;
-    background: rgba(103, 99, 255, 0.15);
+  &.footer_icon {
+    .solid {
+      display: flex;
+      padding: 4px;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 16px;
+      background: rgba(103, 99, 255, 0.15);
+    }
+  }
+
+
+  &.solid_v1_icon {
+    .solid {
+      display: flex;
+      align-items: center;
+      padding: 10.075px 7px 8.175px 7px;
+
+      transition: .1s ease;
+
+      &:hover {
+        opacity: .75;
+      }
+    }
+  }
+
+  &.solid_v2_icon {
+    @extend .solid_v1_icon;
+  }
+
+  &.solid_v3_icon {
+    @extend .solid_v1_icon;
+  }
+
+
+  &.open {
+    .solid {
+      > svg {
+        transform: rotate(180deg);
+      }
+    }
   }
 }

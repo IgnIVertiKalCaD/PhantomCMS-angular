@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 import {NewsDto} from "@/app/navigation/news/dto/news.dto";
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {Location} from "@angular/common";
+import {ModalService} from "@/services/modal.service";
 
 @Component({
   selector: 'app-news-details',
@@ -18,7 +19,9 @@ import {Location} from "@angular/common";
 export class NewsDetailsComponent implements OnInit, OnDestroy {
   protected readonly phantomIcons = phantomIcons;
 
-  constructor(private readonly location: Location, private readonly route: ActivatedRoute, private readonly store: Store) {}
+  constructor(
+    private readonly modalService: ModalService,
+    private readonly location: Location, private readonly route: ActivatedRoute, private readonly store: Store) {}
 
   defaultImageNews: string = 'assets/images/defaultServer.png'
 
@@ -31,11 +34,15 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
   selectedNews$: Observable<NewsDto>
 
   ngOnInit() {
+    this.modalService.open('modal-news')
+
     document.body.style.overflowY = 'hidden'
     this.store.dispatch(new GetSelectedNews(Number(this.route.snapshot.paramMap.get('id')!)))
   }
 
   ngOnDestroy() {
+    this.modalService.close()
+
     document.body.style.overflowY = 'scroll'
     this.store.dispatch(new ClearSelectedNews())
   }

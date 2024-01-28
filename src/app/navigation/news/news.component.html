@@ -1,13 +1,14 @@
 <section class="d-flex w-100">
   <div class="w-100">
-<!--    <app-text-field class="mb-4 d-block" placeholder="Что происходит?" className="default">-->
-<!--      <img ngSrc="assets/images/xyixnaet.svg" fill class="icons pos-relative" alt="icon">-->
-<!--      <img ngSrc="assets/images/svg/send-message.svg" fill class="icons pos-relative" alt="icon">-->
-<!--    </app-text-field>-->
+    <!--    <app-text-field class="mb-4 d-block" placeholder="Что происходит?" className="default">-->
+    <!--      <img ngSrc="assets/images/xyixnaet.svg" fill class="icons pos-relative" alt="icon">-->
+    <!--      <img ngSrc="assets/images/svg/send-message.svg" fill class="icons pos-relative" alt="icon">-->
+    <!--    </app-text-field>-->
 
     <main [@listAnimation]="(listNews$ | async)?.length">
-      <div class="news-section mb-4 pa-4" *ngFor="let news of listNews$ | async, let i = index">
-
+      <div class="news-section mb-4 pa-4" *ngFor="let news of listNews$ | async, let i = index"
+           (click)="modalService.open('modal-news')"
+      >
 
         <div class='img-container mt-4 d-flex overflow-hidden pos-relative'>
           <img [ngSrc]='news.image ?? defaultImageNews' alt='1' fill priority class="pos-relative cur-p"
@@ -24,17 +25,17 @@
         </div>
 
         <div class="description mt-4">
-            {{ (news.content.length > 400) ? (news.content | slice:0:400) + '...' : (news.content) }}
+          {{ (news.content.length > 400) ? (news.content | slice:0:400) + '...' : (news.content) }}
         </div>
 
         <div class='rating-div mt-4 d-flex justify-space-between'>
-            <div class='rating'>
-              <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+          <div class='rating'>
+            <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
 
-              <b>30</b>
+            <b>30</b>
 
-              <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
-            </div>
+            <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+          </div>
 
           <i [outerHTML]="phantomIcons.dots_icon | safe"></i>
 
@@ -45,21 +46,19 @@
         </app-text-field>
       </div>
     </main>
+
   </div>
 
 </section>
 
-<section class="dialog-news"
-         [class.blur-bg]="isBlur"
-         #closeDialogEl
-         (click)="closeDialog($event)"
+<app-modal id="modal-news" [rollback]="true"
 >
   <div
     [@animNewsDetails]="getRouteAnimationData()"
   >
-    <router-outlet
-      (activate)="isBlur = true"
-      (deactivate)="isBlur = false"
-    />
+  <router-outlet
+  />
   </div>
-</section>
+</app-modal>
+
+

@@ -5,13 +5,15 @@ app-text-field {
   .default {
     display: flex;
     align-items: center;
+
     border-radius: 12px;
     background: #09090C;
 
-    padding: 18px;
 
     input {
       flex: 1;
+
+      padding: 18px;
 
       font-size: 16px;
       color: white;
@@ -26,6 +28,7 @@ app-text-field {
 
     > svg {
       margin-right: 14px;
+      flex-shrink: 0;
 
       @include icon-hover-pressed-effect;
     }
@@ -34,25 +37,45 @@ app-text-field {
   .outline {
     display: flex;
     align-items: center;
+
+    border-radius: 12px;
+    border: 1px solid $base-border-color;
+
+    transition: all .1s ease-out;
+
     background: transparent;
 
-    padding: 16px 20px;
+    &.focus {
+      background: #1E1E25;
+      color: rgba(255, 255, 255, 0.75);
 
-    border-radius: 16px;
-    border: 1px solid #6563EE;
+      input {
+
+        &::placeholder {
+          opacity: .75;
+        }
+      }
+    }
 
     input {
       flex: 1;
 
+      padding: 8px 20px;
+
       color: $white-1;
 
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 400;
       line-height: 28px;
 
+      &:hover {
+      }
+
+
       &::placeholder {
         opacity: 0.5;
-        color: white;
+        font-size: 14px;
+        color: $white-1;
       }
     }
 
@@ -64,10 +87,63 @@ app-text-field {
   }
 
   .toggle {
+    transform: translateX(-16px);
+
     cursor: pointer;
 
     > i {
       display: flex;
     }
   }
+
+  &.catalog {
+    .solid {
+      @extend .default;
+
+      width: 450px;
+      margin: 0 auto;
+
+      border-radius: 16px;
+      background: #161623;
+
+      input {
+        font-size: 20px;
+        font-weight: 400;
+
+        &::placeholder {
+          color: #868688;
+
+        }
+      }
+
+    }
+  }
+
+  &.items-card {
+
+    .solid {
+      @extend .default;
+
+      border-radius: 6px;
+      background: rgba(103, 99, 255, 0.15);
+
+      input {
+        padding: 0 8px;
+
+        width: 30px;
+
+        color: $white-09;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 9px;
+
+        &::placeholder {
+          opacity: .9;
+        }
+      }
+
+    }
+  }
+
 }

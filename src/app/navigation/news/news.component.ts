@@ -17,6 +17,7 @@ import {Location} from '@angular/common';
 import {InputSelectDto} from "@/app/components/inputs/input-selector/dto/input-select.dto";
 import {newsSortBy} from "@/app/navigation/news/types/newsSortBy";
 import {phantomIcons} from "@/common/icons/phantomIcons";
+import {ModalService} from "@/services/modal.service";
 
 @Component({
   selector: 'app-news',
@@ -26,19 +27,19 @@ import {phantomIcons} from "@/common/icons/phantomIcons";
     trigger('animNewsDetails', [
       transition('* <=> *', [
         query(':enter, :leave',
-          style({ position: 'fixed', width: '100%', opacity: '0'}),
-          { optional: true }),
+          style({opacity: '0'}),
+          {optional: true}),
         group([
           query(':enter', [
-            style({ transform: 'translate(0%, -50%) scale(0.8)'}),
-            animate('0.3s ease',
-              style({ transform: 'translate(0%, -50%) scale(1)', opacity: '1'}))
-          ], { optional: true }),
+            style({transform: 'translate(0%, -50%) scale(0.8)'}),
+            animate('0.1s ease',
+              style({transform: 'translate(0%, -50%) scale(1)', opacity: '1'}))
+          ], {optional: true}),
           query(':leave', [
-            style({ transform: 'translate(0%, -50%)', opacity: '1'}),
+            style({transform: 'translate(0%, -50%)', opacity: '1'}),
             animate('0.2s ease',
-              style({ transform: 'translate(0%, -50%) scale(0.6)', opacity: '0'}))
-          ], { optional: true }),
+              style({transform: 'translate(0%, -50%) scale(0.6)', opacity: '0'}))
+          ], {optional: true}),
         ])
       ]),
     ]),
@@ -46,20 +47,22 @@ import {phantomIcons} from "@/common/icons/phantomIcons";
     trigger('listAnimation', [
       transition('* => *', [
         query(':enter', [
-          style({ opacity: 0 }),
+          style({opacity: 0}),
           stagger(100, [
-            animate('0.3s', style({ opacity: 1 }))
+            animate('0.3s', style({opacity: 1}))
           ])
-        ], { optional: true })
+        ], {optional: true})
       ])
     ])
 
   ]
 })
 export class NewsComponent implements OnInit, AfterContentChecked {
-  constructor(private readonly store: Store, private readonly router: Router,
+  constructor(protected readonly modalService: ModalService,
+              private readonly store: Store, private readonly router: Router,
               private contexts: ChildrenOutletContexts,
-              private readonly changeDetector: ChangeDetectorRef, private readonly location: Location) {}
+              private readonly changeDetector: ChangeDetectorRef) {
+  }
 
   isBlur: boolean;
 
@@ -67,17 +70,8 @@ export class NewsComponent implements OnInit, AfterContentChecked {
 
   sortBy: newsSortBy = "id:ASC";
 
-  @ViewChild('closeDialogEl', {static: false})
-  closeDialogEl: ElementRef
-
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
-  }
-
-  closeDialog(event: any) {
-    if (this.closeDialogEl.nativeElement.className === event.target.className) {
-      this.location.back()
-    }
   }
 
   @Select(NewsStore.getNews)
@@ -85,6 +79,7 @@ export class NewsComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {
     this.store.dispatch(new GetNews(this.sortBy));
+
   }
 
   ngAfterContentChecked(): void {

@@ -14,15 +14,12 @@ export class ProfileComponent {
     {
       text: 'Основное',
       link: './',
-      routerLinkActive: 'active'
     }, {
       text: 'Безопасность',
       link: 'security',
-      routerLinkActive: 'active'
     }, {
       text: 'Пополнение',
       link: 'restocking',
-      routerLinkActive: 'active'
     }
   ]
 }

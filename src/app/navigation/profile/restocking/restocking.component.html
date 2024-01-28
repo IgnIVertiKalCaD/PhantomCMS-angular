@@ -2,9 +2,19 @@
 
 <app-text-field className="outline" placeholder="Введите желаемую сумму коинов"/>
 
+<div class="fast-donate">
+  <span *ngFor="let coin of coins"
+        [class.active]="active === coin"
+        (click)="active = (active === coin ? null : coin)">
+    {{ coin }}
+  </span>
+</div>
+
 <app-input-selector
   title="Выберите способ оплаты"
-  [listItems]="[{text: 'MasterPidr'}, {text: 'ViskiVisa'}]"
+  className="solid_v3"
+  [hideTitle]="true"
+  [listItems]="bankList"
 ></app-input-selector>
 
 <app-button

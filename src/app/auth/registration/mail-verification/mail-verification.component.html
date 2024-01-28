@@ -1,0 +1,12 @@
+<div class="block-enter">
+  <div class="justify-center">
+    <app-otp-input
+    />
+  </div>
+  <p class="hint">Проверьте почту, мы отправили письмо с кодом. Не забудьте проверить спам. Отправить повторно через
+    <span *ngIf="time >= 0">{{ time | date:'m:ss' }}</span>
+    <span *ngIf="time < 0"
+          class="cur-p"
+          (click)="resend()">отправить повторно</span>
+  </p>
+</div>

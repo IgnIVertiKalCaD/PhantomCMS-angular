@@ -1,38 +1,44 @@
 @import 'variables';
 
 :host {
-  display: block;
-}
-
-.otp-input-container {
-  gap: 25px;
-  justify-content: center;
-}
-
-.otp-input-box {
-  margin: 0 !important;
-}
-
-.otp {
-  display: block;
-
-
-  .otp-input.input {
-    border-radius: $base-rounded;
-    border: 1px solid $base-border-color;
-    background: #1E1E25;
-
-    height: 50px;
-    width: 39.2px;
-    transition: .3s ease;
-
-    color: $white-1;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-
-    &:focus {
-      border-color: transparent;
-    }
+  hr {
+    background: #FFF;
+    opacity: .5;
+    height: 2px;
+    width: 18px;
   }
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  gap: 25px
+}
+
+.input {
+  transition: 0.1s ease-out;
+
+  border-radius: 16px;
+  border: 1px solid $base-border-color;
+  background: $base-bg-inputs;
+
+  text-align: center;
+
+  display: flex;
+  width: 58px;
+  padding: 16px 0;
+  justify-content: center;
+  align-items: center;
+
+  color: #FFF;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+
+}
+
+.input:focus {
+  border: 1px solid $base-border-color;
+  background: transparent;
 }

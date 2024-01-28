@@ -1,0 +1,27 @@
+@import "variables";
+
+:host {
+  display: flex;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    > .cards-list {
+      gap: 28px;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  .right {
+    gap: 22px;
+  }
+}

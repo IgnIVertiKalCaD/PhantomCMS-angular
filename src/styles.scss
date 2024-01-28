@@ -17,7 +17,10 @@ html {
 }
 
 * {
-  font-family: 'Mulish', sans-serif !important;
+  font-family: 'Mulish', sans-serif;
+
+  font-optical-sizing: auto;
+
   letter-spacing: 0;
   margin: 0;
   padding: 0
@@ -43,6 +46,9 @@ html {
 
 .nav-spacer {
   flex: 1 0 300px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 hr, button, input {
@@ -55,26 +61,22 @@ a {
   text-decoration: none;
 }
 
-
+//in modal
 app-modal {
-  display: none;
 
   .modal {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+
     position: fixed;
+    display: flex;
     inset: 0;
-
     z-index: 10000;
-
-    background-color: rgba(0, 0, 0, .75);
-    padding: 40px;
-
     overflow: auto;
+    justify-content: center;
+    align-items: center;
   }
 
-  .modal-body {
-    padding: 20px;
-    background: #fff;
-  }
 }
 
 body.modal-open {

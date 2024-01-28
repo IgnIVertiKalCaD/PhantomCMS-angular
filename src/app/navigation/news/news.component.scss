@@ -178,8 +178,9 @@ main {
   }
 
   &.details {
-      border-radius: 36px;
-      box-shadow: 0 4px 42px 0 rgba(101, 99, 238, 0.35);
+    border-radius: 36px;
+    box-shadow: 0 4px 42px 0 rgba(101, 99, 238, 0.35);
+    position: relative;
 
     .img-container {
       position: relative;
@@ -212,6 +213,7 @@ main {
     .title {
       transform: translate(18px, 16px);
     }
+
     .description {
       font-size: 20px;
       font-weight: 600;
@@ -254,29 +256,5 @@ main {
 
       @include button-hover-pressed-effect();
     }
-  }
-}
-
-section.dialog-news {
-  transition: .2s ease;
-  z-index: 5;
-
-  &.blur-bg {
-    position: fixed;
-    background: #00000080;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  > div {
-    display: inline-block;
-    position: fixed;
-    width: 52%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
   }
 }

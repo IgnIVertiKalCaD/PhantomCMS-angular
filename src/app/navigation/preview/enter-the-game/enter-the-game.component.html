@@ -1,0 +1,69 @@
+<div class="first">
+
+  <div class="info">
+    <div class="title">
+      <span>01</span>
+      <p>Зарегестрируйся на сайте!</p>
+    </div>
+
+    <div class="buttons">
+      <app-button class="modal-btn" className="solid"
+                  routerLink="/registration">
+        Зарегестрироваться
+      </app-button>
+      <p>
+        Уже есть учётная запись?
+      </p>
+      <app-button class="modal-btn" className="outline"
+                  routerLink="/auth">
+        Войти
+      </app-button>
+    </div>
+  </div>
+
+  <img ngSrc="assets/images/Allay.png" width="244" height="226" alt="Allay">
+
+</div>
+
+<div class="second">
+  <img ngSrc="assets/images/minecraft_boy.png" width="287" height="349" alt="minecraft boy">
+
+  <div class="info">
+    <div class="title">
+      <span>02</span>
+      <p>Скачай лаунчер!</p>
+    </div>
+
+    <div class="buttons">
+      <app-button class="modal-btn" className="solid">
+        <i [outerHTML]="phantomIcons.icon_windows | safe"></i>
+        Windows
+      </app-button>
+      <app-button class="modal-btn" className="solid">
+        <i [outerHTML]="phantomIcons.icon_macos | safe"></i>
+        MacOS
+      </app-button>
+      <app-button class="modal-btn" className="solid">
+        <i [outerHTML]="phantomIcons.icon_linux | safe"></i>
+        Linux
+      </app-button>
+    </div>
+  </div>
+
+</div>
+
+<div class="third">
+
+  <div class="info">
+
+    <div class="title">
+      <span>03</span>
+      <p>Приступай к игре!</p>
+    </div>
+  </div>
+
+  <img ngSrc="assets/images/amethyst_algae.png" width="170" height="235" alt="amethyst algae">
+
+</div>
+
+

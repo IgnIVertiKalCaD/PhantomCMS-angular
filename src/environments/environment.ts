@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://api.phantomcms.org',
+  apiUrl: 'http://localhost:3001',
 };

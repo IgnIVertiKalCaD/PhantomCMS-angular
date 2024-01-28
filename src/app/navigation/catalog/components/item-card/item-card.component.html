@@ -1,0 +1,23 @@
+<p class="name">
+  <ng-content select="[name]" />
+</p>
+
+<div class="image m-0-auto mt-5">
+
+</div>
+
+<div class="block-description mt-7">
+  <p>Количество:</p>
+  <ng-content select="[input]" />
+
+  <div class="control">
+    <app-button className="with-icon">
+      <i [outerHTML]="phantomIcons.control_plus | safe"></i>
+    </app-button>
+    <app-button className="with-icon">
+      <i [outerHTML]="phantomIcons.control_minus | safe"></i>
+    </app-button>
+  </div>
+</div>
+
+<app-button class="items-card mt-3" className="solid">Купить за 123456</app-button>

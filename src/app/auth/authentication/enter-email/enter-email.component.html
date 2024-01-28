@@ -1,0 +1,16 @@
+<div class="block-enter">
+  <div>
+    <app-text-field className="outline" placeholder="example@gmail.com"
+                    [control]="email"
+    />
+    <app-button class="auth-btn" className="solid"
+                (click)="next(this.email.valid)"
+    >
+      Далее
+      <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>
+    </app-button>
+  </div>
+  <div class="hint d-block">
+    Включите режим инкогнито, если не хотите, чтобы ваши данные сохранились в этом браузере. Если вы забыли почту, нажмите <a routerLink="/reset">здесь</a>
+  </div>
+</div>

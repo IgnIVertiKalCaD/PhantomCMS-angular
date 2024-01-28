@@ -1,0 +1,19 @@
+<div class="block-enter">
+  <div class="accept-rules">
+    Завершив регистрацию, вы подтвердите полное согласие со всеми
+    <span
+      (click)="alert('Правил нет')"
+    >правилами</span>
+    проекта и обяжетесь их выполнять.
+  </div>
+  <div>
+    <app-text-field className="outline" placeholder="Введите реферальный код"/>
+    <app-button class="auth-btn" className="solid"
+                (click)="next(true)"
+    >
+        Завершить
+      <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>
+    </app-button>
+  </div>
+  <p class="hint">Если у вас есть реферальный или публичный код, введите его для получения сюрпризов, это необязательно</p>
+</div>

@@ -1,16 +1,19 @@
 :host {
   display: flex;
-}
 
-section > div {
-  width: 950px;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-
-  > app-router {
-    flex: 1 1 auto;
+  section > div {
+    max-width: 1000px;
+    flex: 1;
   }
+
+  nav {
+    display: flex;
+    gap: 30px;
+
+    > app-router {
+      flex: 1 1 auto;
+    }
+  }
+
 }
+

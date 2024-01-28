@@ -1,7 +1,8 @@
 <p class="title">активные сессии</p>
 
-<div class="card-session d-flex justify-space-between align-center">
-
+<div class="card-session d-flex justify-space-between align-center"
+     *ngFor="let i of [].constructor(3)"
+>
   <div class="d-flex flex-column">
     <div class="info d-flex">
       <p>Windows 10, IP 31.131.104.154</p>
@@ -11,33 +12,16 @@
     <p class="browser">Opera 105.0.0.0</p>
   </div>
 
-  <p class="date">28.12.2023</p>
-</div>
-<div class="card-session d-flex justify-space-between align-center">
+  <div class="block-date">
+    <p class="date">28.12.2023</p>
 
-  <div class="d-flex flex-column">
-    <div class="info d-flex">
-      <p>Windows 10, IP 31.131.104.154</p>
-      <span>&nbsp;[текущая]</span>
-    </div>
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.35 14.25C13.125 14.25 12.9 14.1375 12.7875 14.025L7.5 8.73755L2.2125 14.025C1.875 14.3625 1.3125 14.3625 0.975003 14.025C0.637503 13.6875 0.637503 13.1251 0.975003 12.7876L6.2625 7.50005L0.975003 2.21255C0.637503 1.87505 0.637503 1.31255 0.975003 0.975049C1.3125 0.637549 1.875 0.637549 2.2125 0.975049L7.5 6.26255L12.7875 0.975049C13.125 0.637549 13.6875 0.637549 14.025 0.975049C14.3625 1.31255 14.3625 1.87505 14.025 2.21255L8.7375 7.50005L14.025 12.7876C14.3625 13.1251 14.3625 13.6875 14.025 14.025C13.8 14.1375 13.575 14.25 13.35 14.25Z" fill="#FF4444"/>
+    </svg>
 
-    <p class="browser">Opera 105.0.0.0</p>
   </div>
 
-  <p class="date">28.12.2023</p>
 </div>
-<div class="card-session d-flex justify-space-between align-center">
 
-  <div class="d-flex flex-column">
-    <div class="info d-flex">
-      <p>Windows 10, IP 31.131.104.154</p>
-      <span>&nbsp;[текущая]</span>
-    </div>
-
-    <p class="browser">Opera 105.0.0.0</p>
-  </div>
-
-  <p class="date">28.12.2023</p>
-</div>
 
 <app-button class="m-0-auto" className="close-all-sessions">Завершить все сессии</app-button>

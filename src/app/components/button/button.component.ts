@@ -5,7 +5,7 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   host: {
-    'class': 'd-block'
+    'style': 'display: block'
   },
   encapsulation: ViewEncapsulation.None,
   standalone: true,
@@ -15,5 +15,5 @@ export class ButtonComponent {
   disabled: boolean
 
   @Input()
-  className?: 'default' | 'outline' | 'remove' | 'start-play' | 'load-avatar' | 'load-skin_cape' | 'auth' | 'send-code' | 'change-password' | 'close-all-sessions' | 'restocking' = 'default'
+  className?: 'default' | 'with-icon' | 'solid' | 'outline' | 'remove' | 'start-play' | 'load-avatar' | 'load-skin_cape' | 'auth' | 'send-code' | 'change-password' | 'close-all-sessions' | 'restocking' = 'default'
 }

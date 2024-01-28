@@ -1,0 +1,14 @@
+<div class="block-enter">
+  <div>
+    <app-text-field className="outline" placeholder="Придумайте пароль" type="password"
+                    [control]="password"
+    />
+    <app-button class="auth-btn" className="solid"
+                (click)="next(this.password.valid)"
+    >
+      Далее
+      <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>
+    </app-button>
+  </div>
+  <p class="hint">Пароль должен содержать буквы верхнего и нижнего регистров, цифры и быть не мение 8-и символов</p>
+</div>

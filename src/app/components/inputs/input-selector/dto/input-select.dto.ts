@@ -1,4 +1,9 @@
 export type InputSelectDto = {
   text: string,
-  online?: number
-}[]
+  extra?: Partial<
+    {
+      value: number | null,
+      currency: string,
+    }>,
+  icon?: string,
+}
