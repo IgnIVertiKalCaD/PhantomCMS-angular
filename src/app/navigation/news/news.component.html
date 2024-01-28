@@ -11,7 +11,7 @@
       >
 
         <div class='img-container mt-4 d-flex overflow-hidden pos-relative'>
-          <img [ngSrc]='news.image ?? defaultImageNews' alt='1' fill priority class="pos-relative cur-p"
+          <img [ngSrc]='news.attachments[0]?.filename ?? defaultImageNews' alt='1' fill priority class="pos-relative cur-p"
                [routerLink]="['/news', news.id]"
           />
 

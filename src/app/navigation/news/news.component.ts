@@ -78,6 +78,11 @@ export class NewsComponent implements OnInit, AfterContentChecked {
   listNews$: Observable<NewsDto[]>
 
   ngOnInit() {
+
+    this.listNews$.subscribe(news => {
+      console.log(news)
+    })
+
     this.store.dispatch(new GetNews(this.sortBy));
 
   }

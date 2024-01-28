@@ -4,7 +4,7 @@
     <p class='description'>
       {{ (selectedNews$ | async)?.content }}
     </p>
-    <img [ngSrc]='(selectedNews$| async)?.image ?? defaultImageNews' alt='1' fill priority class="pos-relative"/>
+    <img [ngSrc]='(selectedNews$| async)!.attachments[0]!.filename ?? defaultImageNews' [alt]='(selectedNews$| async)!.attachments[0].description' fill priority class="pos-relative"/>
   </div>
 
   <div class="content mt-5">
