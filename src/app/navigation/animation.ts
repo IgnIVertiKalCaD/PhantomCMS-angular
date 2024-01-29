@@ -9,7 +9,7 @@ export const navigateAnimation =
           style({
             opacity: 0,
             position: 'absolute',
-            height: '100%',
+            height: 'auto',
             width: '100%',
           })
         ],
@@ -21,7 +21,7 @@ export const navigateAnimation =
           style({
             opacity: 1,
             position: 'absolute',
-            height: '100%',
+            height: 'auto',
             width: '100%',
           }),
           // animate('.12s', style({ opacity: 0 }))
@@ -35,7 +35,7 @@ export const navigateAnimation =
           style({
             opacity: 0,
             position: 'absolute',
-            height: '100%',
+            height: 'auto',
             width: '100%',
           }),
           // animate('.12s', style({ opacity: 1 }))
