@@ -1,65 +1,69 @@
-<main class='news-section details pa-4'>
+<main class='news-section details'>
   <div class='img-container'>
     <p class='title'>{{ (selectedNews$ | async)?.title }}</p>
-    <p class='description'>
-      {{ (selectedNews$ | async)?.content }}
-    </p>
     <img
       [ngSrc]='(selectedNews$ | async)!.attachments[0]?.filename ?? defaultImageNews'
+      [alt]="(selectedNews$ | async)!.attachments[0]?.description ?? ''"
+      [style.height.px]="250"
       fill priority class="pos-relative"/>
   </div>
 
-  <div class="content">
-    {{ (selectedNews$ | async)?.content }}
-  </div>
-
-  <div class='rating-div'>
-    <div class='d-flex align-center'>
-      <div class='rating'>
-        <app-icon class="news" type="transparent">
-          <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
-        </app-icon>
-        <p>30</p>
-        <app-icon class="news" type="transparent">
-          <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
-        </app-icon>
-      </div>
-
-      <span class='data ml-4'>{{ (selectedNews$| async)?.createdAt | date:'short' }}</span>
+  <div class="sub_news-details">
+    <div class='description'>
+      {{ (selectedNews$ | async)?.content }}
     </div>
 
-          <i [outerHTML]="phantomIcons.dots_icon | safe"></i>
+    <div class="content">
+      {{ (selectedNews$ | async)?.content }}
+    </div>
 
-  </div>
-
-  <div class='comments mt-4'>
-    <section class='d-flex mb-4' *ngFor="let user of (selectedNews$ | async)?.comments">
-      <img alt="head">
-      <div class='comment-child-section d-flex flex-column'>
-        <div class='title'>
-          <span>{{ user.username }}</span>
-          <b>{{ user.createdAt | date:'short' }}</b>
+    <div class='rating-div'>
+      <div class='d-flex align-center'>
+        <div class='rating'>
+          <app-icon class="news" type="transparent">
+            <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+          </app-icon>
+          <p>30</p>
+          <app-icon class="news" type="transparent">
+            <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+          </app-icon>
         </div>
 
-        <div class='text'>
-          {{ user.content }}
-        </div>
+        <span class='data ml-4'>{{ (selectedNews$| async)?.createdAt | date:'short' }}</span>
       </div>
-    </section>
+
+      <i [outerHTML]="phantomIcons.dots_icon | safe"></i>
+
+    </div>
+
+    <div class='comments mt-4'>
+      <section class='d-flex mb-4' *ngFor="let user of (selectedNews$ | async)?.comments">
+        <img alt="head">
+        <div class='comment-child-section d-flex flex-column'>
+          <div class='title'>
+            <span>{{ user.username }}</span>
+            <b>{{ user.createdAt | date:'short' }}</b>
+          </div>
+
+          <div class='text'>
+            {{ user.content }}
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class='download-comments' *ngIf="!(selectedNews$ | async)?.comments">
+      <span>посмотреть все комментарии</span>
+    </div>
+
+    <app-text-field class="news" className="solid" placeholder="Добавить комментарий">
+      <!--    <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">-->
+    </app-text-field>
+
   </div>
-
-  <div class='download-comments' *ngIf="!(selectedNews$ | async)?.comments">
-    <span>посмотреть все комментарии</span>
-  </div>
-
-  <app-text-field class="news" className="solid" placeholder="Добавить комментарий" >
-<!--    <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">-->
-  </app-text-field>
-
-  <i class='exit'
-     [innerHTML]="phantomIcons.exitNews_icon | safe"
-     routerLink="../"
-  ></i>
 </main>
 
-
+<i class='exit'
+   [innerHTML]="phantomIcons.exitNews_icon | safe"
+   routerLink="../"
+></i>
