@@ -1,0 +1,24 @@
+@import "variables";
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transform: translateY(-26px);
+
+  display: block;
+
+  .block-error {
+    display: flex;
+
+    color: $red-light;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    gap: 4px;
+    align-items: center;
+  }
+
+}

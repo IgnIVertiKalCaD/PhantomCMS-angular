@@ -20,8 +20,9 @@ export class SceneChangeToThePrevious {
 @State<SceneChangerStateDto>({
   name: 'sceneChanger',
   defaults: {
-    currentIndex: 0
-  }
+    currentIndex: Number(sessionStorage.getItem('currentIndex')!) || 0
+
+}
 })
 @Injectable()
 export class SceneChanger {
@@ -40,6 +41,8 @@ export class SceneChanger {
     console.log(payload.permit)
 
     if (payload.permit) {
+      // sessionStorage.setItem('currentIndex', String(curStoreIndex + 1))
+
       ctx.patchState({currentIndex: curStoreIndex + 1})
     }
   }
@@ -48,6 +51,10 @@ export class SceneChanger {
   @Action(SceneChangeToThePrevious)
   displayPreviousScene(ctx: StateContext<SceneChangerStateDto>,) {
     let curStoreIndex = ctx.getState().currentIndex
+
+    // sessionStorage.setItem('currentIndex', String(curStoreIndex - 1))
+
     ctx.patchState({currentIndex: curStoreIndex - 1})
   }
+
 }

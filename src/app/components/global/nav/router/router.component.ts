@@ -24,10 +24,13 @@ export class RouterComponent {
   routerLink: string = '';
 
   @Input()
-  className: 'profile' | 'default' | 'footer' | 'auxiliary' = 'default';
+  className: 'profile' | 'default' | 'footer' | 'auxiliary' | 'dock' = 'default';
 
   @Input()
   routerLinkActive: string = 'active';
+
+  @Input()
+  disableRouterLinkActive: boolean = false;
 
   @Input()
   routerLinkActiveOptions: {

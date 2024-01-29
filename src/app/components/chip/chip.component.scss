@@ -1,11 +1,16 @@
 app-chip {
 
   > div {
-    border-radius: 12px;
+    border-radius: 32px;
     width: fit-content;
   }
 
   .for-news {
+    background: #1E1E25;
+
+    padding: 0 10px;
+
+    cursor: pointer;
 
     color: #6563EE;
     font-size: 14px;

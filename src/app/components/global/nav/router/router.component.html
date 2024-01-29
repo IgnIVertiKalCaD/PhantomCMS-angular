@@ -1,6 +1,6 @@
 <a [class]="className"
    [routerLink]="routerLink"
-   [routerLinkActive]="routerLinkActive"
+   [routerLinkActive]="disableRouterLinkActive ? '' : routerLinkActive"
    [ariaCurrentWhenActive]="ariaCurrentWhenActive"
    [routerLinkActiveOptions]="routerLinkActiveOptions">
   <i *ngIf="icon" [outerHTML]="icon | safe"></i>

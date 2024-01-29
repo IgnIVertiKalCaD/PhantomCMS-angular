@@ -1,0 +1,49 @@
+<main
+  class="w-100"
+  [@listAnimation]="(listNews$ | async)?.length"
+>
+  <div class="news-section pa-4" *ngFor="let news of (listNews$ | async), let i = index"
+  >
+
+    <div class='img-container d-flex overflow-hidden pos-relative'
+         [routerLink]="['/news', news.id]"
+    >
+      <img [ngSrc]='news.attachments[0]?.filename ?? defaultImageNews'
+           [alt]="news.attachments[0]?.description ?? ''"
+           [style.height.px]="250"
+           fill priority
+           class="pos-relative cur-p"
+      />
+
+      <p class='title'
+      >{{ news.title }}</p>
+    </div>
+
+    <div class="tags">
+      <app-chip className="for-news" *ngFor="let tag of news.tags">123123</app-chip>
+    </div>
+
+    <div class="description">
+      {{ (news.content.length > 400) ? (news.content | slice:0:400) + '...' : (news.content) }}
+    </div>
+
+    <div class='rating-div'>
+      <div class='rating'>
+        <app-icon class="news" type="transparent">
+          <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+        </app-icon>
+        <p>30</p>
+        <app-icon class="news" type="transparent">
+          <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+        </app-icon>
+      </div>
+
+<!--      <i [outerHTML]="phantomIcons.dots_icon | safe"></i>-->
+
+    </div>
+
+    <app-text-field class="news" className="solid" placeholder="Добавить комментарий">
+        <i icon [outerHTML]="phantomIcons.sender_icon | safe"></i>
+    </app-text-field>
+  </div>
+</main>

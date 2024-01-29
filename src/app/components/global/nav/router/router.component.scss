@@ -1,4 +1,5 @@
 @import "variables";
+@import "global-style-effects";
 
 app-router {
   display: block;
@@ -12,6 +13,9 @@ app-router {
       transition: .05s ease-in
     }
 
+    transition: padding-left .05s ease-out;
+
+
     &.active {
       padding-left: 10px;
 
@@ -24,14 +28,12 @@ app-router {
       }
     }
 
-
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
 
     display: flex;
     align-items: center;
-
 
     > svg {
       opacity: .3;
@@ -58,6 +60,20 @@ app-router {
         }
 
       }
+    }
+  }
+
+  &.nickname {
+    .dock {
+
+      color: #FFF;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px;
+
+      @include link-effect(1);
+
     }
   }
 

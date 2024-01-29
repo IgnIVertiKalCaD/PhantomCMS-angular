@@ -1,5 +1,4 @@
 import {Component, inject, OnInit, ViewEncapsulation,} from '@angular/core';
-import {authValidator} from "@/common/validaters/authValidator";
 import {Select} from "@ngxs/store";
 import {AuthStore,} from "@/app/auth/authentication/store/authentication.store";
 import {Observable} from "rxjs";
@@ -15,7 +14,6 @@ import {NavigationLogic} from "@/app/auth/core/navigationLogic";
   encapsulation: ViewEncapsulation.None
 })
 export class AuthenticationComponent extends NavigationLogic implements OnInit {
-  protected readonly authValidator = authValidator;
   protected authList = inject(AuthScenesService).getAuthScenes();
 
   resetAccount_link: string = '/reset'
@@ -27,27 +25,6 @@ export class AuthenticationComponent extends NavigationLogic implements OnInit {
 
   @Select(AuthStore.getStatusLoading)
   isLoading$: Observable<boolean>;
-
-  isRememberMe: boolean = false;
-
-  rememberMe(event: boolean) {
-    this.isRememberMe = event
-  }
-
-  // usernameOrEmail: this.login.value as string,
-  // password: this.password.value as string,
-
-  // authentication(): void {
-  //   if (this.isEnabled()) {
-  //     this.store.dispatch([
-  //       new Login({
-  //         usernameOrEmail: 'IgnI',
-  //         password: 'Qwerty123',
-  //         rememberMe: this.isRememberMe
-  //       }),
-  //     ])
-  //   }
-  // }
 
   countSteps: number = this.authList.length;
   IdComponent: number = 0;
@@ -67,27 +44,16 @@ export class AuthenticationComponent extends NavigationLogic implements OnInit {
   currIndex$: Observable<number>;
 
   ngOnInit() {
-    let i = 0;
 
-    this.IdComponent = i
-    this.scene = this.authList[i]
+    this.currIndex$.subscribe(i => {
+      if (i === this.countSteps) {
+        this.isTheEnd = true
+      }
 
+      this.scene = this.authList[i]
+      this.IdComponent = i
+    })
 
-
-    // setInterval(() => {
-    //   i++
-    //   this.scene = this.regList[i]
-    // }, 2000)
-
-
-    // this.currIndex$.subscribe(i => {
-    //   if (i === this.countSteps) {
-    //     this.isTheEnd = true
-    //   }
-    //
-    //   this.scene = this.authList[i]
-    //   this.IdComponent = i
-    // })
   }
 
   protected readonly phantomIcons = phantomIcons;

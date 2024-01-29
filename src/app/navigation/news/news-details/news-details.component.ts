@@ -14,14 +14,15 @@ import {ModalService} from "@/services/modal.service";
 @Component({
   selector: 'app-news-details',
   templateUrl: './news-details.component.html',
-  styleUrls: ['../news.component.scss']
+  styleUrls: ['../news-list/news-list.component.scss']
 })
 export class NewsDetailsComponent implements OnInit, OnDestroy {
   protected readonly phantomIcons = phantomIcons;
 
   constructor(
     private readonly modalService: ModalService,
-    private readonly location: Location, private readonly route: ActivatedRoute, private readonly store: Store) {}
+    private readonly location: Location, private readonly route: ActivatedRoute,
+    private readonly store: Store) {}
 
   defaultImageNews: string = 'assets/images/defaultServer.png'
 

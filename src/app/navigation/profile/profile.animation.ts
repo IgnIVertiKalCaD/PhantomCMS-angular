@@ -1,6 +1,6 @@
-import {animate, animateChild, group, query, style, transition, trigger} from "@angular/animations";
+import {animate, query, style, transition, trigger} from "@angular/animations";
 
-export const navigateAnimation =
+export const profileAnimation =
   trigger('navigateAnimation', [
     transition('* => *', [
       query(
@@ -9,8 +9,6 @@ export const navigateAnimation =
           style({
             opacity: 0,
             position: 'absolute',
-            height: '100%',
-            width: '100%',
           })
         ],
         { optional: true }
@@ -21,11 +19,11 @@ export const navigateAnimation =
           style({
             opacity: 1,
             position: 'absolute',
-            height: '100%',
-            width: '100%',
+            left: 0, right: 0, top: 0,
+
           }),
           // animate('.12s', style({ opacity: 0 }))
-          animate('.12s', style({ opacity: 0 }))
+          animate('.1s', style({ opacity: 0 }))
         ],
         { optional: true }
       ),
@@ -34,14 +32,14 @@ export const navigateAnimation =
         [
           style({
             opacity: 0,
-            position: 'absolute',
-            height: '100%',
-            width: '100%',
+            left: 0, right: 0, top: 0,
+
+            width: 'auto'
           }),
           // animate('.12s', style({ opacity: 1 }))
-          animate('.12s', style({ opacity: 1 }))
+          animate('.1s', style({ opacity: 1 }))
         ],
         { optional: true }
-        )
+      )
     ])
   ]);

@@ -1,8 +1,35 @@
+@import "variables";
+@import "global-style-effects";
+
 app-icon {
   display: flex;
 
   svg {
     transition: .1s ease-out;
+  }
+
+  &.news {
+    .transparent {
+
+      display: flex;
+      align-items: center;
+
+      padding: 11.5px 8px 13.5px 8px;
+
+      transition: .12s ease;
+
+      @include icon-hover-pressed-effect(1);
+
+      &:hover {
+        > svg {
+          fill: $base-svg-hover-color;
+        }
+      }
+
+      > svg {
+        fill: white;
+      }
+    }
   }
 
   &.footer_icon {

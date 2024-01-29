@@ -27,6 +27,8 @@ import { ActiveSessionsComponent } from './profile/security/active-sessions/acti
 import { RestockingComponent } from './profile/restocking/restocking.component';
 import { EnterTheGameComponent } from './preview/enter-the-game/enter-the-game.component';
 import {ModalComponent} from "@/app/components/global/modal/modal.component";
+import { NewsListComponent } from './news/news-list/news-list.component';
+import {IconComponent} from "@/app/components/icon/icon.component";
 
 @NgModule({
     declarations: [
@@ -43,10 +45,11 @@ import {ModalComponent} from "@/app/components/global/modal/modal.component";
         ActiveSessionsComponent,
         RestockingComponent,
         EnterTheGameComponent,
+        NewsListComponent,
     ],
     imports: [
         OtpInputComponent,
-      ModalComponent,
+        ModalComponent,
         RouterComponent,
         AsyncPipe,
         TextFieldComponent,
@@ -70,6 +73,7 @@ import {ModalComponent} from "@/app/components/global/modal/modal.component";
         ProgressComponent,
         NgxOtpInputModule,
         NgStyle,
+        IconComponent,
     ],
     exports: [
         EnterTheGameComponent

@@ -1,13 +1,27 @@
-<div [class]="className"  [class.focus]="isFocused">
-  <input [placeholder]="placeholder"
-         (focusin)="isFocused = true"
-         (focusout)="isFocused = false"
-         [type]="selectType()" [formControl]="control">
+<app-input-error-builder
+  @showingErrorAnimation
+  *ngIf="(control.invalid && (control.dirty || control.touched)) && errorInsideTheBlock"
+>
+  <ng-content select="[validator]"></ng-content>
 
-  <span *ngIf="type === 'password'" class="toggle"
-        (click)="toggleShowPassword()">
+</app-input-error-builder>
+
+<div class="block-text-input">
+  <div
+    [class]="className" [class.focus]="isFocused"
+  >
+    <input [placeholder]="placeholder"
+           (focusin)="isFocused = true"
+           (focusout)="isFocused = false"
+           [type]="selectType()" [formControl]="control">
+
+    <span *ngIf="type === 'password'" class="toggle"
+          (click)="toggleShowPassword()">
         <i *ngIf="!isHide" [innerHTML]="phantomIcons.eye_password_show | safe"></i>
         <i *ngIf="isHide" [innerHTML]="phantomIcons.eye_password_hide | safe"></i>
     </span>
-  <ng-content selector=".icon"></ng-content>
+    <ng-content select="[icon]"></ng-content>
+  </div>
+
+  <ng-content select="[button]"></ng-content>
 </div>

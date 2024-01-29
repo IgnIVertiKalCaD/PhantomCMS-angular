@@ -12,8 +12,8 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 })
 export class ButtonComponent {
   @Input()
-  disabled: boolean
+  disabled: boolean = false;
 
   @Input()
-  className?: 'default' | 'with-icon' | 'solid' | 'outline' | 'remove' | 'start-play' | 'load-avatar' | 'load-skin_cape' | 'auth' | 'send-code' | 'change-password' | 'close-all-sessions' | 'restocking' = 'default'
+  className?: 'default' | 'transparent' | 'with-icon' | 'solid' | 'outline' | 'remove' | 'start-play' | 'load-avatar' | 'load-skin_cape' | 'auth' | 'send-code' | 'change-password' | 'close-all-sessions' | 'restocking' = 'default'
 }

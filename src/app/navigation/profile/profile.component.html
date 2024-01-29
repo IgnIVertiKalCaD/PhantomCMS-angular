@@ -5,13 +5,16 @@
         *ngFor="let router of navRoutes"
         [routerLink]="router.link"
         [routerLinkActiveOptions]="{exact: true}"
-        className="profile"
-        ariaCurrentWhenActive="page">
+        className="profile">
         {{ router.text }}
       </app-router>
     </nav>
 
-    <router-outlet/>
+    <div
+      class="pos-relative"
+      [@navigateAnimation]="getRouteAnimationData()">
+      <router-outlet/>
+    </div>
   </div>
 </section>
 
