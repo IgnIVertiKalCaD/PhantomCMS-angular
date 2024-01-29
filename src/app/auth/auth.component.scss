@@ -1,10 +1,6 @@
 @import "variables";
 
 app-auth {
-  background-image: url("/../assets/images/svg/backgroundAuth.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
   height: 100vh;
 
   display: flex;
@@ -99,6 +95,8 @@ app-text-field {
       display: flex;
       gap: 15px;
       flex-direction: column;
+
+      margin: 0 auto;
 
       > .hint {
         @include helper-text(19px);

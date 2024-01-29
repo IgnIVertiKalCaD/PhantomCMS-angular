@@ -51,6 +51,8 @@ import {EnterEmailComponent} from './auth/authentication/enter-email/enter-email
 import {EnterPasswordComponent} from './auth/authentication/enter-password/enter-password.component';
 import {EnterCodeComponent} from './auth/authentication/enter-code/enter-code.component';
 import {InputCheckboxComponent} from './components/inputs/input-checkbox/input-checkbox.component';
+import { InputErrorBuilderComponent } from './components/inputs/input-error-builder/input-error-builder.component';
+import {TransportDataStore} from "@/app/auth/store/transportData.store";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -77,6 +79,7 @@ registerLocaleData(localeRu, 'ru');
   imports: [
     InputCheckboxComponent,
     ProgressComponent,
+    InputErrorBuilderComponent,
     RouterComponent,
     SkinViewer3dComponent,
     ImgFillDirective,
@@ -94,7 +97,7 @@ registerLocaleData(localeRu, 'ru');
     BrowserAnimationsModule,
     NgOptimizedImage,
     ReactiveFormsModule,
-    NgxsModule.forRoot([ServersStore, AuthStore, RegistrationStore, NewsStore, AssetsStore, SceneChanger], {}),
+    NgxsModule.forRoot([ServersStore, AuthStore, RegistrationStore, NewsStore, AssetsStore, SceneChanger, TransportDataStore], {}),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     FormsModule,
     InputSelectorComponent,
@@ -121,11 +124,12 @@ registerLocaleData(localeRu, 'ru');
       multi: true,
     }
   ],
-    exports: [
-        SkinViewer3dComponent,
-        RouterComponent,
-        ModalComponent,
-    ],
+  exports: [
+    SkinViewer3dComponent,
+    RouterComponent,
+    ModalComponent,
+    NavigationComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,63 +1,20 @@
-<section class="d-flex w-100">
-  <div class="w-100">
-    <!--    <app-text-field class="mb-4 d-block" placeholder="Что происходит?" className="default">-->
-    <!--      <img ngSrc="assets/images/xyixnaet.svg" fill class="icons pos-relative" alt="icon">-->
-    <!--      <img ngSrc="assets/images/svg/send-message.svg" fill class="icons pos-relative" alt="icon">-->
-    <!--    </app-text-field>-->
 
-    <main [@listAnimation]="(listNews$ | async)?.length">
-      <div class="news-section mb-4 pa-4" *ngFor="let news of listNews$ | async, let i = index"
-           (click)="modalService.open('modal-news')"
-      >
+<app-news-list>
 
-        <div class='img-container mt-4 d-flex overflow-hidden pos-relative'>
-          <img [ngSrc]='news.image ?? defaultImageNews' alt='1' fill priority class="pos-relative cur-p"
-               [routerLink]="['/news', news.id]"
-          />
+</app-news-list>
 
-          <p class='title hover cur-p'
-             [routerLink]="['/news', news.id]"
-          >{{ news.title }}</p>
-        </div>
+<nav class="nav-spacer">
 
-        <div class="chips mt-4">
-          <app-chip>123456789123456</app-chip>
-        </div>
+</nav>
 
-        <div class="description mt-4">
-          {{ (news.content.length > 400) ? (news.content | slice:0:400) + '...' : (news.content) }}
-        </div>
-
-        <div class='rating-div mt-4 d-flex justify-space-between'>
-          <div class='rating'>
-            <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
-
-            <b>30</b>
-
-            <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
-          </div>
-
-          <i [outerHTML]="phantomIcons.dots_icon | safe"></i>
-
-        </div>
-
-        <app-text-field class="mt-4" placeholder="Добавить комментарий" className="default">
-          <i [outerHTML]="phantomIcons.sender_icon | safe"></i>
-        </app-text-field>
-      </div>
-    </main>
-
-  </div>
-
-</section>
 
 <app-modal id="modal-news" [rollback]="true"
 >
   <div
     [@animNewsDetails]="getRouteAnimationData()"
   >
-  <router-outlet
-  />
+    <router-outlet
+    />
   </div>
 </app-modal>
 

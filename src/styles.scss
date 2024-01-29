@@ -12,6 +12,12 @@ html, body {
   background: $base-bg-color;
 }
 
+body {
+  background-image: url("/../assets/images/svg/backgroundAuth.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -19,11 +19,11 @@ export class InputCheckboxComponent {
   isChecked: boolean = false;
 
   @Output()
-  eventCheck: EventEmitter<boolean> = new EventEmitter<boolean>()
+  eventConfirmed: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   emitIsChecked(isChecked: boolean): void {
     this.isChecked = isChecked
-    this.eventCheck.emit(isChecked)
+    this.eventConfirmed.emit(isChecked)
   }
 
 }

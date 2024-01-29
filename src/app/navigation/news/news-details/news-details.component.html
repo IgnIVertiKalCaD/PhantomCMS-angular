@@ -1,45 +1,35 @@
 <main class='news-section details pa-4'>
-  <div class='img-container d-flex overflow-hidden'>
+  <div class='img-container'>
     <p class='title'>{{ (selectedNews$ | async)?.title }}</p>
     <p class='description'>
       {{ (selectedNews$ | async)?.content }}
     </p>
-    <img [ngSrc]='(selectedNews$| async)?.image ?? defaultImageNews' alt='1' fill priority class="pos-relative"/>
+    <img
+      [ngSrc]='(selectedNews$ | async)!.attachments[0]?.filename ?? defaultImageNews'
+      fill priority class="pos-relative"/>
   </div>
 
-  <div class="content mt-5">
+  <div class="content">
     {{ (selectedNews$ | async)?.content }}
   </div>
 
-  <div class='rating-div mt-4 d-flex justify-space-between'>
+  <div class='rating-div'>
     <div class='d-flex align-center'>
       <div class='rating'>
-        <i>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z"
-              fill="white"/>
-          </svg>
-        </i>
-
-        <b>30</b>
-
-        <i>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M10.5 7C10.2811 7 10.0622 7.09958 9.95274 7.19917L5.24627 11.6805C4.91791 11.9793 4.91791 12.4772 5.24627 12.7759C5.57463 13.0747 6.12189 13.0747 6.45025 12.7759L10.5 8.79253L14.5498 12.6763C14.8781 12.9751 15.4254 12.9751 15.7537 12.6763C16.0821 12.3776 16.0821 11.8797 15.7537 11.5809L11.0473 7.09959C10.9378 7.09959 10.7189 7 10.5 7Z"
-              fill="white"/>
-          </svg>
-        </i>
+        <app-icon class="news" type="transparent">
+          <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+        </app-icon>
+        <p>30</p>
+        <app-icon class="news" type="transparent">
+          <i [outerHTML]="phantomIcons.arrow_up_down_icon | safe"></i>
+        </app-icon>
       </div>
 
       <span class='data ml-4'>{{ (selectedNews$| async)?.createdAt | date:'short' }}</span>
     </div>
 
-    <img ngSrc="assets/images/svg/dots-for-edit-news.svg"
-         alt="edit news"
-         class="pos-relative"
-         fill>
+          <i [outerHTML]="phantomIcons.dots_icon | safe"></i>
+
   </div>
 
   <div class='comments mt-4'>
@@ -62,8 +52,8 @@
     <span>посмотреть все комментарии</span>
   </div>
 
-  <app-text-field class="mt-4" placeholder="Добавить комментарий" className="default">
-    <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">
+  <app-text-field class="news" className="solid" placeholder="Добавить комментарий" >
+<!--    <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">-->
   </app-text-field>
 
   <i class='exit'

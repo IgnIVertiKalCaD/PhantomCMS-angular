@@ -1,5 +1,4 @@
 import {
-  SceneChanger,
   SceneChangeToTheNext,
   SceneChangeToThePrevious
 } from "@/app/auth/registration/store/sceneСhanger.store";
@@ -8,17 +7,17 @@ import {Store} from "@ngxs/store";
 
 @Directive()
 export class NavigationLogic  {
-  constructor(private readonly store: Store) {}
+  constructor(private readonly navigationLogicStore: Store) {}
 
   next(permit: boolean) {
 
-    this.store.dispatch([
+    this.navigationLogicStore.dispatch([
       new SceneChangeToTheNext(permit)
     ])
   }
 
   back() {
-    this.store.dispatch([
+    this.navigationLogicStore.dispatch([
       new SceneChangeToThePrevious()
     ])
   }

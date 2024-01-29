@@ -1,16 +1,14 @@
 <app-dock
   #dock
-  class="unpin"
-  [ngClass]="{'pin': isPinedDock}"
+  [class]="isPinedDock ? 'pin' : 'unpin'"
 />
 
-<div class="navigation">
+<div class="navigation space-border">
   <nav class="left nav-spacer">
 
     <div class="routers">
       <app-router
         *ngFor="let r of navRoutes"
-        ariaCurrentWhenActive="page"
         [routerLink]="r.link"
         [icon]="r.icon"
       >
@@ -96,7 +94,9 @@
   </nav>
 
   <main>
-    <router-outlet></router-outlet>
+    <div [@navigateAnimation]="getRouteAnimationData()" class="pos-relative">
+      <router-outlet/>
+    </div>
   </main>
 
 </div>

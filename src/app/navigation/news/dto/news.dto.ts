@@ -11,7 +11,10 @@ export class NewsDto {
     createdAt: string | null,
   }[];
 
-  image: string | null;
+  attachments: {
+    filename: string;
+    description: string
+  }[];
 
   tags: string[];
 

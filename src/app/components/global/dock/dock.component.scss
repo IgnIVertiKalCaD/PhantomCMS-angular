@@ -1,31 +1,23 @@
-@import "global-style-effects";
-
-$player-img: 50px;
-$exit-img: 22px;
 
 :host {
+  display: block;
+  position: sticky;
+
+  top: 0;
+  padding: 20px 0;
+
+  z-index: 5;
+
   &.pin {
     transition: .2s ease;
 
-    padding: 14px 0 !important;
-    background: rgba(21, 21, 25, 0.2);
-    backdrop-filter: blur(15px);
+    background: rgba(13, 13, 17, 0.01);
+    backdrop-filter: blur(9px);
   }
 
-  &.unpin {
-    display: block;
-    position: sticky;
-
-    top: 0;
-    padding: 20px 0;
-    transition: .1s ease;
-
-    z-index: 1;
-  }
 }
 
 header {
-  margin: 0 auto;
   transition: 0.2s ease;
 
   &.dock {
@@ -37,7 +29,7 @@ header {
         margin: 0 15px
       }
 
-      .description {
+      .funny_caption {
         color: #8F8F94;
         font-size: 16px;
         font-weight: 400;
@@ -46,71 +38,36 @@ header {
     }
 
     > .right {
-      color: #FFF;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 24px;
-
       align-items: center;
       display: flex;
       flex-direction: row-reverse;
-
-      .nickname {
-        transition: .3s ease;
-        cursor: pointer;
-
-        user-select: none;
-
-        &.active {
-          cursor: default;
-
-          &:hover {
-            color: white;
-          }
-        }
-
-        &:hover {
-          color: #a9a9a9;
-        }
-      }
 
       > section {
         display: flex;
         align-items: center;
         justify-content: flex-end;
 
-        min-height: 60px;
-        width: 300px;
         border-radius: 24px;
+
+        width: 300px;
 
         div {
           display: flex;
           align-items: center;
 
+          gap: 5px;
+
           > img {
             transition: .3s ease;
-            opacity: 0;
-            margin: 5px 10px 5px 5px;
             border-radius: 20px;
-            max-width: $player-img;
-            max-height: $player-img;
-
-            &.fade-anim {
-              opacity: 1;
-            }
+            margin: 5px;
           }
         }
 
-        > .exit {
-          box-shadow: none;
-          display: block;
-          width: $exit-img;
-          height: $exit-img;
-          margin-right: 14px;
-          background: transparent;
-
-          @include icon-hover-pressed-effect;
+        .logout {
+          margin-right: 10px;
         }
+
       }
 
     }

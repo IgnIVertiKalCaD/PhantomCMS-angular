@@ -11,7 +11,7 @@ import {phantomIcons} from "@/common/icons/phantomIcons";
 export class IconComponent {
 
   @Input()
-  type: 'solid' | 'outline' = 'solid';
+  type: 'solid' | 'outline' | 'transparent' = 'solid';
 
   @Input()
   className: string = '';

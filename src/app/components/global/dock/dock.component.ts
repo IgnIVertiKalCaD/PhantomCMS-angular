@@ -10,18 +10,13 @@ import {AssetsStore, GetUserHead} from "@/store/assets-manager/assets-store";
   styleUrls: ['./dock.component.scss'],
   animations: []
 })
-export class DockComponent implements OnInit, AfterViewInit {
+export class DockComponent implements OnInit {
   protected readonly phantomIcons = phantomIcons;
 
   constructor(private readonly store: Store) {
     this.isAuth$.subscribe(isAuth => this.isAuth = isAuth)
     this.username$.subscribe(name => this.username = name)
   }
-
-  @ViewChild('header', {static: true})
-  header: ElementRef
-
-  public heightHeader: number;
 
   defaultHead: string = 'assets/images/defaultPlayer.png'
 
@@ -40,7 +35,7 @@ export class DockComponent implements OnInit, AfterViewInit {
   @Select(AssetsStore.getHeadUser)
   head$: Observable<string>
 
-  niceMessages: string[]
+  listMessages: string[]
   message: string;
 
   logout(): void {
@@ -52,15 +47,12 @@ export class DockComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.niceMessages = [`Привет, ${this.username}!`, 'Приятной игры!'];
+    this.listMessages = [`Привет, ${this.username}!`, 'Приятной игры!'];
 
     if (this.isAuth) this.store.dispatch(new GetUserHead(this.username))
 
-    this.message = this.niceMessages[this.getRandomInt(this.niceMessages.length)]
+    this.message = this.listMessages[this.getRandomInt(this.listMessages.length)]
 
 
-  }
-  ngAfterViewInit() {
-    this.heightHeader = this.header.nativeElement.offsetHeight
   }
 }

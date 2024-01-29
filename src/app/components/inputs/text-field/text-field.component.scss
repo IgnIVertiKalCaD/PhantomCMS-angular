@@ -2,6 +2,13 @@
 @import "../../../../styles/global-style-effects";
 
 app-text-field {
+  position: relative;
+
+  .block-text-input {
+    display: flex;
+    gap: 16px;
+  }
+
   .default {
     display: flex;
     align-items: center;
@@ -37,6 +44,8 @@ app-text-field {
   .outline {
     display: flex;
     align-items: center;
+
+    width: 100%;
 
     border-radius: 12px;
     border: 1px solid $base-border-color;
@@ -96,6 +105,13 @@ app-text-field {
     }
   }
 
+  &.news {
+    .solid {
+      @extend .default;
+      width: 100%;
+    }
+  }
+
   &.catalog {
     .solid {
       @extend .default;
@@ -120,7 +136,6 @@ app-text-field {
   }
 
   &.items-card {
-
     .solid {
       @extend .default;
 
@@ -146,4 +161,24 @@ app-text-field {
     }
   }
 
+  &.auth {
+    .outline {
+      @extend .outline;
+
+      border-radius: 16px;
+
+      input {
+        padding: 15px 20px;
+
+
+        font-size: 24px;
+
+        &::placeholder {
+          font-size: 24px;
+
+        }
+      }
+
+    }
+  }
 }

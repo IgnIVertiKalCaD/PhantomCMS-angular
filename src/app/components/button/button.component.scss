@@ -1,4 +1,5 @@
 @import "variables";
+@import "global-style-effects";
 
 @mixin default-btn() {
   font-size: 18px;
@@ -50,9 +51,20 @@ app-button {
     }
   }
 
-  .auth {
-    @include default-btn;
-    padding: 16px 30px;
+  &.logout {
+    .transparent {
+      display: flex;
+      padding: 6px;
+
+      @include icon-hover-pressed-effect;
+    }
+  }
+
+  &.auth {
+   .solid {
+     @include default-btn;
+     padding: 16px 30px;
+   }
 
   }
 
@@ -178,8 +190,16 @@ app-button {
   }
 
   &.auth-btn {
+    &.disabled {
+      .solid {
+        background: transparent;
+        border: 1px solid $base-border-color;
+      }
+    }
     .solid {
       @include default-btn;
+
+      border-radius: 16px;
 
       font-weight: 400;
 

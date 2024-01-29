@@ -1,10 +1,9 @@
-<header #header class="dock d-flex">
+<header class="dock d-flex space-border">
 
   <div class="d-flex left">
     <app-logo/>
-    <p class="delimiter"
-       *ngIf="isAuth$ | async"></p>
-    <p class="description"
+    <hr class="delimiter" *ngIf="isAuth$ | async">
+    <p class="funny_caption"
        *ngIf="isAuth$ | async">{{ message }}</p>
 
   </div>
@@ -12,19 +11,27 @@
   <div class="right">
     <section style="background: #1E1E25;" *ngIf="isAuth$ | async">
       <div>
-        <img (load)="isHide = false" [ngClass]="{'fade-anim' : !isHide}"
-             width="50"
+        <img (load)="isHide = false"
+             [style.opacity]="!isHide ? 1 : 0"
              [src]="(head$ | async) ?? defaultHead"
+             width="50"
              alt="player" class="pos-relative"/>
-        <span class="nickname" routerLink="profile" routerLinkActive="active">{{ username$ | async }}</span>
+        <app-router
+          [disableRouterLinkActive]="true"
+          routerLink="profile"
+          class="nickname"
+          className="dock"
+        >
+          {{ username$ | async }}
+        </app-router>
       </div>
-      <button class="exit" (click)="logout()">
+      <app-button class="logout" className="transparent" (click)="logout()">
         <i [outerHTML]="phantomIcons.logout_icon | safe"></i>
-      </button>
+      </app-button>
     </section>
 
     <section *ngIf="!(isAuth$ | async)">
-      <app-button className="auth" routerLink="/auth">
+      <app-button class="auth" className="solid" routerLink="/auth">
         Войти
       </app-button>
     </section>

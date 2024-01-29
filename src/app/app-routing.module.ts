@@ -65,14 +65,18 @@ const routes: Routes = [
           {
             path: '',
             component: MainComponent,
+            data: { animation: 'SubProfile1' }
+
           },
           {
             path: 'security',
             component: SecurityComponent,
+            data: { animation: 'SubProfile2' }
           },
           {
             path: 'restocking',
             component: RestockingComponent,
+            data: { animation: 'SubProfile3' }
           },
         ]
       },
@@ -84,10 +88,12 @@ const routes: Routes = [
           {
             path: '',
             component: StoreItemsComponent,
+            data: { animation: 'subStorePage' },
           },
           {
             path: 'privileges',
             component: StorePrivilegesComponent,
+            data: { animation: 'subStorePage' },
           },
         ]
       }

@@ -57,7 +57,9 @@
 
 [class^="number-slide"],
 [class*=" number-slide"] {
-  background: grey;
+  user-select: none;
+
+  background: #191921;
   display: flex;
   align-items: center;
   justify-content: center;

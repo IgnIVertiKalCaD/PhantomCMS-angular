@@ -6,7 +6,6 @@ import {AuthenticationDto} from "@/app/auth/authentication/dto/authentication.dt
 import {catchError, of, tap, throwError} from "rxjs";
 import { StorageManagerService } from "@/common/storage/storage-manager.service";
 import {patch} from "@ngxs/store/operators";
-import {AssetsStore} from "@/store/assets-manager/assets-store";
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -37,7 +36,6 @@ export class SetStatusLoadingAuthentication {
 @Injectable()
 export class AuthStore {
   constructor(
-    private readonly store: Store,
     private readonly authenticationService: AuthenticationService,
     private readonly authStorageService: StorageManagerService,
   ) {}
