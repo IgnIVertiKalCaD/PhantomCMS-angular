@@ -2,24 +2,13 @@ import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angul
 import {ModalService} from "@/services/modal.service";
 import {animate, keyframes, query, state, style, transition, trigger} from "@angular/animations";
 import {Location, NgIf} from "@angular/common";
+import {fadeScaleAnimation} from "@/app/animations/fadeScale.animation";
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   animations: [
-    trigger('modalOpenAnimation', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate('150ms cubic-bezier(0.35, 0, 0.25, 1)', style({opacity: 1})),
-      ]),
-      transition(':leave', [
-        query('section', [
-          animate('150ms cubic-bezier(0.35, 0, 0.25, 1)', style({transform: 'scale(0.85)', opacity: 0})),
-        ]),
-
-        animate('100ms', style({opacity: 0})),
-      ])
-    ]),
+    fadeScaleAnimation
   ],
   imports: [
     NgIf

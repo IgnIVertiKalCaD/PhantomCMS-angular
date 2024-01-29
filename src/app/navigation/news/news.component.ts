@@ -18,30 +18,21 @@ import {ChildrenOutletContexts, Router} from "@angular/router";
   styleUrls: ['./news.component.scss'],
   animations: [
     trigger('animNewsDetails', [
-      transition('* <=> *', [
-        query(':enter, :leave',
-          style({opacity: '0'}),
-          {optional: true}),
-        group([
-          query(':enter', [
-            style({transform: 'translate(0%, -50%) scale(0.8)'}),
-            animate('0.1s ease',
-              style({transform: 'translate(0%, -50%) scale(1)', opacity: '1'}))
-          ], {optional: true}),
-          query(':leave', [
-            style({transform: 'translate(0%, -50%)', opacity: '1'}),
-            animate('0.2s ease',
-              style({transform: 'translate(0%, -50%) scale(0.6)', opacity: '0'}))
-          ], {optional: true}),
-        ])
+      transition('* => *', [
+        query(':leave', [
+          style({ opacity: '1' }),
+          animate('250ms ease',
+            style({ opacity: '0' }))
+        ], {optional: true}),
       ]),
     ])
   ]
 })
-export class NewsComponent implements OnInit, AfterContentChecked {
+export class NewsComponent implements OnInit {
   constructor(
     private contexts: ChildrenOutletContexts,
-  ) {}
+  ) {
+  }
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
@@ -49,8 +40,5 @@ export class NewsComponent implements OnInit, AfterContentChecked {
 
   ngOnInit() {
 
-  }
-
-  ngAfterContentChecked() {
   }
 }

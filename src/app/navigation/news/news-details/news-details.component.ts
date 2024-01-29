@@ -14,7 +14,10 @@ import {ModalService} from "@/services/modal.service";
 @Component({
   selector: 'app-news-details',
   templateUrl: './news-details.component.html',
-  styleUrls: ['../news-list/news-list.component.scss']
+  styleUrls: ['../news-list/news-list.component.scss'],
+  host: {
+    'style': 'display: block'
+  }
 })
 export class NewsDetailsComponent implements OnInit, OnDestroy {
   protected readonly phantomIcons = phantomIcons;

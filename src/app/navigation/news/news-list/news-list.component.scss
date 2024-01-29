@@ -2,12 +2,48 @@
 @import "global-style-effects";
 
 :host {
+  position: relative;
 
   > main {
     display: flex;
     flex-direction: column;
 
     gap: 24px;
+  }
+
+  .exit {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 100%;
+
+    width: 36px;
+    height: 36px;
+
+    transform: translateX(20px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+
+    transition: background-color, box-shadow .2s ease-out;
+
+    box-shadow: 0 0 0 0;
+
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 20px 0 rgba(101, 99, 238, 0.35);
+      background: #151519;
+
+      &:active {
+        box-shadow: 0 0 20px 0 rgba(101, 99, 238, 0.45);
+      }
+    }
+
   }
 }
 
@@ -134,25 +170,43 @@
   }
 
   &.details {
-    border-radius: 36px;
+    width: 980px;
+
+    border-radius: 32px;
+    overflow: hidden;
     box-shadow: 0 4px 42px 0 rgba(101, 99, 238, 0.35);
     position: relative;
 
     .img-container {
       position: relative;
-      border-radius: 32px;
+      border-radius: 0;
 
+      &:before {
+        background: linear-gradient(180deg,
+          rgba(9, 9, 12, 0.00) 0.32%, #151519 90%),
+          rgba(21, 21, 25, 0.4) 0 150% no-repeat;
+      }
     }
 
-    .title,
-    .description {
-      position: absolute;
-      z-index: 2;
-      margin-right: 32px;
+    .sub_news-details {
+      margin: 0 16px;
     }
 
     .title {
-      transform: translate(18px, 16px);
+      background: transparent;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      margin: 0 auto;
+
+      font-size: 48px;
+      font-weight: 700;
+      line-height: inherit;
+
+      transform: translate(0, 0);
+
     }
 
     .description {
@@ -163,9 +217,7 @@
       border-radius: 24px;
       padding: 8px 10px;
       display: flex;
-      justify-content: flex-end;
       align-items: center;
-      background: #1E1E25;
       transform: translate(16px, -16px);
       bottom: 0;
     }
@@ -176,26 +228,6 @@
       font-style: normal;
       font-weight: 400;
       line-height: 24px;
-    }
-
-    .exit {
-      z-index: 2;
-      position: absolute;
-      right: -4em;
-      top: 0;
-
-      width: 48px;
-      height: 48px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      box-shadow: 0 0 20px 0 rgba(101, 99, 238, 0.35);
-      border-radius: 14px;
-      background: #151519;
-
-      @include button-hover-pressed-effect();
     }
   }
 }

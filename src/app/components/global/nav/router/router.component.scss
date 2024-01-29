@@ -13,11 +13,11 @@ app-router {
       transition: .05s ease-in
     }
 
-    transition: padding-left .05s ease-out;
+    transition: transform .05s ease-out;
 
 
     &.active {
-      padding-left: 10px;
+      transform: translateX(10px);
 
       p {
         color: $accent-color;
