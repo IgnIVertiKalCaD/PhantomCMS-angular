@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
+import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
 import {Select, Store} from "@ngxs/store";
 import {AuthStore, Login} from "@/app/auth/authentication/store/authentication.store";
-import {Observable} from "rxjs";
+import {Observable, take} from "rxjs";
 import {TempUserDataDto} from "@/app/auth/dto/tempUserData.dto";
 import {ClearTempUserData, TransportDataStore} from "@/app/auth/store/transportData.store";
 
@@ -46,25 +46,24 @@ export class EnterCodeComponent extends NavigationLogic implements OnInit {
 
   authentication(): void {
     this.tempUserData$.subscribe(user => {
-      this.store.dispatch([new ClearTempUserData(),
+      if (!user) return
+
+      this.store.dispatch(
         new Login({
           usernameOrEmail: user.usernameOrEmail!,
           password: user.password!,
           rememberMe: true
         })
-      ])
-    })
+      )
+    }).unsubscribe()
   }
 
 
   ngOnInit() {
     this.runTimer()
-
-    setTimeout(() => {
-      this.authentication()
-    }, 2000)
-
+    this.authentication()
   }
+
 
   protected readonly phantomIcons = phantomIcons;
   protected readonly alert = alert;

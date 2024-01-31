@@ -40,14 +40,12 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.modalService.open('modal-news')
 
-    document.body.style.overflowY = 'hidden'
     this.store.dispatch(new GetSelectedNews(Number(this.route.snapshot.paramMap.get('id')!)))
   }
 
   ngOnDestroy() {
     this.modalService.close()
 
-    document.body.style.overflowY = 'scroll'
     this.store.dispatch(new ClearSelectedNews())
   }
 

@@ -1,11 +1,11 @@
-import {Component, inject, OnInit, ViewEncapsulation,} from '@angular/core';
-import {Select} from "@ngxs/store";
+import {Component, inject, OnDestroy, OnInit, ViewEncapsulation,} from '@angular/core';
+import {Select, Store} from "@ngxs/store";
 import {AuthStore,} from "@/app/auth/authentication/store/authentication.store";
 import {Observable} from "rxjs";
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {AuthScenesService} from "@/app/auth/services/auth-scenes.service";
 import {SceneChanger} from "@/app/auth/registration/store/sceneСhanger.store";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
+import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
 
 @Component({
   selector: 'app-authentication',
@@ -13,12 +13,15 @@ import {NavigationLogic} from "@/app/auth/core/navigationLogic";
   styleUrls: ['./authentication.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AuthenticationComponent extends NavigationLogic implements OnInit {
+export class AuthenticationComponent extends NavigationLogic implements OnInit, OnDestroy {
+  // constructor(
+  //   private readonly store: Store,
+  // ) { super(store) }
+
   protected authList = inject(AuthScenesService).getAuthScenes();
 
   resetAccount_link: string = '/reset'
   registration_link: string = '/registration'
-
 
   @Select(AuthStore.getUsername)
   username$: Observable<string>;
@@ -32,7 +35,6 @@ export class AuthenticationComponent extends NavigationLogic implements OnInit {
   //rofl var. i like it
   isTheEnd: boolean = false
 
-
   scene: {
     component: any,
     inputs: {
@@ -44,7 +46,6 @@ export class AuthenticationComponent extends NavigationLogic implements OnInit {
   currIndex$: Observable<number>;
 
   ngOnInit() {
-
     this.currIndex$.subscribe(i => {
       if (i === this.countSteps) {
         this.isTheEnd = true
@@ -56,5 +57,8 @@ export class AuthenticationComponent extends NavigationLogic implements OnInit {
 
   }
 
+  ngOnDestroy() {
+    this.resetCurrentIndex()
+  }
   protected readonly phantomIcons = phantomIcons;
 }

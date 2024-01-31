@@ -1,17 +1,18 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {AuthScenesService} from "@/app/auth/services/auth-scenes.service";
 import {Select, Store} from "@ngxs/store";
 import {SceneChanger} from "@/app/auth/registration/store/sceneСhanger.store";
 import {Observable} from "rxjs";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
+import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
+import {AutoInsertion} from "@/app/auth/core/AutoInsertion";
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent extends NavigationLogic implements OnInit {
+export class RegistrationComponent extends NavigationLogic implements OnInit, OnDestroy {
   auth_link: string = '/auth'
 
   protected regList = inject(AuthScenesService).getRegistrationScenes();
@@ -40,13 +41,6 @@ export class RegistrationComponent extends NavigationLogic implements OnInit {
     // this.scene = this.regList[i]
     //
 
-
-    // setInterval(() => {
-    //   i++
-    //   this.scene = this.regList[i]
-    // }, 2000)
-
-
     this.currIndex$.subscribe(i => {
       if (i === this.countSteps) {
         this.isTheEnd = true
@@ -55,6 +49,10 @@ export class RegistrationComponent extends NavigationLogic implements OnInit {
       this.scene = this.regList[i]
       this.IdComponent = i
     })
+  }
+
+  ngOnDestroy() {
+    this.resetCurrentIndex()
   }
 
   protected readonly phantomIcons = phantomIcons;

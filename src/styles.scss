@@ -79,12 +79,6 @@ app-modal {
     inset: 0;
     z-index: 10000;
     overflow: auto;
-    justify-content: center;
-    align-items: center;
   }
 
-}
-
-body.modal-open {
-  overflow: hidden;
 }

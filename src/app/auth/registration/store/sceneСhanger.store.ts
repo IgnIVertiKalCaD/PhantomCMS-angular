@@ -17,12 +17,19 @@ export class SceneChangeToThePrevious {
   }
 }
 
+export class ResetCurrentIndex {
+  static readonly type = '[ChangeScene] set 0 to current index';
+
+  constructor() {
+  }
+}
+
 @State<SceneChangerStateDto>({
   name: 'sceneChanger',
   defaults: {
-    currentIndex: Number(sessionStorage.getItem('currentIndex')!) || 0
-
-}
+    currentIndex: 0
+    // currentIndex: Number(sessionStorage.getItem('currentIndex')!) || 0
+  }
 })
 @Injectable()
 export class SceneChanger {
@@ -56,5 +63,11 @@ export class SceneChanger {
 
     ctx.patchState({currentIndex: curStoreIndex - 1})
   }
+
+  @Action(ResetCurrentIndex)
+  resetCurrentIndex(ctx: StateContext<SceneChangerStateDto>,) {
+    ctx.patchState({currentIndex: 0})
+  }
+
 
 }

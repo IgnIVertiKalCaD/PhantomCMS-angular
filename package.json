@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4200",
     "dev": "ng serve --port 8080 --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -22,9 +22,9 @@
     "@angular/platform-server": "^16.2.0",
     "@angular/router": "^16.2.0",
     "@ngxs/store": "^3.8.1",
+    "@angular/cli": "~16.2.0",
     "express": "^4.15.2",
     "keen-slider": "^6.8.6",
-    "ngx-otp-input": "^0.11.4",
     "nopt": "^7.2.0",
     "rxjs": "~7.8.0",
     "skinview3d": "^3.0.0",
@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.0",
-    "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "^16.2.0",
     "@nguniversal/builders": "^16.2.0",
     "@ngxs/devtools-plugin": "^3.8.1",

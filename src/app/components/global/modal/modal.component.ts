@@ -1,12 +1,14 @@
 import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalService} from "@/services/modal.service";
-import {animate, keyframes, query, state, style, transition, trigger} from "@angular/animations";
 import {Location, NgIf} from "@angular/common";
 import {fadeScaleAnimation} from "@/app/animations/fadeScale.animation";
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
+  styles: [
+    'section {margin: auto auto}'
+  ],
   animations: [
     fadeScaleAnimation
   ],
@@ -59,6 +61,8 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   open() {
+    document.body.style.overflowY = 'hidden'
+
     document.body.classList.add('modal-open');
     this.isOpen = true;
   }
@@ -66,5 +70,7 @@ export class ModalComponent implements OnInit, OnDestroy {
   close() {
     document.body.classList.remove('modal-open');
     this.isOpen = false;
+
+    document.body.style.overflowY = 'scroll'
   }
 }

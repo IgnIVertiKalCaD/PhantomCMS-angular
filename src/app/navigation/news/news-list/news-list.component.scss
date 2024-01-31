@@ -146,8 +146,8 @@
     .rating {
       display: flex;
       align-items: center;
-      border-radius: 8px;
-      background: #1E1E25;
+      border-radius: 12px;
+      background: $base-bg-hints;
       transition: .2s ease;
 
       app-icon {
@@ -157,7 +157,7 @@
       }
 
       > p {
-        color: #FFF;
+        color: $white-1;
         font-size: 16px;
         font-weight: 600;
         line-height: 24px; /* 150% */
@@ -167,6 +167,31 @@
         background: #252544;
       }
     }
+  }
+
+  .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+
+    @-moz-document url-prefix() {
+      scrollbar-track-color: red;
+      scrollbar-width: auto;
+      scrollbar-color: #6563EE #09090C;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #6563EE;
+    }
+    &::-webkit-scrollbar {
+      width: 3px;
+      background-color: #09090C; /* or add it to the track */
+    }
+
+    position: relative;
+    overflow-y: scroll;
+    height: 35vh;
   }
 
   &.details {
@@ -190,6 +215,11 @@
 
     .sub_news-details {
       margin: 0 16px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 16px;
     }
 
     .title {

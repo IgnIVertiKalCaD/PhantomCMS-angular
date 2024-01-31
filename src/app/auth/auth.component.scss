@@ -46,8 +46,8 @@ app-text-field {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  gap: 60px;
 
   background: $base-bg-accent-color;
 
@@ -55,7 +55,8 @@ app-text-field {
     display: flex;
     align-items: center;
 
-    padding-bottom: 15px;
+    margin-top: auto;
+    transform: translateY(-5px);
 
     gap: 15px;
 

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {ModalService} from "@/services/modal.service";
 
@@ -12,6 +12,8 @@ import {ModalService} from "@/services/modal.service";
 })
 export class PreviewComponent implements OnInit {
   constructor(protected readonly modalService: ModalService) {}
+
+
 
   ngOnInit() {
   }

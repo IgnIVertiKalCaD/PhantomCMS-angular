@@ -5,7 +5,7 @@ import {NicknameChoiceComponent} from "@/app/auth/registration/nickname-choice/n
 import {AccountProtectionComponent} from "@/app/auth/registration/account-protection/account-protection.component";
 import {EnterReferralCodeComponent} from "@/app/auth/registration/enter-referral-code/enter-referral-code.component";
 import {GoodGameComponent} from "@/app/auth/registration/good-game/good-game.component";
-import {RegisterComponent} from "@/app/auth/registration/register/register.component";
+import {RegisterComponent} from "@/app/auth/registration/enter-email/enter-email.component";
 
 //auth
 import {EnterEmailComponent} from "@/app/auth/authentication/enter-email/enter-email.component";

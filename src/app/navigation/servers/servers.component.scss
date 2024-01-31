@@ -52,6 +52,10 @@
 
   position: relative;
 
+  img {
+    object-fit: cover;
+  }
+
   .bg-gradient {
     height: 100%;
     width: 100%;

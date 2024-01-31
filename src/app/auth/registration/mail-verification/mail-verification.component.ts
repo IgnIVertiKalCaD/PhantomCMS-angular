@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
+import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
 
 @Component({
   selector: 'app-mail-verification',

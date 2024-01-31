@@ -9,10 +9,6 @@
   </div>
 
   <div class="sub_news-details">
-    <div class='description'>
-      {{ (selectedNews$ | async)?.content }}
-    </div>
-
     <div class="content">
       {{ (selectedNews$ | async)?.content }}
     </div>
@@ -36,29 +32,24 @@
 
     </div>
 
-    <div class='comments mt-4'>
-      <section class='d-flex mb-4' *ngFor="let user of (selectedNews$ | async)?.comments">
-        <img alt="head">
-        <div class='comment-child-section d-flex flex-column'>
-          <div class='title'>
-            <span>{{ user.username }}</span>
-            <b>{{ user.createdAt | date:'short' }}</b>
-          </div>
-
-          <div class='text'>
-            {{ user.content }}
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class='download-comments' *ngIf="!(selectedNews$ | async)?.comments">
-      <span>посмотреть все комментарии</span>
-    </div>
-
     <app-text-field class="news" className="solid" placeholder="Добавить комментарий">
-      <!--    <img ngSrc="assets/images/svg/send-message.svg" fill="white" class="icons pos-relative" alt="icon">-->
+      <i icon [outerHTML]="phantomIcons.sender_icon | safe"></i>
     </app-text-field>
+
+<!--    *ngIf="!(selectedNews$ | async)?.comments"-->
+<!--    *ngFor="let user of (selectedNews$ | async)?.comments"-->
+    <section class='comments'>
+      <app-card-user-comment *ngFor="let comment of [].constructor(10)"/>
+
+    </section>
+
+    <div class='manipulator-comments'>
+      <span
+        *ngIf="!(selectedNews$ | async)?.comments">посмотреть все комментарии</span>
+
+<!--      <span-->
+<!--        *ngIf="(selectedNews$ | async)?.comments">комментарии отсуствуют</span>-->
+    </div>
 
   </div>
 </main>

@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {ChildrenOutletContexts} from "@angular/router";
 import {navigateAnimation} from "@/app/navigation/animation";
+
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',

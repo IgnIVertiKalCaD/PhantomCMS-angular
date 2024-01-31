@@ -69,6 +69,9 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "port": 4200
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -248,6 +251,9 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "port": 4200
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -288,6 +294,7 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "packageManager": "yarn"
   }
 }

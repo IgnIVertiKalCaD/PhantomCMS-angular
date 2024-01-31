@@ -19,7 +19,6 @@ import {ChipComponent} from "@/app/components/chip/chip.component";
 import {ProgressComponent} from "@/app/components/progress/progress.component";
 import {RouterComponent} from "@/app/components/global/nav/router/router.component";
 import {OtpInputComponent} from "@/app/components/inputs/otp-input/otp-input.component";
-import {NgxOtpInputModule} from "ngx-otp-input";
 import { ChangeEmailComponent } from '@/app/navigation/profile/security/change-email/change-email.component';
 import { ChangePasswordComponent } from './profile/security/change-password/change-password.component';
 import { TwoFaComponent } from './profile/security/two-fa/two-fa.component';
@@ -29,6 +28,8 @@ import { EnterTheGameComponent } from './preview/enter-the-game/enter-the-game.c
 import {ModalComponent} from "@/app/components/global/modal/modal.component";
 import { NewsListComponent } from './news/news-list/news-list.component';
 import {IconComponent} from "@/app/components/icon/icon.component";
+import { CardUserCommentComponent } from './news/components/card-user-comment/card-user-comment.component';
+import {PreviewComponent} from "@/app/navigation/preview/preview.component";
 
 @NgModule({
     declarations: [
@@ -44,8 +45,9 @@ import {IconComponent} from "@/app/components/icon/icon.component";
         TwoFaComponent,
         ActiveSessionsComponent,
         RestockingComponent,
-        EnterTheGameComponent,
+        PreviewComponent,
         NewsListComponent,
+        CardUserCommentComponent,
     ],
     imports: [
         OtpInputComponent,
@@ -53,6 +55,7 @@ import {IconComponent} from "@/app/components/icon/icon.component";
         RouterComponent,
         AsyncPipe,
         TextFieldComponent,
+        EnterTheGameComponent,
         ButtonComponent,
         FormsModule,
         NgForOf,
@@ -71,13 +74,9 @@ import {IconComponent} from "@/app/components/icon/icon.component";
         SkinViewer3dComponent,
         ChipComponent,
         ProgressComponent,
-        NgxOtpInputModule,
         NgStyle,
         IconComponent,
     ],
-    exports: [
-        EnterTheGameComponent
-    ]
 })
 export class NavigationModule {
 }

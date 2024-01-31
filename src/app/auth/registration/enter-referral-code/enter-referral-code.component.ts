@@ -3,7 +3,7 @@ import {Store} from "@ngxs/store";
 import {SceneChangeToTheNext} from "@/app/auth/registration/store/sceneСhanger.store";
 import {FormControl, Validators} from "@angular/forms";
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
+import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
 
 @Component({
   selector: 'app-enter-referral-code',
