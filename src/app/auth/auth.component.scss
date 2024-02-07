@@ -47,9 +47,12 @@ app-text-field {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 60px;
 
   background: $base-bg-accent-color;
+
+  &.finish {
+    border: 2px solid $base-border-color;
+  }
 
   > .auxiliary {
     display: flex;
@@ -85,12 +88,26 @@ app-text-field {
   }
 
   .center {
+    &.finish {
+      height: 100%;
+      width: 70%;
+      justify-content: center;
+
+      .guideline {
+        white-space: normal !important;
+      }
+
+      app-good-game {
+        width: fit-content;
+        margin: 0 auto;
+      }
+    }
+
     width: 80%;
 
     display: flex;
     flex-direction: column;
-
-    gap: 37px;
+    gap: 30px;
 
     .block-enter {
       display: flex;
@@ -138,6 +155,9 @@ app-text-field {
 
   .steps {
     width: 100%;
+
+    margin-bottom: 60px;
+
 
     gap: 17px;
     display: flex;

@@ -21,7 +21,7 @@
       *ngIf="!isTheEnd && IdComponent > 0"
     >
       <app-button
-        (click)="back()"
+        (click)="authLogic.back()"
         class="back"
         className="solid">
         <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>

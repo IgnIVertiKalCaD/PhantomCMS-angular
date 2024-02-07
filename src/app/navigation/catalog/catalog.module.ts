@@ -8,13 +8,16 @@ import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {ButtonComponent} from "@/app/components/button/button.component";
 import {SafePipe} from "@/pipes/safe.pipe";
 import {InputSelectorComponent} from "@/app/components/inputs/input-selector/input-selector.component";
+import { StoreNavComponent } from './components/store-nav/store-nav.component';
+import {RouterOutlet} from "@angular/router";
 
 @NgModule({
   declarations: [
     StoreItemsComponent,
     StorePrivilegesComponent,
     TitleHeaderComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    StoreNavComponent
   ],
   imports: [
     TextFieldComponent,
@@ -22,8 +25,12 @@ import {InputSelectorComponent} from "@/app/components/inputs/input-selector/inp
     ButtonComponent,
     SafePipe,
     NgForOf,
-    InputSelectorComponent
+    InputSelectorComponent,
+    RouterOutlet
   ],
+  exports: [
+    StoreNavComponent
+  ]
 })
 export class CatalogModule {
 }

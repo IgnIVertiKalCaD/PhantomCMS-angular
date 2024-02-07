@@ -1,20 +1,24 @@
 <div #inputs class="inputs"
-     (input)="input($event)"
-     (keyup)="keyup($event)">
-  <input class="input" type="text"
-         inputmode="numeric" maxlength="1"/>
-  <input class="input" type="text"
-         inputmode="numeric" maxlength="1"/>
-  <input class="input" type="text"
-         inputmode="numeric" maxlength="1"/>
+     (paste)="pasteForDesktop($event)"
+     (input)="inputForMobile($event)"
+     (keyup)="keyUp($event)"
+     (beforeinput)="validateInput($event)"
+>
+  <input
+    *ngFor="let input of [].constructor(countInputs) | slice:0:countInputs / 2; index as i"
+    [disabled]="disableInput"
+    [id]="i"
+    [value]="code[i] || ''"
+    [type]="type"
+    maxlength="1"/>
 
   <hr>
 
-  <input class="input a" type="text"
-         inputmode="numeric" maxlength="1"/>
-  <input class="input" type="text"
-         inputmode="numeric" maxlength="1"/>
-  <input class="input" type="text"
-         inputmode="numeric"
-         maxlength="1"/>
+  <input
+    *ngFor="let inputs of [].constructor(countInputs) | slice:3; index as i"
+    [disabled]="disableInput"
+    [id]="i + countInputs / 2"
+    [value]="code[i + countInputs / 2] || ''"
+    [type]="type"
+    maxlength="1"/>
 </div>

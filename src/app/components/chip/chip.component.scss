@@ -33,6 +33,8 @@ app-chip {
     align-items: center;
     padding: 3px 6px 3px 3px;
 
+    gap: 5px;
+
     color: rgba(255, 255, 255, 0.50);
     font-size: 16px;
     font-style: normal;
@@ -40,12 +42,8 @@ app-chip {
     line-height: 24px;
 
     > p {
-      margin-left: 5px;
-
       color: rgba(255, 255, 255, 0.50);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
+      line-height: 0;
     }
 
     > svg {

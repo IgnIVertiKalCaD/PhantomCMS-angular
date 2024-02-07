@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
 import {ChildrenOutletContexts, IsActiveMatchOptions} from "@angular/router";
-import {navigateAnimation} from "@/app/navigation/animation";
+import {navigateAnimation} from "@/app/navigation/navigation.animation";
 import {DockComponent} from "@/app/components/global/dock/dock.component";
 import {routerIcons} from "@/common/icons/routerIcons";
 import {RouterType} from "@/app/components/global/nav/router/types/RouterType";

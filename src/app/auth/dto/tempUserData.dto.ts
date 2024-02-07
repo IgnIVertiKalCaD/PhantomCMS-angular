@@ -1,5 +1,6 @@
 export class TempUserDataDto {
-  usernameOrEmail?: string;
+  username?: string;
+  email?: string;
   password?: string;
   rememberMe?: boolean;
 }

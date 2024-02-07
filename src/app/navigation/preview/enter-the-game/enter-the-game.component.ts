@@ -3,6 +3,7 @@ import {phantomIcons} from "@/common/icons/phantomIcons";
 import {RouterLink} from "@angular/router";
 import {ButtonComponent} from "@/app/components/button/button.component";
 import {SafePipe} from "@/pipes/safe.pipe";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-enter-the-game',
@@ -12,7 +13,8 @@ import {SafePipe} from "@/pipes/safe.pipe";
   imports: [
     RouterLink,
     ButtonComponent,
-    SafePipe
+    SafePipe,
+    NgOptimizedImage
   ]
 })
 export class EnterTheGameComponent {

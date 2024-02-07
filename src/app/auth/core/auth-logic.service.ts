@@ -1,16 +1,18 @@
+import {FormControl} from "@angular/forms";
+import {TempUserDataDto} from "@/app/auth/dto/tempUserData.dto";
+import {Store} from "@ngxs/store";
 import {
   ResetCurrentIndex,
   SceneChangeToTheNext,
   SceneChangeToThePrevious
 } from "@/app/auth/registration/store/sceneСhanger.store";
-import {Directive} from "@angular/core";
-import {Store} from "@ngxs/store";
-import {FormControl} from "@angular/forms";
 import {SaveTempUserData} from "@/app/auth/store/transportData.store";
-import {TempUserDataDto} from "@/app/auth/dto/tempUserData.dto";
+import {Injectable} from "@angular/core";
 
-@Directive()
-export class NavigationLogic {
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthLogicService {
   constructor(private readonly navigationLogicStore: Store) {
   }
 
@@ -45,4 +47,6 @@ export class NavigationLogic {
   resetCurrentIndex() {
     this.navigationLogicStore.dispatch(new ResetCurrentIndex())
   }
+
+
 }

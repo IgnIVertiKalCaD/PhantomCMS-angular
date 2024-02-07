@@ -1,12 +1,17 @@
-<div class="block-auth">
-  <div class="steps">
+<div class="block-auth"
+     [class.finish]="isTheEnd">
+  <div class="steps"
+       *ngIf="!isTheEnd"
+  >
     <span
-      *ngFor="let el of [].constructor(countSteps); let i = index"
-      [class.active]="IdComponent >= i">
+      *ngFor="let el of [].constructor(countSteps); let i = index;"
+      [class.active]="IdComponent >= i"
+    >
     </span>
   </div>
 
-  <div class="center">
+  <div class="center"
+       [class.finish]="isTheEnd">
     <div class="block-title">
       <img ngSrc="assets/images/turtle.png" width="177" height="103" alt="turtle">
       <p class="guideline">{{ scene.inputs.title }}</p>
@@ -21,7 +26,7 @@
       *ngIf="!isTheEnd && IdComponent > 0"
     >
       <app-button
-        (click)="back()"
+        (click)="authLogic.back()"
         class="back"
         className="solid">
         <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>

@@ -1,0 +1,141 @@
+@import "variables";
+
+:host {
+  display: block;
+
+  box-shadow: 0 4px 40px 0 rgba(101, 99, 238, 0.35);
+  background-color: $base-bg-accent-color;
+
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.img-container {
+  position: relative;
+  display: flex;
+
+  > .title, .block-description {
+    position: absolute;
+    z-index: 1;
+  }
+
+  > .title {
+    background-color: $base-bg-accent-color;
+    padding: 10px 18px;
+    border-radius: 8px;
+
+    top: 0;
+    transform: translate(16px, 20px);
+  }
+
+  > .block-description {
+    bottom: 0;
+    transform: translate(40px, -20px);
+
+  }
+}
+
+.title {
+  color: white;
+  line-height: 24px;
+  font-size: 32px;
+  font-weight: 600;
+
+}
+
+.block-description {
+  display: flex;
+  gap: 60px;
+
+
+  color: $white-075;
+  font-size: 26px;
+  font-weight: 400;
+
+  span {
+    color: $white-1;
+    font-size: 42px;
+    font-weight: 600;
+
+  }
+}
+
+.sub {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-top: 10px;
+  padding: 16px;
+
+  .title {
+    font-size: 24px;
+  }
+
+  .toggles {
+    gap: 20px;
+    display: flex;
+  }
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  hr {
+    height: 60%;
+    width: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    background: $white-05;
+  }
+
+  tr {
+    position: relative;
+  }
+
+  th {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+  td, th {
+    color: white;
+    font-weight: 400;
+  }
+
+  thead {
+    border-bottom: 6px solid transparent;
+  }
+
+  td {
+    padding: 2px 0;
+  }
+
+  th {
+    background-color: rgba($base-border-color, 0.2);
+    padding: 5px 10px;
+
+
+    &:first-child {
+      -moz-border-radius-bottomleft: 10px;
+      -moz-border-radius-topleft: 10px;
+      -webkit-border-bottom-left-radius: 10px;
+      -webkit-border-top-left-radius: 10px;
+    }
+    &:last-child {
+      -moz-border-radius-bottomright: 10px;
+      -moz-border-radius-topright: 10px;
+      -webkit-border-bottom-right-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+    }
+  }
+
+  td {
+    text-align: center;
+  }
+}

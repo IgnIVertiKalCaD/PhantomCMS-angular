@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
+import {InputSelectDto} from "@/app/components/inputs/input-selector/dto/input-select.dto";
 
 @Component({
   selector: 'app-store-items',
@@ -8,5 +9,30 @@ import {phantomIcons} from "@/common/icons/phantomIcons";
 })
 export class StoreItemsComponent {
 
-    protected readonly phantomIcons = phantomIcons;
+  private serversNav: InputSelectDto[] = [
+    {
+      text: 'Hi-tech',
+    },
+    {
+      text: 'Vanila',
+    }
+  ];
+
+  private sortByNav: InputSelectDto[] = [
+    {
+      text: 'Цена (от дешёвых)',
+    },
+    {
+      text: 'Цена (от дорогих)',
+    }
+  ];
+
+  public listNav: Record<string, InputSelectDto[]>[] = [
+    {'servers': this.serversNav},
+    {'sortBy': this.sortByNav}
+  ];
+
+  // [name: this.serversNav, name: this.sortNav]
+
+  protected readonly phantomIcons = phantomIcons;
 }

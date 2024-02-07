@@ -7,11 +7,12 @@ import {
   ViewChild, ViewContainerRef,
   ViewEncapsulation, ViewRef
 } from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
+import {Location, NgForOf, NgIf} from "@angular/common";
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {SafePipe} from "@/pipes/safe.pipe";
 import {InputSelectDto} from "@/app/components/inputs/input-selector/dto/input-select.dto";
 import {IconComponent} from "@/app/components/icon/icon.component";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-input-selector',
@@ -21,12 +22,13 @@ import {IconComponent} from "@/app/components/icon/icon.component";
     IconComponent,
     NgForOf,
     SafePipe,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   standalone: true
 })
 export class InputSelectorComponent implements OnInit, AfterViewInit {
-  constructor() {
+  constructor(public router: Router, private readonly activatedRoute: ActivatedRoute) {
   }
 
   @ViewChild('selector', {static: false})
@@ -53,11 +55,14 @@ export class InputSelectorComponent implements OnInit, AfterViewInit {
   @Input()
   title: string = '';
 
+  @Input()
+  routingOnSelectOption: boolean = false;
+
   selectedOption: InputSelectDto[] = [];
 
   listOptions: InputSelectDto[] = [];
 
-  isOpen: boolean = true;
+  isOpen: boolean = false;
 
   selectImg(option: string) {
 
@@ -68,6 +73,18 @@ export class InputSelectorComponent implements OnInit, AfterViewInit {
 
     if (this.hideTitle) {
       this.title = ''
+    }
+
+    if (this.routingOnSelectOption) {
+      let parentRoute = '';
+
+      this.activatedRoute.url.subscribe(path => {
+        parentRoute = path[0].path
+      }).unsubscribe();
+
+      this.router.navigate([
+        parentRoute, {outlets: {primary: [option.router]}}
+      ])
     }
 
     this.listOptions = this.listItems.filter(el => el.text !== option.text)
@@ -105,8 +122,11 @@ export class InputSelectorComponent implements OnInit, AfterViewInit {
     }
 
     this.selectedOption = [this.listItems[0]];
+    //**
+    // Duplicates will not be accepted. They will be discarded
+    //**
+    console.log(this.listItems)
     this.listOptions = this.listItems.filter(el => el.text !== this.selectedOption[0].text)
-
   }
 
   protected readonly phantomIcons = phantomIcons;

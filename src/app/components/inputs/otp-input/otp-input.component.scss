@@ -15,7 +15,7 @@
   gap: 25px
 }
 
-.input {
+input {
   transition: 0.1s ease-out;
 
   border-radius: 16px;
@@ -36,9 +36,10 @@
   font-weight: 400;
   line-height: 28px;
 
+  &:focus {
+    border: 1px solid $base-border-color;
+    background: transparent;
+  }
+
 }
 
-.input:focus {
-  border: 1px solid $base-border-color;
-  background: transparent;
-}

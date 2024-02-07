@@ -2,39 +2,39 @@
 @import "global-style-effects";
 
 @mixin default-btn() {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 28px;
-  text-align: center;
 
-  cursor: pointer;
-
-  color: $white-1;
-  background: $base-button-accent-color;
-
-  height: auto;
-
-  border-radius: 12px;
-  display: block;
-
-  transition: 0.1s ease-out;
-
-  &:hover {
-    opacity: .75;
-
-    &:active {
-      opacity: .5
-    }
-  }
 }
 
 app-button {
   .default {
-    @include default-btn;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: center;
+
+    cursor: pointer;
+
+    color: $white-1;
+    background: $base-button-accent-color;
+
+    height: auto;
+
+    border-radius: 12px;
+    display: block;
+
+    transition: 0.1s ease-out;
+
+    &:hover {
+      opacity: .75;
+
+      &:active {
+        opacity: .5
+      }
+    }
   }
   .outline {
-    @include default-btn;
+    @extend .default;
 
     border: 1px solid $base-button-accent-color;
 
@@ -51,6 +51,17 @@ app-button {
     }
   }
 
+  &.toggles {
+    .hybrid {
+      @extend .outline;
+
+      line-height: 21px;
+      padding: 0 16px;
+      font-size: 16px;
+      background-color: $base-bg-hints;
+    }
+  }
+
   &.logout {
     .transparent {
       display: flex;
@@ -62,14 +73,14 @@ app-button {
 
   &.auth {
    .solid {
-     @include default-btn;
+     @extend .default;
      padding: 16px 30px;
    }
 
   }
 
   .load-avatar {
-    @include default-btn;
+    @extend .default;
 
     border-radius: 7px;
 
@@ -81,7 +92,7 @@ app-button {
   }
 
   .load-skin_cape {
-    @include default-btn;
+    @extend .default;
 
     border-radius: 12px;
 
@@ -110,7 +121,8 @@ app-button {
   }
 
   .start-play {
-    @include default-btn;
+    @extend .default;
+
     padding: 37px 38px;
 
     text-transform: uppercase;
@@ -124,7 +136,8 @@ app-button {
 
   &.send-code {
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       height: 100%;
       padding: 0 12px;
@@ -137,7 +150,8 @@ app-button {
 
   &.change-password {
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       padding: 8px 12px;
       justify-content: center;
@@ -150,7 +164,8 @@ app-button {
   }
 
   .close-all-sessions {
-    @include default-btn;
+    @extend .default;
+
 
     background: transparent;
     border: 1px solid $white-1;
@@ -164,7 +179,8 @@ app-button {
   }
 
   .restocking {
-    @include default-btn;
+    @extend .default;
+
 
     width: 18rem;
     padding: 16px 20px;
@@ -172,7 +188,8 @@ app-button {
 
   &.two-fa {
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       height: 100%;
       padding: 0 12px;
@@ -193,11 +210,12 @@ app-button {
     &.disabled {
       .solid {
         background: transparent;
-        border: 1px solid $base-border-color;
+        outline: 1px solid $base-border-color;
       }
     }
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       border-radius: 16px;
 
@@ -214,7 +232,8 @@ app-button {
 
   &.modal-btn {
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       display: flex;
       align-items: center;
@@ -232,7 +251,8 @@ app-button {
 
   &.good-game {
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       font-weight: 400;
 
@@ -242,11 +262,14 @@ app-button {
       gap: 6px;
 
       padding: 16px 20px;
+
+      border-radius: 16px;
     }
   }
   &.back {
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       font-weight: 400;
 
@@ -279,7 +302,8 @@ app-button {
 
   &.items-card {
     .solid {
-      @include default-btn;
+      @extend .default;
+
 
       width: 100%;
 
@@ -292,7 +316,8 @@ app-button {
   &.profile {
     &.main {
       .solid {
-        @include default-btn;
+        @extend .default;
+
 
         padding: 0 36px;
       }

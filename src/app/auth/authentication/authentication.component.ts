@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {AuthScenesService} from "@/app/auth/services/auth-scenes.service";
 import {SceneChanger} from "@/app/auth/registration/store/sceneСhanger.store";
-import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
+import {AuthLogicService} from "@/app/auth/core/auth-logic.service";
 
 @Component({
   selector: 'app-authentication',
@@ -13,10 +13,10 @@ import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
   styleUrls: ['./authentication.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AuthenticationComponent extends NavigationLogic implements OnInit, OnDestroy {
-  // constructor(
-  //   private readonly store: Store,
-  // ) { super(store) }
+export class AuthenticationComponent  implements OnInit, OnDestroy {
+  constructor(
+    protected readonly authLogic: AuthLogicService,
+  ) {}
 
   protected authList = inject(AuthScenesService).getAuthScenes();
 
@@ -58,7 +58,7 @@ export class AuthenticationComponent extends NavigationLogic implements OnInit, 
   }
 
   ngOnDestroy() {
-    this.resetCurrentIndex()
+    this.authLogic.resetCurrentIndex()
   }
   protected readonly phantomIcons = phantomIcons;
 }

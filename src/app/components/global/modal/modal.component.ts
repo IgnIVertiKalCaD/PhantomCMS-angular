@@ -1,15 +1,13 @@
 import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalService} from "@/services/modal.service";
 import {Location, NgIf} from "@angular/common";
-import {fadeScaleAnimation} from "@/app/animations/fadeScale.animation";
+import {fadeScaleAnimation} from "@/animations/fadeScale.animation";
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styles: [
-    'section {margin: auto auto}'
-  ],
-  animations: [
+  styleUrls: ['./modal.component.scss'],
+    animations: [
     fadeScaleAnimation
   ],
   imports: [
@@ -24,7 +22,7 @@ export class ModalComponent implements OnInit, OnDestroy {
   @Input()
   rollback?: boolean = false;
 
-  isOpen = false;
+  isOpen: boolean = false;
 
   @ViewChild('modal')
   modal: ElementRef<HTMLDivElement>

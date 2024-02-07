@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
-import {Store} from "@ngxs/store";
 import {authValidator} from "@/common/validaters/authValidator";
-import {SaveTempUserData} from "@/app/auth/store/transportData.store";
+import {AuthLogicService} from "@/app/auth/core/auth-logic.service";
 
 @Component({
   selector: 'app-enter-email',
@@ -12,7 +10,10 @@ import {SaveTempUserData} from "@/app/auth/store/transportData.store";
   styleUrls: ['./enter-email.component.scss'],
 
 })
-export class EnterEmailComponent extends NavigationLogic {
+export class EnterEmailComponent {
+  constructor(
+    protected readonly authLogic: AuthLogicService,
+  ) {}
 
   email = new FormControl('', [
     Validators.required,

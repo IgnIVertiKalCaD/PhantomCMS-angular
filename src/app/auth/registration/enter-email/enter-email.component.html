@@ -4,7 +4,7 @@
                     [control]="email"
     />
     <app-button class="auth-btn" className="solid"
-                (click)="continue(email, {usernameOrEmail: email.value!})"
+                (click)="authLogic.continue(email, {email: email.value!})"
     >
       Далее
       <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>

@@ -1,4 +1,4 @@
-<header class="dock d-flex space-border">
+<header class="dock space-border">
 
   <div class="d-flex left">
     <app-logo/>
@@ -8,9 +8,23 @@
 
   </div>
 
-  <div class="right">
-    <section style="background: #1E1E25;" *ngIf="isAuth$ | async">
-      <div>
+  <section class="right">
+    <div>
+      <app-icon class="dock settings" type="transparent">
+        <i [outerHTML]="phantomIcons.settings_icon | safe"></i>
+      </app-icon>
+    </div>
+
+    <div class="lang">
+      RU
+    </div>
+
+    <div class="balance">
+      <p>Баланс: <span>350</span></p>
+    </div>
+
+    <div class="block-userinfo" *ngIf="isAuth$ | async">
+      <div class="image-username">
         <img (load)="isHide = false"
              [style.opacity]="!isHide ? 1 : 0"
              [src]="(head$ | async) ?? defaultHead"
@@ -29,13 +43,13 @@
       <app-button class="logout" className="transparent" (click)="logout()">
         <i [outerHTML]="phantomIcons.logout_icon | safe"></i>
       </app-button>
-    </section>
+    </div>
 
-    <section *ngIf="!(isAuth$ | async)">
-      <app-button class="auth" className="solid" routerLink="/auth">
-        Войти
-      </app-button>
-    </section>
-  </div>
+    <app-button
+      *ngIf="!(isAuth$ | async)"
+      class="auth" className="solid" routerLink="/auth">
+      Войти
+    </app-button>
+  </section>
 
 </header>

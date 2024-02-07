@@ -9,7 +9,7 @@
   <div>
     <app-text-field class="auth" className="outline" placeholder="Введите реферальный код"/>
     <app-button class="auth-btn" className="solid"
-                (click)="next(true)"
+                (click)="authLogic.next(true)"
     >
         Завершить
       <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>

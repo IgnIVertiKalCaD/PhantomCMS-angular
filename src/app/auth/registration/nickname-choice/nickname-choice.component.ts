@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
-import {Store} from "@ngxs/store";
-import {SceneChangeToTheNext} from "@/app/auth/registration/store/sceneСhanger.store";
 import {FormControl, Validators} from "@angular/forms";
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NavigationLogic} from "@/app/auth/core/NavigationLogic";
+import {AuthLogicService} from "@/app/auth/core/auth-logic.service";
+import {InserterService} from "@/app/auth/core/inserter.service";
 
 @Component({
   selector: 'app-nickname-choice',
   templateUrl: './nickname-choice.component.html',
   styleUrls: ['./nickname-choice.component.scss']
 })
-export class NicknameChoiceComponent extends NavigationLogic {
+export class NicknameChoiceComponent {
+  constructor(
+    protected readonly authLogic: AuthLogicService,
+    protected readonly inserterService: InserterService,
+  ) {}
 
   nickname = new FormControl('', [
     Validators.required,

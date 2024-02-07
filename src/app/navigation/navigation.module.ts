@@ -1,6 +1,16 @@
 import {NgModule} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AsyncPipe, DatePipe, NgClass, NgForOf, NgIf, NgOptimizedImage, NgStyle, SlicePipe} from "@angular/common";
+import {
+  AsyncPipe,
+  DatePipe,
+  NgClass,
+  NgComponentOutlet,
+  NgForOf,
+  NgIf,
+  NgOptimizedImage,
+  NgStyle,
+  SlicePipe
+} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NewsComponent} from "@/app/navigation/news/news.component";
 import {CatalogComponent} from "@/app/navigation/catalog/catalog.component";
@@ -30,6 +40,8 @@ import { NewsListComponent } from './news/news-list/news-list.component';
 import {IconComponent} from "@/app/components/icon/icon.component";
 import { CardUserCommentComponent } from './news/components/card-user-comment/card-user-comment.component';
 import {PreviewComponent} from "@/app/navigation/preview/preview.component";
+import { BlockingHistoryComponent } from './profile/main/components/blocking-history/blocking-history.component';
+import {DynamicDirective} from "@/directives/dynamic.directive";
 
 @NgModule({
     declarations: [
@@ -48,6 +60,7 @@ import {PreviewComponent} from "@/app/navigation/preview/preview.component";
         PreviewComponent,
         NewsListComponent,
         CardUserCommentComponent,
+        BlockingHistoryComponent,
     ],
     imports: [
         OtpInputComponent,
@@ -76,6 +89,8 @@ import {PreviewComponent} from "@/app/navigation/preview/preview.component";
         ProgressComponent,
         NgStyle,
         IconComponent,
+        NgComponentOutlet,
+        DynamicDirective,
     ],
 })
 export class NavigationModule {

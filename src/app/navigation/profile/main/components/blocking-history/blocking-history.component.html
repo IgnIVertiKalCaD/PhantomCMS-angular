@@ -1,0 +1,74 @@
+<div class="img-container">
+  <img ngSrc="assets/images/defaultServer.png" width="980" height="300">
+
+  <p class="title">История ограничений</p>
+
+  <div class="block-description">
+    <div *ngFor="let i of [].constructor(3)">
+      <p>Блокировок чата:</p>
+      <span>255</span>
+    </div>
+  </div>
+</div>
+
+<div class="sub">
+  <p class="title">
+    Список ограничений:
+  </p>
+
+  <div class="toggles">
+    <app-button
+      *ngFor="let button of [].constructor(3)"
+      class="toggles" className="hybrid">
+      Блокировки чата
+    </app-button>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Дата получения
+        <hr>
+      </th>
+      <th>Дата окончания
+        <hr>
+      </th>
+      <th>Причина
+        <hr>
+      </th>
+      <th>Тип
+        <hr>
+      </th>
+      <th>Выдал
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>01.01.2023</td>
+      <td>03.02.2024</td>
+      <td>3.14</td>
+      <td>Бан</td>
+      <td>GomoModerator</td>
+    </tr>
+    <tr>
+      <td>01.01.2023</td>
+      <td>03.02.2024</td>
+      <td>3.14</td>
+      <td>Бан</td>
+      <td>GomoModerator</td>
+    </tr>
+    <tr>
+      <td>01.01.2023</td>
+      <td>03.02.2024</td>
+      <td>3.14</td>
+      <td>Бан</td>
+      <td>GomoModerator</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
