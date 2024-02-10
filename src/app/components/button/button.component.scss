@@ -270,7 +270,6 @@ app-button {
     .solid {
       @extend .default;
 
-
       font-weight: 400;
 
       display: flex;
@@ -304,7 +303,6 @@ app-button {
     .solid {
       @extend .default;
 
-
       width: 100%;
 
       text-align: center;
@@ -318,9 +316,29 @@ app-button {
       .solid {
         @extend .default;
 
-
         padding: 0 36px;
       }
+    }
+  }
+
+  &.privileges-card {
+    .outline {
+      width: 100%;
+    }
+
+    .solid {
+      @extend .default;
+
+      border-radius: 0;
+      height: 100%;
+
+      font-weight: 400;
+      font-size: 12px;
+      color: $white-1;
+
+      padding: 2px 6px 0 6px;
+      //background: rgba(118, 114, 255, 0.15);
+
     }
   }
 }

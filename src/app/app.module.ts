@@ -17,7 +17,7 @@ import {ButtonComponent} from "@/app/components/button/button.component";
 import {NavigationModule} from "@/app/navigation/navigation.module";
 import {LogoComponent} from "@/app/components/global/dock/logo/logo.component";
 import {AppRoutingModule} from "@/app/app-routing.module";
-import {ServersStore} from "@/app/navigation/servers/store/servers-store.service";
+import {ServersStore} from "@/app/navigation/servers/store/servers.store";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {RegistrationStore} from "@/app/auth/registration/store/registration.store";
 import {OverlayComponent} from './components/overlay/overlay.component';

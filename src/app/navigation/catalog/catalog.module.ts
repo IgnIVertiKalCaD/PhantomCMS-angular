@@ -10,6 +10,8 @@ import {SafePipe} from "@/pipes/safe.pipe";
 import {InputSelectorComponent} from "@/app/components/inputs/input-selector/input-selector.component";
 import { StoreNavComponent } from './components/store-nav/store-nav.component';
 import {RouterOutlet} from "@angular/router";
+import { PrivilegesCardComponent } from './components/privileges-card/privileges-card.component';
+import {ChipComponent} from "@/app/components/chip/chip.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {RouterOutlet} from "@angular/router";
     StorePrivilegesComponent,
     TitleHeaderComponent,
     ItemCardComponent,
-    StoreNavComponent
+    StoreNavComponent,
+    PrivilegesCardComponent
   ],
   imports: [
     TextFieldComponent,
@@ -26,7 +29,8 @@ import {RouterOutlet} from "@angular/router";
     SafePipe,
     NgForOf,
     InputSelectorComponent,
-    RouterOutlet
+    RouterOutlet,
+    ChipComponent
   ],
   exports: [
     StoreNavComponent

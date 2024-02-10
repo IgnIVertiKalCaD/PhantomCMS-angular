@@ -34,7 +34,7 @@ export class InputSelectorComponent implements OnInit, AfterViewInit {
   @ViewChild('selector', {static: false})
   selector: ElementRef<HTMLDivElement>
 
-  @Input()
+  @Input({required: true})
   listItems: InputSelectDto[] = [];
 
   @Input()

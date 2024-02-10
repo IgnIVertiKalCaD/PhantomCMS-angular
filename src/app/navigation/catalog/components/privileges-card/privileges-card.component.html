@@ -1,0 +1,30 @@
+<p class="title"><ng-content select=".title" /></p>
+
+<div class="chips">
+  <ng-content select="[chip]" />
+</div>
+
+<div class="sub">
+  <span class="cost">0 коинов/навсегда</span>
+
+  <div class="block-control">
+    <app-button
+      class="privileges-card"
+      className="outline">
+      Улучшить
+    </app-button>
+
+    <div class="control-periods">
+      <app-button
+        class="privileges-card"
+        className="solid">
+        -1 мес
+      </app-button>
+      <app-button
+        class="privileges-card"
+        className="solid">
+        +1 мес
+      </app-button>
+    </div>
+  </div>
+</div>

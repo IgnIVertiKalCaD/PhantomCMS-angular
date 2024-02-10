@@ -1,0 +1,69 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  background: $base-bg-accent-color;
+
+  width: 290px;
+  height: 380px;
+}
+
+.chips {
+  margin-top: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.title {
+  margin-top: 4px;
+
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: $white-1;
+}
+
+.sub {
+  margin-top: auto;
+
+  text-align: center;
+
+  > span {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    color: $white-1;
+  }
+
+  > .block-control {
+    display: flex;
+
+    height: 40px;
+
+    gap: 5px;
+
+    margin-top: 12px;
+
+    > app-button {
+      flex: 1 0 auto;
+    }
+
+    > .control-periods {
+      overflow: hidden;
+      border-radius: 12px;
+
+      display: flex;
+
+      gap: 3px;
+    }
+  }
+}

@@ -1,4 +1,6 @@
-<div [@navigateAnimation]="getRouteAnimationData()">
+<div
+  class="mt-4"
+  [@navigateAnimation]="getRouteAnimationData()">
   <router-outlet (activate)="createRightNav($event)" (deactivate)="reCreateRightNav()"/>
 
   <app-store-nav>

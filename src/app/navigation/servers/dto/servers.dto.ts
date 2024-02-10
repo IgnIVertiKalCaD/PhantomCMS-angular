@@ -1,4 +1,4 @@
-export class ServerDto {
+export class ServersDto {
   uniqueId: string;
   name: string;
   version: string;
@@ -6,3 +6,4 @@ export class ServerDto {
   description: string;
   icon: string | null;
 }
+

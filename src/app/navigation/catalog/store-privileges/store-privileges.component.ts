@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {InputSelectDto} from "@/app/components/inputs/input-selector/dto/input-select.dto";
+import {phantomIcons} from "@/common/icons/phantomIcons";
 
 @Component({
   selector: 'app-store-privileges',
@@ -7,6 +8,27 @@ import {InputSelectDto} from "@/app/components/inputs/input-selector/dto/input-s
   styleUrls: ['./store-privileges.component.scss']
 })
 export class StorePrivilegesComponent {
+
+  listServers: InputSelectDto[] = [
+    {
+      text: 'Hitech',
+    },
+    {
+      text: 'Taumcraft',
+    },
+    {
+      text: 'Taumcraft',
+    },
+    {
+      text: 'Taumcraft',
+    },
+    {
+      text: 'Taumcraft',
+    },
+    {
+      text: 'Taumcraft',
+    }
+  ]
 
   private sortByNav: InputSelectDto[] = [
     {
@@ -20,4 +42,5 @@ export class StorePrivilegesComponent {
   public listNav: Record<string, InputSelectDto[]>[] = [
     {'sortBy': this.sortByNav}
   ];
+  protected readonly phantomIcons = phantomIcons;
 }

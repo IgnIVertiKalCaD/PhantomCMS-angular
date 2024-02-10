@@ -31,6 +31,9 @@ export class OtpInputComponent implements OnInit {
   @Input()
   width: number = 58;
 
+  @Input()
+  height: string | 'inherit' = 'inherit';
+
   //in dev
   @Input()
   countInputs: number = 6;

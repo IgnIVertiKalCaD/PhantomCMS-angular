@@ -42,6 +42,7 @@ import { CardUserCommentComponent } from './news/components/card-user-comment/ca
 import {PreviewComponent} from "@/app/navigation/preview/preview.component";
 import { BlockingHistoryComponent } from './profile/main/components/blocking-history/blocking-history.component';
 import {DynamicDirective} from "@/directives/dynamic.directive";
+import { ServerDetailsComponent } from './servers/components/server-details/server-details.component';
 
 @NgModule({
     declarations: [
@@ -70,6 +71,7 @@ import {DynamicDirective} from "@/directives/dynamic.directive";
         TextFieldComponent,
         EnterTheGameComponent,
         ButtonComponent,
+      ServerDetailsComponent,
         FormsModule,
         NgForOf,
         CatalogModule,

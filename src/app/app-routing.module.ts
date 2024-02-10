@@ -18,6 +18,7 @@ import {RestockingComponent} from "@/app/navigation/profile/restocking/restockin
 import {StoreItemsComponent} from "@/app/navigation/catalog/store-items/store-items.component";
 import {StorePrivilegesComponent} from "@/app/navigation/catalog/store-privileges/store-privileges.component";
 import {StoreNavComponent} from "@/app/navigation/catalog/components/store-nav/store-nav.component";
+import {ServerDetailsComponent} from "@/app/navigation/servers/components/server-details/server-details.component";
 
 
 // type RoutePaths<T> = T extends { path: infer P, children?: infer C }
@@ -57,6 +58,13 @@ const routes: Routes = [
         path: 'servers',
         component: ServersComponent,
         data: { animation: 'ServersPage' },
+        children: [
+          {
+            path: ':uniqueId',
+            component: ServerDetailsComponent,
+            data: { animation: 'ServerDetails' }
+          },
+        ]
       },
       {
         path: 'profile',

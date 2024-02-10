@@ -10,6 +10,6 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 export class ChipComponent {
 
   @Input()
-  className: 'for-servers' | 'for-news'
+  className: 'for-servers' | 'for-news' | 'for-server-details' | 'for-privileges-card'
 
 }

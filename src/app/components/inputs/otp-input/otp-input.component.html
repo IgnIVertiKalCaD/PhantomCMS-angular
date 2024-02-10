@@ -8,6 +8,10 @@
     *ngFor="let input of [].constructor(countInputs) | slice:0:countInputs / 2; index as i"
     [disabled]="disableInput"
     [id]="i"
+
+    [style.width.px]="width"
+    [style.height]="height"
+
     [value]="code[i] || ''"
     [type]="type"
     maxlength="1"/>
@@ -18,6 +22,10 @@
     *ngFor="let inputs of [].constructor(countInputs) | slice:3; index as i"
     [disabled]="disableInput"
     [id]="i + countInputs / 2"
+
+    [style.width.px]="width"
+    [style.height]="height"
+
     [value]="code[i + countInputs / 2] || ''"
     [type]="type"
     maxlength="1"/>

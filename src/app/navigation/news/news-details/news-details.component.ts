@@ -24,15 +24,11 @@ export class NewsDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly modalService: ModalService,
-    private readonly location: Location, private readonly route: ActivatedRoute,
+    private readonly route: ActivatedRoute,
     private readonly store: Store) {}
 
   defaultImageNews: string = 'assets/images/defaultServer.png'
 
-  @HostListener('document:keydown.escape', ['$event'])
-  onKeydownHandler(event: KeyboardEvent) {
-    this.location.back()
-  }
 
   @Select(NewsStore.getSelectedNews)
   selectedNews$: Observable<NewsDto>
