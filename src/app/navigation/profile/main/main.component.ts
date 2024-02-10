@@ -1,16 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Select} from "@ngxs/store";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {Observable} from "rxjs";
 import {AssetsStore} from "@/store/assets-manager/assets-store";
 import {phantomIcons} from "@/common/icons/phantomIcons";
+import {ModalService} from "@/services/modal.service";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
+  constructor(protected readonly modalService: ModalService) {
+  }
+
   @Select(AuthStore.getUsername)
   username$: Observable<string>;
 
@@ -30,7 +34,10 @@ export class MainComponent implements OnInit {
 
 
   ngOnInit() {
+  }
 
+  ngAfterViewInit() {
+    // this.modalService.open('modal-blocking-history')
   }
 
   protected readonly phantomIcons = phantomIcons;

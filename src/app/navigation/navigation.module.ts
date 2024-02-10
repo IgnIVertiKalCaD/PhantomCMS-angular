@@ -1,6 +1,16 @@
 import {NgModule} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AsyncPipe, DatePipe, NgClass, NgForOf, NgIf, NgOptimizedImage, NgStyle, SlicePipe} from "@angular/common";
+import {
+  AsyncPipe,
+  DatePipe,
+  NgClass,
+  NgComponentOutlet,
+  NgForOf,
+  NgIf,
+  NgOptimizedImage,
+  NgStyle,
+  SlicePipe
+} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NewsComponent} from "@/app/navigation/news/news.component";
 import {CatalogComponent} from "@/app/navigation/catalog/catalog.component";
@@ -19,7 +29,6 @@ import {ChipComponent} from "@/app/components/chip/chip.component";
 import {ProgressComponent} from "@/app/components/progress/progress.component";
 import {RouterComponent} from "@/app/components/global/nav/router/router.component";
 import {OtpInputComponent} from "@/app/components/inputs/otp-input/otp-input.component";
-import {NgxOtpInputModule} from "ngx-otp-input";
 import { ChangeEmailComponent } from '@/app/navigation/profile/security/change-email/change-email.component';
 import { ChangePasswordComponent } from './profile/security/change-password/change-password.component';
 import { TwoFaComponent } from './profile/security/two-fa/two-fa.component';
@@ -29,6 +38,11 @@ import { EnterTheGameComponent } from './preview/enter-the-game/enter-the-game.c
 import {ModalComponent} from "@/app/components/global/modal/modal.component";
 import { NewsListComponent } from './news/news-list/news-list.component';
 import {IconComponent} from "@/app/components/icon/icon.component";
+import { CardUserCommentComponent } from './news/components/card-user-comment/card-user-comment.component';
+import {PreviewComponent} from "@/app/navigation/preview/preview.component";
+import { BlockingHistoryComponent } from './profile/main/components/blocking-history/blocking-history.component';
+import {DynamicDirective} from "@/directives/dynamic.directive";
+import { ServerDetailsComponent } from './servers/components/server-details/server-details.component';
 
 @NgModule({
     declarations: [
@@ -44,8 +58,10 @@ import {IconComponent} from "@/app/components/icon/icon.component";
         TwoFaComponent,
         ActiveSessionsComponent,
         RestockingComponent,
-        EnterTheGameComponent,
+        PreviewComponent,
         NewsListComponent,
+        CardUserCommentComponent,
+        BlockingHistoryComponent,
     ],
     imports: [
         OtpInputComponent,
@@ -53,7 +69,9 @@ import {IconComponent} from "@/app/components/icon/icon.component";
         RouterComponent,
         AsyncPipe,
         TextFieldComponent,
+        EnterTheGameComponent,
         ButtonComponent,
+      ServerDetailsComponent,
         FormsModule,
         NgForOf,
         CatalogModule,
@@ -71,13 +89,11 @@ import {IconComponent} from "@/app/components/icon/icon.component";
         SkinViewer3dComponent,
         ChipComponent,
         ProgressComponent,
-        NgxOtpInputModule,
         NgStyle,
         IconComponent,
+        NgComponentOutlet,
+        DynamicDirective,
     ],
-    exports: [
-        EnterTheGameComponent
-    ]
 })
 export class NavigationModule {
 }

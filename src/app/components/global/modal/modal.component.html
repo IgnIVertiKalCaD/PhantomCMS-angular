@@ -5,5 +5,11 @@
 
   <section>
     <ng-content></ng-content>
+
+    <i class='exit'
+       *ngIf="showExitButton"
+       (click)="LogicClosingWindow()"
+       [innerHTML]="phantomIcons.exitNews_icon | safe"
+    ></i>
   </section>
 </div>

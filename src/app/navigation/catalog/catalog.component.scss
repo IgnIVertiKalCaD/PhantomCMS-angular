@@ -3,4 +3,11 @@
 app-catalog {
 
 
+  > div {
+    display: flex;
+  }
+
+  .input {
+    margin: 0 auto;
+  }
 }

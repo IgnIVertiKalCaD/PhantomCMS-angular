@@ -1,1 +1,42 @@
-<p>store-privileges works!</p>
+<section>
+  <app-title-header>
+    <ng-container class="title">
+      Прокачай свой аккаунт!
+    </ng-container>
+    <ng-container sub>
+      Расширьте возможности своего аккаунта с приобретением эксклюзивных донат-привилегий.
+      Будьте внимательны: Все группы продаются на один сервер, после покупки его сменить уже будет нельзя!
+    </ng-container>
+
+    <app-input-selector
+      class="input"
+      [hideTitle]="true"
+      title="Выберите сервер"
+      [listItems]="listServers"
+      className="solid_v3"
+    />
+  </app-title-header>
+
+
+  <div class="cards-list mt-12">
+    <app-privileges-card
+    *ngFor="let card of [].constructor(3)"
+    >
+      <ng-container class="title">
+        Default
+      </ng-container>
+
+      <app-chip
+        chip
+        *ngFor="let card of [].constructor(3)"
+        className="for-privileges-card">
+        <i [outerHTML]="phantomIcons.SparklingStars_icon | safe"></i>
+        <p>Все преимущества предыдыдыдыдущих привелегий</p>
+      </app-chip>
+
+
+
+    </app-privileges-card>
+  </div>
+
+</section>

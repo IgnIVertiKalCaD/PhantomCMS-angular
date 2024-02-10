@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {RouterType} from "@/app/components/global/nav/router/types/RouterType";
 import {ChildrenOutletContexts} from "@angular/router";
-import {navigateAnimation} from "@/app/navigation/animation";
+import {navigateAnimation} from "@/app/navigation/navigation.animation";
 import {profileAnimation} from "@/app/navigation/profile/profile.animation";
 
 @Component({

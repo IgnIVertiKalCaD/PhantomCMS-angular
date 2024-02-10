@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
 import {Select, Store} from "@ngxs/store";
 import {AuthStore, Login} from "@/app/auth/authentication/store/authentication.store";
-import {Observable} from "rxjs";
+import {Observable, take} from "rxjs";
 import {TempUserDataDto} from "@/app/auth/dto/tempUserData.dto";
-import {ClearTempUserData, TransportDataStore} from "@/app/auth/store/transportData.store";
+import { TransportDataStore} from "@/app/auth/store/transportData.store";
+import {AuthLogicService} from "@/app/auth/core/auth-logic.service";
 
 
 @Component({
@@ -13,11 +13,11 @@ import {ClearTempUserData, TransportDataStore} from "@/app/auth/store/transportD
   templateUrl: './enter-code.component.html',
   styleUrls: ['./enter-code.component.scss']
 })
-export class EnterCodeComponent extends NavigationLogic implements OnInit {
-  constructor(private readonly store: Store) {
-    super(store);
-
-  }
+export class EnterCodeComponent implements OnInit {
+  constructor(
+    private readonly store: Store,
+    protected readonly authLogic: AuthLogicService,
+  ) {}
 
 
   time: number = 3_000; // 2 min | 1s = 1000 | time of ms
@@ -46,25 +46,24 @@ export class EnterCodeComponent extends NavigationLogic implements OnInit {
 
   authentication(): void {
     this.tempUserData$.subscribe(user => {
-      this.store.dispatch([new ClearTempUserData(),
+      if (!user) return
+
+      this.store.dispatch(
         new Login({
-          usernameOrEmail: user.usernameOrEmail!,
+          usernameOrEmail: user.email!,
           password: user.password!,
           rememberMe: true
         })
-      ])
-    })
+      )
+    }).unsubscribe()
   }
 
 
   ngOnInit() {
     this.runTimer()
-
-    setTimeout(() => {
-      this.authentication()
-    }, 2000)
-
+    this.authentication()
   }
+
 
   protected readonly phantomIcons = phantomIcons;
   protected readonly alert = alert;

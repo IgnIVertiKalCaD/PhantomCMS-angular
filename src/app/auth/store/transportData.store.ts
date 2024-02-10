@@ -20,7 +20,7 @@ export class ClearTempUserData {
 @State<TransportDataState>({
   name: 'transportData_store',
   defaults: {
-    tempUserData: JSON.parse(sessionStorage.getItem('tempUserData')!) || null
+    tempUserData: JSON.parse(sessionStorage.getItem('tempUserData')!)
   }
 })
 @Injectable()
@@ -54,9 +54,9 @@ export class TransportDataStore {
   async clearTempUserData(ctx: StateContext<TransportDataState>) {
     sessionStorage.removeItem('tempUserData')
 
-    ctx.setState({
-      tempUserData: null as any
-    })
+    // ctx.setState({
+    //   tempUserData: {}
+    // })
   }
 
 

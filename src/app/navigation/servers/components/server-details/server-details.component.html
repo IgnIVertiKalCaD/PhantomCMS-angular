@@ -1,0 +1,27 @@
+<div class="img-container">
+  <p class="title">{{ (selectedServer$ | async)?.name }}</p>
+  <img [ngSrc]="(selectedServer$ | async)?.icon || defaultImageServer" width="950" height="275" alt="1">
+
+  <div class="block-shortDescription">
+    <div *ngFor="let i of [].constructor(2)">
+      <p>Версия игры</p>
+      <span>{{ (selectedServer$ | async)?.version }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="block-information">
+  <p class="title">Список модов:</p>
+
+  <div class="chips">
+    <app-chip class="server-details" className="for-server-details"
+              *ngFor="let chip of [].constructor(8)">
+      Мод на ремень
+    </app-chip>
+  </div>
+
+  <div class="description">
+    {{ (selectedServer$ | async)?.description }}
+  </div>
+
+</div>

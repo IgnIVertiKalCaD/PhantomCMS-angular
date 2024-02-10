@@ -67,24 +67,6 @@ a {
   text-decoration: none;
 }
 
-//in modal
-app-modal {
-
-  .modal {
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(2px);
-
-    position: fixed;
-    display: flex;
-    inset: 0;
-    z-index: 10000;
-    overflow: auto;
-    justify-content: center;
-    align-items: center;
-  }
-
-}
-
-body.modal-open {
-  overflow: hidden;
+img {
+  object-fit: cover;
 }

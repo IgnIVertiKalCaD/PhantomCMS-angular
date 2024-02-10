@@ -27,10 +27,10 @@ import {animate, group, query, stagger, style, transition, trigger} from "@angul
   ]
 })
 export class NewsListComponent {
-  constructor(protected readonly modalService: ModalService,
+  constructor(
               private readonly store: Store,
-              private contexts: ChildrenOutletContexts,
-              private readonly changeDetector: ChangeDetectorRef) {
+              private contexts: ChildrenOutletContexts
+  ) {
 
   }
 

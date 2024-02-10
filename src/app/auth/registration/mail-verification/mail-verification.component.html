@@ -1,6 +1,7 @@
 <div class="block-enter">
   <div class="justify-center">
     <app-otp-input
+      (finish)="checkCode($event)"
     />
   </div>
   <p class="hint">Проверьте почту, мы отправили письмо с кодом. Не забудьте проверить спам. Отправить повторно через

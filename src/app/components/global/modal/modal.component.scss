@@ -1,0 +1,53 @@
+:host {
+  section {
+    margin: auto auto;
+    position: relative;
+  }
+
+  .modal {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+
+    position: fixed;
+    display: flex;
+    inset: 0;
+    z-index: 10000;
+    overflow: auto;
+  }
+
+
+  .exit {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 100%;
+
+    width: 36px;
+    height: 36px;
+
+    transform: translateX(20px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+
+    transition: all .2s ease-out;
+
+    box-shadow: 0 0 0 0;
+
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 20px 0 rgba(101, 99, 238, 0.35);
+      background: #151519;
+
+      &:active {
+        box-shadow: 0 0 20px 0 rgba(101, 99, 238, 0.45);
+      }
+    }
+
+  }
+}

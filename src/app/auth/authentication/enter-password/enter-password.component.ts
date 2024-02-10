@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
-import {Store} from "@ngxs/store";
-import {SaveTempUserData} from "@/app/auth/store/transportData.store";
+import {authValidator} from "@/common/validaters/authValidator";
+import {AuthLogicService} from "@/app/auth/core/auth-logic.service";
 
 @Component({
   selector: 'app-enter-password',
   templateUrl: './enter-password.component.html',
   styleUrls: ['./enter-password.component.scss']
 })
-export class EnterPasswordComponent extends NavigationLogic {
-  constructor(private readonly store: Store) {
-    super(store);
-  }
+export class EnterPasswordComponent {
+  constructor(
+    protected readonly authLogic: AuthLogicService,
+  ) {}
 
   password = new FormControl('', [
     Validators.required,
@@ -23,23 +22,12 @@ export class EnterPasswordComponent extends NavigationLogic {
     // Validators.pattern("^(?=.*[A-Z]).+$")
   ]);
 
-
-  continue() {
-    if (this.password.valid) {
-
-      this.store.dispatch(
-        new SaveTempUserData({password: this.password.value!, rememberMe: this.isRememberMe})
-      )
-
-      this.next(this.password.valid)
-    }
-  }
-
   isRememberMe: boolean = false;
 
   rememberMe(event: boolean): void {
-      this.isRememberMe = event
+    this.isRememberMe = event
   }
 
   protected readonly phantomIcons = phantomIcons;
+  protected readonly authValidator = authValidator;
 }

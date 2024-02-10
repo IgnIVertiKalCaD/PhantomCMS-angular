@@ -1,17 +1,21 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
 import {AuthScenesService} from "@/app/auth/services/auth-scenes.service";
 import {Select, Store} from "@ngxs/store";
 import {SceneChanger} from "@/app/auth/registration/store/sceneСhanger.store";
-import {Observable} from "rxjs";
-import {NavigationLogic} from "@/app/auth/core/navigationLogic";
+import {last, Observable} from "rxjs";
+import {AuthLogicService} from "@/app/auth/core/auth-logic.service";
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent extends NavigationLogic implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
+  constructor(
+    protected readonly authLogic: AuthLogicService,
+  ) {}
+
   auth_link: string = '/auth'
 
   protected regList = inject(AuthScenesService).getRegistrationScenes();
@@ -34,22 +38,17 @@ export class RegistrationComponent extends NavigationLogic implements OnInit {
   currIndex$: Observable<number>;
 
   ngOnInit() {
-    // let i = 0;
+    // let i = 5;
     //
     // this.IdComponent = i
     // this.scene = this.regList[i]
+    // this.isTheEnd = true;
     //
-
-
-    // setInterval(() => {
-    //   i++
-    //   this.scene = this.regList[i]
-    // }, 2000)
-
 
     this.currIndex$.subscribe(i => {
       if (i === this.countSteps) {
-        this.isTheEnd = true
+        this.isTheEnd = true;
+        return;
       }
 
       this.scene = this.regList[i]
@@ -57,5 +56,10 @@ export class RegistrationComponent extends NavigationLogic implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    this.authLogic.resetCurrentIndex()
+  }
+
   protected readonly phantomIcons = phantomIcons;
+  protected readonly last = last;
 }

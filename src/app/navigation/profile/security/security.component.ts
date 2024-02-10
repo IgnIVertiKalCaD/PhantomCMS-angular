@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {NgxOtpInputComponent} from "ngx-otp-input";
 
 @Component({
   selector: 'app-security',
@@ -9,18 +8,6 @@ import {NgxOtpInputComponent} from "ngx-otp-input";
   encapsulation: ViewEncapsulation.None,
 })
 export class SecurityComponent implements OnInit {
-
-  @ViewChild('otp', {static: true})
-  otp: NgxOtpInputComponent;
-
-  @ViewChild('otp2', {static: true})
-  otp2: NgxOtpInputComponent;
-
-
-
-  handleFillEvent(value: string): void {
-    console.log(value);
-  }
 
   ngOnInit() {
 

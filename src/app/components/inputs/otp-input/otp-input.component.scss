@@ -15,7 +15,7 @@
   gap: 25px
 }
 
-.input {
+input {
   transition: 0.1s ease-out;
 
   border-radius: 16px;
@@ -25,8 +25,9 @@
   text-align: center;
 
   display: flex;
-  width: 58px;
-  padding: 16px 0;
+
+  padding: 0;
+
   justify-content: center;
   align-items: center;
 
@@ -36,9 +37,10 @@
   font-weight: 400;
   line-height: 28px;
 
+  &:focus {
+    border: 1px solid $base-border-color;
+    background: transparent;
+  }
+
 }
 
-.input:focus {
-  border: 1px solid $base-border-color;
-  background: transparent;
-}

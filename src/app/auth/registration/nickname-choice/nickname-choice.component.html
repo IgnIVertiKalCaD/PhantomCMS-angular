@@ -4,7 +4,7 @@
                     [control]="nickname"
     />
     <app-button class="auth-btn" className="solid"
-                (click)="next(this.nickname.valid)"
+                (click)="authLogic.continue(nickname, {username: nickname.value!})"
     >
       Далее
       <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>

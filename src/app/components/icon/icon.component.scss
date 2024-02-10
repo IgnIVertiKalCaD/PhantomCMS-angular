@@ -8,6 +8,14 @@ app-icon {
     transition: .1s ease-out;
   }
 
+  &.dock {
+    &.settings {
+      .transparent {
+        display: flex;
+      }
+    }
+  }
+
   &.news {
     .transparent {
 

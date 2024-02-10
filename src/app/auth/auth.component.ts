@@ -6,11 +6,11 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {phantomIcons} from "@/common/icons/phantomIcons";
-import {AuthScenesService} from "@/app/auth/services/auth-scenes.service";
 import {Router} from "@angular/router";
-import {Select} from "@ngxs/store";
+import {Select, Store} from "@ngxs/store";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {Observable} from "rxjs";
+import {ClearTempUserData} from "@/app/auth/store/transportData.store";
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +19,7 @@ import {Observable} from "rxjs";
   encapsulation: ViewEncapsulation.None
 })
 export class AuthComponent implements OnInit {
-  constructor(private readonly router: Router) {
+  constructor(private readonly router: Router, private readonly store: Store) {
   }
 
   @Select(AuthStore.isAuth)
@@ -27,7 +27,10 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     this.status$.subscribe(async done => {
-      if (done) await this.router.navigate(['/news'])
+      if (done) {
+        this.store.dispatch(new ClearTempUserData())
+        await this.router.navigate(['/news'])
+      }
     })
   }
 

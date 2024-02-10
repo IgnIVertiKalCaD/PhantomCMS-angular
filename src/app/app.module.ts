@@ -1,5 +1,4 @@
 import {forwardRef, LOCALE_ID, NgModule} from "@angular/core";
-import {NgxOtpInputModule} from "ngx-otp-input";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -7,7 +6,6 @@ import {NgOptimizedImage} from "@angular/common";
 import {FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from "@angular/forms";
 import {NgxsModule} from "@ngxs/store";
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
-import {PreviewComponent} from "@/app/navigation/preview/preview.component";
 import {AppComponent} from "@/app/app.component";
 import {AuthComponent} from "@/app/auth/auth.component";
 import {DockComponent} from "@/app/components/global/dock/dock.component";
@@ -19,7 +17,7 @@ import {ButtonComponent} from "@/app/components/button/button.component";
 import {NavigationModule} from "@/app/navigation/navigation.module";
 import {LogoComponent} from "@/app/components/global/dock/logo/logo.component";
 import {AppRoutingModule} from "@/app/app-routing.module";
-import {ServersStore} from "@/app/navigation/servers/store/servers-store.service";
+import {ServersStore} from "@/app/navigation/servers/store/servers.store";
 import {AuthStore} from "@/app/auth/authentication/store/authentication.store";
 import {RegistrationStore} from "@/app/auth/registration/store/registration.store";
 import {OverlayComponent} from './components/overlay/overlay.component';
@@ -44,7 +42,7 @@ import {NicknameChoiceComponent} from './auth/registration/nickname-choice/nickn
 import {AccountProtectionComponent} from './auth/registration/account-protection/account-protection.component';
 import {EnterReferralCodeComponent} from './auth/registration/enter-referral-code/enter-referral-code.component';
 import {GoodGameComponent} from './auth/registration/good-game/good-game.component';
-import {RegisterComponent} from './auth/registration/register/register.component';
+import {RegisterComponent} from '@/app/auth/registration/enter-email/enter-email.component';
 import {SceneChanger} from "@/app/auth/registration/store/sceneСhanger.store";
 import {OtpInputComponent} from "@/app/components/inputs/otp-input/otp-input.component";
 import {EnterEmailComponent} from './auth/authentication/enter-email/enter-email.component';
@@ -58,7 +56,6 @@ registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
-    PreviewComponent,
     AppComponent,
     AuthComponent,
     DockComponent,
@@ -88,7 +85,6 @@ registerLocaleData(localeRu, 'ru');
     OverlayComponent,
     ButtonComponent,
     NavigationModule,
-    NgxOtpInputModule,
     LogoComponent,
     HttpClientModule,
     BrowserModule,

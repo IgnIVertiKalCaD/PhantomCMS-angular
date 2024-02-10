@@ -1,10 +1,10 @@
 <div class="block-enter">
   <div>
     <app-text-field class="auth" className="outline" placeholder="example@gmail.com"
-    [control]="email"
+                    [control]="email"
     />
     <app-button class="auth-btn" className="solid"
-      (click)="next(this.email.valid)"
+                (click)="authLogic.continue(email, {email: email.value!})"
     >
       Далее
       <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>

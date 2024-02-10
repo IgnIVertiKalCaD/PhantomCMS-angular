@@ -4,7 +4,7 @@
                     [control]="password"
     />
     <app-button class="auth-btn" className="solid"
-                (click)="next(this.password.valid)"
+                (click)="authLogic.continue(password, {password: password.value!})"
     >
       Далее
       <i [outerHTML]="phantomIcons.auth_button_arrow_right | safe"></i>

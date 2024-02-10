@@ -1,5 +1,7 @@
 <section class="block-servers" [@listAnimation]="(servers$ | async)?.length">
-  <div class="server-card" *ngFor="let server of servers$ | async, let i = index">
+  <div class="server-card"
+       [routerLink]="['/servers', server.uniqueId]"
+       *ngFor="let server of servers$ | async, let i = index">
     <div class="img-container">
       <img [ngSrc]="defaultImageServer"
            fill=""
@@ -12,19 +14,9 @@
 
     <div class="info w-100">
       <div class="chips">
-        <app-chip className="for-servers">
-          <i [outerHTML]="phantomIcons.chip_icon_for_servers | safe"></i>
-          <p>TechnoMagic</p>
-        </app-chip>
-        <app-chip className="for-servers">
-          <i [outerHTML]="phantomIcons.chip_icon_for_servers | safe"></i>
-          <p>TechnoMagic</p>
-        </app-chip>
-        <app-chip className="for-servers">
-          <i [outerHTML]="phantomIcons.chip_icon_for_servers | safe"></i>
-          <p>TechnoMagic</p>
-        </app-chip>
-        <app-chip className="for-servers">
+        <app-chip
+          *ngFor="let chip of [].constructor(4)"
+          className="for-servers">
           <i [outerHTML]="phantomIcons.chip_icon_for_servers | safe"></i>
           <p>TechnoMagic</p>
         </app-chip>
@@ -41,6 +33,12 @@
   </div>
 </section>
 
-<nav class='right nav-spacer'>
+<app-modal id="modal-server-details" [rollback]="true">
+  <div
+    [@animServerDetails]="getRouteAnimationData()"
+  >
+    <router-outlet
+    />
+  </div>
+</app-modal>
 
-</nav>

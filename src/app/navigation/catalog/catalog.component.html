@@ -1,3 +1,11 @@
-<div [@navigateAnimation]="getRouteAnimationData()">
-  <router-outlet/>
+<div
+  class="mt-4"
+  [@navigateAnimation]="getRouteAnimationData()">
+  <router-outlet (activate)="createRightNav($event)" (deactivate)="reCreateRightNav()"/>
+
+  <app-store-nav>
+    <ng-container #container />
+  </app-store-nav>
+
+
 </div>

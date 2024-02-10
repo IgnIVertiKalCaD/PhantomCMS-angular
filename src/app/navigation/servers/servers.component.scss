@@ -1,3 +1,5 @@
+@import "variables";
+
 :host {
   display: flex;
 }
@@ -5,34 +7,43 @@
 .block-servers {
   user-select: none;
 
+  z-index: 1;
+
   gap: 44px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-  &:hover {
-
-  }
 }
 
 .server-card {
+  position: relative;
+
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
 
+  cursor: pointers4;
+
   width: 296px;
   height: 388px;
 
   border-radius: 16px;
-  background: #151519;
+  background: $base-bg-accent-color;
+
+  transition: .2s ease-out;
+
+  &:hover {
+    box-shadow: 0 0 40px 10px rgba(#8887e1, 10%);
+
+    background: rgba($base-bg-accent-color, 20%);
+  }
 }
 
 .info {
   margin-top: 30px;
   margin-bottom: auto;
 }
-
 
 .chips {
   padding: 0 6px;
@@ -46,11 +57,14 @@
 }
 
 .img-container {
-  z-index: 0;
-
   height: 200px;
 
   position: relative;
+
+  img {
+    border-radius: 16px;
+    object-fit: cover;
+  }
 
   .bg-gradient {
     height: 100%;

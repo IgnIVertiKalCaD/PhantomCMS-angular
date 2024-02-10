@@ -15,5 +15,5 @@ export class ButtonComponent {
   disabled: boolean = false;
 
   @Input()
-  className?: 'default' | 'transparent' | 'with-icon' | 'solid' | 'outline' | 'remove' | 'start-play' | 'load-avatar' | 'load-skin_cape' | 'auth' | 'send-code' | 'change-password' | 'close-all-sessions' | 'restocking' = 'default'
+  className?: 'default' | 'hybrid' | 'transparent' | 'with-icon' | 'solid' | 'outline' | 'remove' | 'start-play' | 'load-avatar' | 'load-skin_cape' | 'auth' | 'send-code' | 'change-password' | 'close-all-sessions' | 'restocking' = 'default'
 }

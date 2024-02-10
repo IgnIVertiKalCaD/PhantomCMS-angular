@@ -8,13 +8,19 @@ import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {ButtonComponent} from "@/app/components/button/button.component";
 import {SafePipe} from "@/pipes/safe.pipe";
 import {InputSelectorComponent} from "@/app/components/inputs/input-selector/input-selector.component";
+import { StoreNavComponent } from './components/store-nav/store-nav.component';
+import {RouterOutlet} from "@angular/router";
+import { PrivilegesCardComponent } from './components/privileges-card/privileges-card.component';
+import {ChipComponent} from "@/app/components/chip/chip.component";
 
 @NgModule({
   declarations: [
     StoreItemsComponent,
     StorePrivilegesComponent,
     TitleHeaderComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    StoreNavComponent,
+    PrivilegesCardComponent
   ],
   imports: [
     TextFieldComponent,
@@ -22,8 +28,13 @@ import {InputSelectorComponent} from "@/app/components/inputs/input-selector/inp
     ButtonComponent,
     SafePipe,
     NgForOf,
-    InputSelectorComponent
+    InputSelectorComponent,
+    RouterOutlet,
+    ChipComponent
   ],
+  exports: [
+    StoreNavComponent
+  ]
 })
 export class CatalogModule {
 }

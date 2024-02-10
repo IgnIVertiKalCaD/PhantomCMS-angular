@@ -76,6 +76,7 @@ export class NewsStore {
       return ctx.setState(patch({selectedNews: existNews}))
     } else {
       console.log("send backend news")
+
       return this.newsService.getNewsById(id).pipe(
         tap((res): void => {
           ctx.setState(patch({
@@ -89,13 +90,15 @@ export class NewsStore {
         })
       )
     }
-
   }
 
+
+  //WHY?
   @Action(ClearSelectedNews)
   removeSelectedNews(ctx: StateContext<NewsState>): void {
       ctx.setState(patch({
         selectedNews: null
       }))
   }
+
 }
